@@ -1,0 +1,17 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Working_title_project' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Working_title_project
+
+pod 'Firebase/Analytics'
+pod 'GoogleSignIn', '~> 5.0.2'
+pod 'FirebaseAuth'
+pod 'FirebaseFirestore'
+pod 'FirebaseCore', :modular_headers => true
+pod 'GoogleSingInSwiftSupport'
+
+end
