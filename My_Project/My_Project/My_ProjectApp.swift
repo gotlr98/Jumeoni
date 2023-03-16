@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct My_ProjectApp: App {
     
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @UIApplicationDelegateAdaptor var appDelegate: AppDelegate
     
     var body: some Scene {
         WindowGroup {
