@@ -28,54 +28,6 @@ struct ContentView: View {
                         .font(.system(size: 25))
                         .position(x: geo.size.width / 2, y: geo.size.height / 5)
                     
-
-//                    Button(action: {
-//                        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-//
-//                        // Create Google Sign In configuration object.
-//                        let config = GIDConfiguration(clientID: clientID)
-//                        GIDSignIn.sharedInstance.configuration = config
-//
-//                        // Start the sign in flow!
-//                        GIDSignIn.sharedInstance.signIn(withPresenting: getRootViewController()) {  result, error in
-//                        guard error == nil else {
-//                            // ...
-//                              return
-//                        }
-//
-//                        guard let user = result?.user,
-//                            let idToken = user.idToken?.tokenString
-//                        else {
-//                            // ...
-//                              return
-//                        }
-//
-//                        let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-//                                                                       accessToken: user.accessToken.tokenString)
-//
-//                          // ...
-//
-//                        Auth.auth().signIn(with: credential) { result, error in
-//
-//                              // At this point, our user is signed in
-//                        }
-//
-//                        let Cur_user = Auth.auth().currentUser
-//                        if let Cur_user = Cur_user {
-//                        // The user's ID, unique to the Firebase project.
-//                        // Do NOT use this value to authenticate with your backend server,
-//                        // if you have one. Use getTokenWithCompletion:completion: instead.
-//                        let uid = Cur_user.uid
-//                        let email = Cur_user.email
-//                        let photoURL = Cur_user.photoURL
-//                        var multiFactorString = "MultiFactor: "
-//                        for info in Cur_user.multiFactor.enrolledFactors {
-//                          multiFactorString += info.displayName ?? "[DispayName]"
-//                          multiFactorString += " "
-//                        }
-//                        self.user_name = uid
-//                              // ...
-//                        }
                     
                     NavigationLink(
                         destination: Signin_Complete(user_name: $user_name),
