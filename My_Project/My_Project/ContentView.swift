@@ -32,6 +32,9 @@ struct ContentView: View {
                     NavigationLink(
                         destination: Signin_Complete(user_name: $user_name),
                         isActive: $isActive) {
+                            
+                        // Google Login Button
+                            
                         Button(action: {
                             
                             
@@ -96,11 +99,36 @@ struct ContentView: View {
                         })
                     }
                     .position(x: geo.size.width / 2, y: geo.size.height / 1.7)
-                    .onAppear {
-                        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
-                            isActive = true
-                        }
+                    
+                    NavigationLink(
+                        destination: Signin_Complete(user_name: $user_name),
+                        isActive: $isActive) {
+                            
+                        // Kakao Login Button
+                            
+                        Button(action: {
+                            
+                            
+                            
+                                
+                                
+                                
+                            
+//                            isActive = true
+                        }, label: {
+                            Rectangle()
+                                .foregroundColor(Color.gray)
+                                .frame(width: 130, height: 50)
+                                .cornerRadius(15)
+                                .overlay{
+                                    Text("Kakao Login")
+                                        .foregroundColor(Color.white)
+                                        .fontWeight(.black)
+                                }
+                        })
                     }
+                    .position(x: geo.size.width / 2, y: geo.size.height / 1.5)
+                    
                         
 //                    }, label: {
 //                        Rectangle()
