@@ -88,7 +88,7 @@ class Kakao_AuthVM: ObservableObject{
             // 카카오톡 실행 가능 여부 확인 - 설치 되어있을 때
             if (UserApi.isKakaoTalkLoginAvailable()) {
                 
-                print("one")
+                print("janghaesik")
                 
                 // 카카오 앱을 통해 로그인
                 isLoggedIn = await handleLoginWithKakaoTalkApp()

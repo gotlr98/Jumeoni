@@ -11,7 +11,15 @@
 			<array>
 				<string>com.googleusercontent.apps.104252210045-j4aq8kufff2tpjd5q1uv4dtu2u640q7o</string>
 			</array>
+
 		</dict>
 	</array>
+    <key>LSApplicationQueriesSchemes</key>
+     <array>
+         <!-- 카카오톡으로 로그인 -->
+         <string>kakaokompassauth</string>
+         <!-- 카카오톡 공유 -->
+         <string>kakaolink</string>
+     </array>
 </dict>
 </plist>
