@@ -93,7 +93,6 @@ class Kakao_AuthVM: ObservableObject{
             }
             else { // 설치 안되어 있을 때
                 isLoggedIn = await handleLoginWithKakaoAccount()
-                
             }
         }
     }

@@ -17,6 +17,7 @@
 		8AAF92E329C2E80100BD892B /* KakaoSDKTalk in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAF92E229C2E80100BD892B /* KakaoSDKTalk */; };
 		8AAF92E529C2E80100BD892B /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAF92E429C2E80100BD892B /* KakaoSDKTemplate */; };
 		8AAF92E729C2E80100BD892B /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAF92E629C2E80100BD892B /* KakaoSDKUser */; };
+		8AB78A6829C97B310081807E /* Login_Complete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB78A6729C97B310081807E /* Login_Complete.swift */; };
 		8AD0C0F729C03CE700A5D77D /* My_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD0C0F629C03CE700A5D77D /* My_ProjectApp.swift */; };
 		8AD0C0F929C03CE700A5D77D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD0C0F829C03CE700A5D77D /* ContentView.swift */; };
 		8AD0C0FB29C03CE800A5D77D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD0C0FA29C03CE800A5D77D /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		8A4E7CE329C04AE000B6A86E /* MyButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButtonStyle.swift; sourceTree = "<group>"; };
+		8AB78A6729C97B310081807E /* Login_Complete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_Complete.swift; sourceTree = "<group>"; };
 		8AD0C0F329C03CE700A5D77D /* My_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = My_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD0C0F629C03CE700A5D77D /* My_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_ProjectApp.swift; sourceTree = "<group>"; };
 		8AD0C0F829C03CE700A5D77D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				8AD0C0F629C03CE700A5D77D /* My_ProjectApp.swift */,
 				8AF36D3229C2EAE7008CDC21 /* Kakao_AuthVM.swift */,
 				8AD0C0F829C03CE700A5D77D /* ContentView.swift */,
+				8AB78A6729C97B310081807E /* Login_Complete.swift */,
 				8A4E7CE329C04AE000B6A86E /* MyButtonStyle.swift */,
 				8AD0C11629C0428800A5D77D /* Signin_Complete.swift */,
 				8AD0C0FA29C03CE800A5D77D /* Assets.xcassets */,
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AB78A6829C97B310081807E /* Login_Complete.swift in Sources */,
 				8AF36D3329C2EAE7008CDC21 /* Kakao_AuthVM.swift in Sources */,
 				8AD0C11729C0428800A5D77D /* Signin_Complete.swift in Sources */,
 				8AF36D3529C2EB3E008CDC21 /* SceneDelegate.swift in Sources */,
