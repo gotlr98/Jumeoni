@@ -6,15 +6,19 @@
 //
 
 import SwiftUI
+import KakaoSDKAuth
+import KakaoSDKCommon
 
 @main
 struct My_ProjectApp: App {
     
     @UIApplicationDelegateAdaptor var appDelegate: AppDelegate
     
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+         
         }
     }
 }
