@@ -10,9 +10,16 @@ import Combine
 import KakaoSDKAuth
 import KakaoSDKUser
 
+protocol SendStringData{
+    func sendData(mydata: String)
+}
+
 class Kakao_AuthVM: ObservableObject{
     
     @Published var isLoggedIn : Bool = false
+    @Published var user_name: String = ""
+    
+    var delegate: SendStringData?
     
     @MainActor
     func kakaoLogout(){
@@ -55,6 +62,33 @@ class Kakao_AuthVM: ObservableObject{
 
                     //do something
                     _ = oauthToken
+                    
+                    //사용자 정보 불러옴
+                    UserApi.shared.me { [self] user, error in
+                       if let error = error {
+                           print(error)
+                       } else {
+                           
+                           guard let token = oauthToken?.accessToken, let email = user?.kakaoAccount?.email,
+                                 let name = user?.kakaoAccount?.profile?.nickname else{
+                                     print("token/email/name is nil")
+                                     return
+                                 }
+                           
+
+
+                           
+                           self.user_name = name
+                           
+                           
+                           
+                           delegate?.sendData(mydata: self.user_name)
+                           
+                           print(self.user_name)
+                           
+                           //서버에 이메일/토큰/이름 보내주기
+                       }
+                   }
                 }
             }
         }
@@ -74,6 +108,25 @@ class Kakao_AuthVM: ObservableObject{
                         continuation.resume(returning: true)
                         //do something
                         _ = oauthToken
+                        
+                        UserApi.shared.me { [self] user, error in
+                           if let error = error {
+                               print(error)
+                           } else {
+                               
+                               guard let token = oauthToken?.accessToken, let email = user?.kakaoAccount?.email,
+                                     let name = user?.kakaoAccount?.profile?.nickname else{
+                                         print("token/email/name is nil")
+                                         return
+                                     }
+
+                               self.user_name = name
+                               
+                               print(self.user_name)
+                               
+                               //서버에 이메일/토큰/이름 보내주기
+                           }
+                       }
                     }
                 }
             
@@ -90,10 +143,15 @@ class Kakao_AuthVM: ObservableObject{
                                 
                 // 카카오 앱을 통해 로그인
                 isLoggedIn = await handleLoginWithKakaoTalkApp()
+                
+                
             }
             else { // 설치 안되어 있을 때
                 isLoggedIn = await handleLoginWithKakaoAccount()
             }
+            
+            var vc = Signin_Complete()
+            vc.test = "Hello" + self.user_name
         }
     }
 

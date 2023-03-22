@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
-import Firebase
-import GoogleSignIn
-import FirebaseAuth
+import KakaoSDKAuth
+import KakaoSDKCommon
+import KakaoSDKUser
 
 struct ContentView: View {
     
     @StateObject var kakaoAuthVM: Kakao_AuthVM = Kakao_AuthVM()
-    @State var user_name: String = ""
     @Binding var isLoggedIn: Bool
     
     var body: some View {
@@ -33,13 +32,12 @@ struct ContentView: View {
        
                     // Kakao Login Button
                     
-                    NavigationLink(destination: Login_Complete(), isActive: $kakaoAuthVM.isLoggedIn,
+                    NavigationLink(destination: Signin_Complete(), isActive: $kakaoAuthVM.isLoggedIn,
                                    label:{
                         Button(action: {
                             
                             kakaoAuthVM.handleKakaoLogin()
-                            print(isLoggedIn)
-//                            self.isLoggedIn = true
+                            
                             
                         }, label: {
                             Rectangle()

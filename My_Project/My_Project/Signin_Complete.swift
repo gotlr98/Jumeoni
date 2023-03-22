@@ -9,20 +9,38 @@ import SwiftUI
 
 
 
-struct Signin_Complete: View{
+
+
+struct Signin_Complete: View, SendStringData{
     
-    @Binding var user_name: String
+    
+    
+    @StateObject var kakaoAuthVM: Kakao_AuthVM = Kakao_AuthVM()
+    @State var name: String = ""
+    var test: String = ""
+
+    
+    func sendData(mydata: String) {
+        
+        let vc = Kakao_AuthVM()
+        vc.delegate = self
+        
+        self.name = mydata
+        
+    }
+    
+    
     
 //    ContentView
     var body: some View{
-        Text("Hello" + user_name)
-        
+
+        Text("Hello" + test)
     }
 }
 
 
 struct Signin_Complete_Previews: PreviewProvider{
     static var previews: some View{
-        Signin_Complete(user_name: Binding.constant("empty"))
+        Signin_Complete()
     }
 }
