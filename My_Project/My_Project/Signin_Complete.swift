@@ -9,32 +9,33 @@ import SwiftUI
 
 
 
-
-
 struct Signin_Complete: View, SendStringData{
-    
-    
     
     @StateObject var kakaoAuthVM: Kakao_AuthVM = Kakao_AuthVM()
     @State var name: String = ""
+    
     var test: String = ""
 
-    
     func sendData(mydata: String) {
         
         let vc = Kakao_AuthVM()
         vc.delegate = self
         
         self.name = mydata
+        print(self.name + "qqqqq")
         
     }
     
-    
-    
+
 //    ContentView
     var body: some View{
-
-        Text("Hello" + test)
+        
+        VStack{
+            
+            Text(test)
+        }
+//        sendData(mydata: self.test)
+        
     }
 }
 

@@ -17,7 +17,7 @@ struct My_ProjectApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(isLoggedIn: .constant(false ))
+            ContentView(isLoggedIn: .constant(false), name: .constant(""))
          
         }
     }

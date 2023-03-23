@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import KakaoSDKAuth
 import KakaoSDKUser
+import SwiftUI
 
 protocol SendStringData{
     func sendData(mydata: String)
@@ -21,7 +22,7 @@ class Kakao_AuthVM: ObservableObject{
     
     var delegate: SendStringData?
     
-    @MainActor
+//    @MainActor
     func kakaoLogout(){
         Task{
             if await handlekakaoLogout() {
@@ -46,6 +47,7 @@ class Kakao_AuthVM: ObservableObject{
         }
 }
     
+    @MainActor
     func handleLoginWithKakaoTalkApp() async -> Bool {
         
         await withCheckedContinuation{ continuation in
@@ -74,21 +76,20 @@ class Kakao_AuthVM: ObservableObject{
                                      print("token/email/name is nil")
                                      return
                                  }
-                           
 
-
-                           
                            self.user_name = name
-                           
-                           
-                           
+                       
                            delegate?.sendData(mydata: self.user_name)
                            
-                           print(self.user_name)
-                           
+                           var vc = Signin_Complete()
+                           vc.test = "Hello " + self.user_name
+                           print(vc.test + "qqq")
+                                                      
                            //서버에 이메일/토큰/이름 보내주기
                        }
                    }
+                    
+
                 }
             }
         }
@@ -121,8 +122,7 @@ class Kakao_AuthVM: ObservableObject{
                                      }
 
                                self.user_name = name
-                               
-                               print(self.user_name)
+                               print(self.user_name + "qqqq")
                                
                                //서버에 이메일/토큰/이름 보내주기
                            }
@@ -132,9 +132,11 @@ class Kakao_AuthVM: ObservableObject{
             
         }
         
+        
+        
     }
     
-    @MainActor
+//    @MainActor
     func handleKakaoLogin(){
         
         Task{
@@ -150,9 +152,12 @@ class Kakao_AuthVM: ObservableObject{
                 isLoggedIn = await handleLoginWithKakaoAccount()
             }
             
-            var vc = Signin_Complete()
-            vc.test = "Hello" + self.user_name
+
         }
+        
+        var vc = Signin_Complete()
+        vc.test = "Hello" + self.user_name
+        print(vc.test + "qqq")
     }
 
 }
