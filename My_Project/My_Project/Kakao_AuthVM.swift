@@ -11,16 +11,12 @@ import KakaoSDKAuth
 import KakaoSDKUser
 import SwiftUI
 
-protocol SendStringData{
-    func sendData(mydata: String)
-}
 
 class Kakao_AuthVM: ObservableObject{
     
     @Published var isLoggedIn : Bool = false
     @Published var user_name: String = ""
     
-    var delegate: SendStringData?
     
 //    @MainActor
     func kakaoLogout(){
@@ -78,12 +74,9 @@ class Kakao_AuthVM: ObservableObject{
                                  }
 
                            self.user_name = name
-                       
-                           delegate?.sendData(mydata: self.user_name)
-                           
+                         
                            var vc = Signin_Complete()
                            vc.test = "Hello " + self.user_name
-                           print(vc.test + "qqq")
                                                       
                            //서버에 이메일/토큰/이름 보내주기
                        }
