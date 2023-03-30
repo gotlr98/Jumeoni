@@ -34,6 +34,7 @@ struct Signin_Complete: View{
             
         }
         .navigationTitle("Hello " + user_name + "님")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
     }
         

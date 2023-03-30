@@ -21,12 +21,13 @@ struct Drink_Info: View {
     ]
     
     let columns = [
+        GridItem(.adaptive(minimum: 100)),
         GridItem(.adaptive(minimum: 100))
     ]
     
     var body: some View {
         ScrollView(){
-            LazyVGrid(columns: columns, alignment: .center, spacing: 20, content:{
+            LazyVGrid(columns: columns, alignment: .center, spacing: 30, content:{
                     ForEach(drinks) { drink in
                         VStack{
                             Image(drink.pruduct_name)
