@@ -75,10 +75,6 @@ class Kakao_AuthVM: ObservableObject{
 
                            self.user_name = name
                          
-                           var vc = Signin_Complete()
-                           vc.test = "Hello " + self.user_name
-                                                      
-                           //서버에 이메일/토큰/이름 보내주기
                        }
                    }
                     
@@ -115,9 +111,6 @@ class Kakao_AuthVM: ObservableObject{
                                      }
 
                                self.user_name = name
-                               print(self.user_name + "qqqq")
-                               
-                               //서버에 이메일/토큰/이름 보내주기
                            }
                        }
                     }
@@ -147,10 +140,7 @@ class Kakao_AuthVM: ObservableObject{
             
 
         }
-        
-        var vc = Signin_Complete()
-        vc.test = "Hello" + self.user_name
-        print(vc.test + "qqq")
+
     }
 
 }

@@ -13,20 +13,18 @@ struct Signin_Complete: View{
     
     @StateObject var kakaoAuthVM: Kakao_AuthVM = Kakao_AuthVM()
     
-    var test: String = ""
-
-    
+    var user_name: String = ""
 
 //    ContentView
     var body: some View{
         
         VStack{
             
-            Text(test)
+            Text(user_name)
+            
         }
-//        sendData(mydata: self.test)
-        
     }
+
 }
 
 
