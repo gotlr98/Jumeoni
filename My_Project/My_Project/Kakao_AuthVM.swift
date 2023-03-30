@@ -74,7 +74,8 @@ class Kakao_AuthVM: ObservableObject{
                                  }
 
                            self.user_name = name
-                         
+                           add_user(name: user_name)
+                           read_user()
                        }
                    }
                     
@@ -111,6 +112,8 @@ class Kakao_AuthVM: ObservableObject{
                                      }
 
                                self.user_name = name
+                               add_user(name: user_name)
+                               read_user()
                            }
                        }
                     }
@@ -131,6 +134,7 @@ class Kakao_AuthVM: ObservableObject{
                                 
                 // 카카오 앱을 통해 로그인
                 isLoggedIn = await handleLoginWithKakaoTalkApp()
+                
                 
                 
             }

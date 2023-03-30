@@ -15,15 +15,27 @@ struct Signin_Complete: View{
     
     var user_name: String = ""
 
-//    ContentView
+
     var body: some View{
         
         VStack{
             
-            Text(user_name)
+            TabView{
+
+                Drink_Info()
+                    .tabItem{
+                        Image(systemName: "wineglass.fill")
+                    }
+                Shop()
+                    .tabItem{
+                        Image(systemName: "cart.fill")
+                    }
+            }
             
         }
+        .navigationTitle("Hello " + user_name + "님")
     }
+        
 
 }
 
