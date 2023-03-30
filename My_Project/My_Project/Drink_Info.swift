@@ -20,16 +20,27 @@ struct Drink_Info: View {
         Drink(id: UUID(), pruduct_name: "cass", price: 1500)
     ]
     
+    let columns = [
+        GridItem(.adaptive(minimum: 100))
+    ]
+    
     var body: some View {
-        List{
-            ForEach(drinks) { drink in
-                
-                HStack{
-                    Text(drink.pruduct_name)
-                    Text(String(drink.price))
-                }
-                
-            }
+        ScrollView(){
+            LazyVGrid(columns: columns, alignment: .center, spacing: 20, content:{
+                    ForEach(drinks) { drink in
+                        VStack{
+                            Image(drink.pruduct_name)
+                                .resizable()
+                                .frame(width:50, height: 50)
+                            HStack{
+                                Text(drink.pruduct_name)
+                                Text(String(drink.price))
+                            }
+                        }
+                        
+                    }
+            })
+            
         }
         
     }
