@@ -7,9 +7,31 @@
 
 import SwiftUI
 
+struct Drink: Hashable, Identifiable{
+    var id: UUID
+    var pruduct_name: String
+    var price: Int64
+}
+
 struct Drink_Info: View {
+    
+    @State private var drinks = [
+        Drink(id: UUID(), pruduct_name: "cham", price: 1350),
+        Drink(id: UUID(), pruduct_name: "cass", price: 1500)
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List{
+            ForEach(drinks) { drink in
+                
+                HStack{
+                    Text(drink.pruduct_name)
+                    Text(String(drink.price))
+                }
+                
+            }
+        }
+        
     }
 }
 
