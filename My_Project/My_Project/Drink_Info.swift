@@ -41,6 +41,8 @@ struct Drink_Info: View {
                             Image(drink.pruduct_name)
                                 .resizable()
                                 .frame(width:70, height: 70)
+//                            AsyncImage(url: "")
+                            
                             HStack{
                                 Text(drink.pruduct_name)
                                 Text(String(drink.price))
