@@ -41,8 +41,8 @@ struct Drink_Info: View {
                             Image(drink.pruduct_name)
                                 .resizable()
                                 .frame(width:70, height: 70)
-//                            AsyncImage(url: "")
-                            
+                            AsyncImage(url: URL(string:"https://file.hitejinro.com/hitejinro2016/upFiles/brand/KR/category/20230322_51349231.png"))
+                                
                             HStack{
                                 Text(drink.pruduct_name)
                                 Text(String(drink.price))
