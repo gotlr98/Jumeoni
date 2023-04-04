@@ -23,13 +23,15 @@ struct SideView: View {
                     })
                 })
                 
-                
-                Button(action: {
-                    
-                }, label: {
-                    Text("Beer")
-                        .foregroundColor(Color.black)
+                NavigationLink(destination: Signin_Complete(), isActive: $isCliked, label:{
+                    Button(action: {
+                        isCliked = true
+                    }, label: {
+                        Text("Beer")
+                            .foregroundColor(Color.black)
+                    })
                 })
+                
             }
         }
         

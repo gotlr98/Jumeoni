@@ -15,18 +15,20 @@ struct Drink: Hashable, Identifiable{
     }
     
     var id: UUID
-    var pruduct_name: String
-    var price: Int64
     var type: drink_type
+    var price: Int64
     
+
     
 }
 
 struct Drink_Info: View {
     
+    @State var selected_type: Drink.drink_type
+    
     @State private var drinks = [
-        Drink(id: UUID(), pruduct_name: "cham", price: 1350, type: Drink.drink_type.soju),
-        Drink(id: UUID(), pruduct_name: "cass", price: 1500, type: Drink.drink_type.beer)
+        Drink(id: UUID(), type: Drink.drink_type.soju, price: 1350),
+        Drink(id: UUID(), type: Drink.drink_type.beer, price: 1500)
     ]
     
     let columns = [
@@ -35,42 +37,67 @@ struct Drink_Info: View {
     ]
     
     var body: some View {
-        ScrollView{
-            LazyVGrid(columns: columns, alignment: .center, spacing: 30, content:{
+        
+        NavigationView{
+            ScrollView{
+                LazyVGrid(columns: columns, alignment: .center, spacing: 30, content:{
                     ForEach(drinks) { drink in
-                        VStack{
-                            Image(drink.pruduct_name)
-                                .resizable()
-                                .frame(width:70, height: 70)
                             
-//                            AsyncImage(url: URL(string:"https://file.hitejinro.com/hitejinro2016/upFiles/brand/KR/category/20230322_51349231.png"))
-//                                .frame(maxWidth: 50, maxHeight: 50)
-                                    
-                            
+                            VStack{
+  
+                                Image("cham")
+                                    .resizable()
+                                    .frame(width:70, height: 70)
                                 
-                            HStack{
-                                Text(drink.pruduct_name)
-                                Text(String(drink.price))
+//                                Image()
+                                    
+                                HStack{
+                                    Text("soju")
+                                    Text(String(drink.price))
+                                }
                             }
+                            
                         }
+                        .padding()
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color.blue, lineWidth: 4)
+                            )
+                })
+                .padding()
+                
+                
+            }
+            
+            .toolbar{
+                ToolbarItem(placement: .navigationBarLeading, content: {
+                    Menu("Create"){
+                        Button(action: {
+                            self.selected_type = .soju
+                        }, label: {
+                            Text("Soju")
+                                .foregroundColor(.black)
+                        })
                         
+                        Button(action: {
+                            self.selected_type = .beer
+                        }, label: {
+                            Text("Beer")
+                                .foregroundColor(.black)
+                        })
                     }
-                    .padding()
-                    .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.blue, lineWidth: 4)
-                        )
-            })
-            .padding()
-            
-            
+                })
+            }
         }
+        
+        
+        
         
     }
 }
 
 struct Drink_Info_Previews: PreviewProvider {
     static var previews: some View {
-        Drink_Info()
+        Drink_Info(selected_type: .beer)
     }
 }
