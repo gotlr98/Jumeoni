@@ -1,19 +1,7 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
-    },
-    {
-      "filename" : "cham.jpg",
+      "filename" : "terra.jpeg",
       "idiom" : "iphone",
       "scale" : "1x"
     },

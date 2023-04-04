@@ -22,7 +22,7 @@ struct Signin_Complete: View{
             
             TabView{
 
-                Drink_Info(selected_type: .beer)
+                Drink_Info(selected_type: .soju)
                     .tabItem{
                         Image(systemName: "wineglass.fill")
                     }
