@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A2C72A529DC0182006B13AB /* Drink_Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C72A429DC0182006B13AB /* Drink_Rating.swift */; };
 		8A639FA429DABCCE00E25C93 /* SideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A639FA329DABCCE00E25C93 /* SideView.swift */; };
 		8AAF92D729C2E80100BD892B /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAF92D629C2E80100BD892B /* KakaoSDK */; };
 		8AAF92D929C2E80100BD892B /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAF92D829C2E80100BD892B /* KakaoSDKAuth */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A2C72A429DC0182006B13AB /* Drink_Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink_Rating.swift; sourceTree = "<group>"; };
 		8A639FA329DABCCE00E25C93 /* SideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideView.swift; sourceTree = "<group>"; };
 		8AD0C0F329C03CE700A5D77D /* My_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = My_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD0C0F629C03CE700A5D77D /* My_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_ProjectApp.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				8AE6764829D53ADF0083C278 /* User_Info.swift */,
 				8AE6764C29D549D50083C278 /* Login_View.swift */,
 				8AE6764E29D54CB00083C278 /* Drink_Info.swift */,
+				8A2C72A429DC0182006B13AB /* Drink_Rating.swift */,
 				8A639FA329DABCCE00E25C93 /* SideView.swift */,
 				8AE6765029D54CB40083C278 /* Shop.swift */,
 			);
@@ -227,6 +230,7 @@
 				8AD0C11029C03F8700A5D77D /* AppDelegate.swift in Sources */,
 				8AE6764929D53ADF0083C278 /* User_Info.swift in Sources */,
 				8AE6764D29D549D50083C278 /* Login_View.swift in Sources */,
+				8A2C72A529DC0182006B13AB /* Drink_Rating.swift in Sources */,
 				8AD0C0F929C03CE700A5D77D /* ContentView.swift in Sources */,
 				8AD0C0F729C03CE700A5D77D /* My_ProjectApp.swift in Sources */,
 				8A639FA429DABCCE00E25C93 /* SideView.swift in Sources */,

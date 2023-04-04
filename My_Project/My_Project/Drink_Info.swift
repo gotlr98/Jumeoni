@@ -59,7 +59,6 @@ struct Drink_Info: View {
                     LazyVGrid(columns: columns, alignment: .center, spacing: 30, content:{
                         ForEach(filter_drink) { drink in
 
-                            
                                 VStack{
                                     drink.img.resizable().frame(width: geo.size.width / 3, height: geo.size.height / 6)
                                     
@@ -68,7 +67,7 @@ struct Drink_Info: View {
                                         Text(drink.name)
                                         Text(String(drink.price))
                                     }
-                            }
+                                }
 
                             }
                             .padding()
