@@ -11,7 +11,7 @@ import Foundation
 struct Drink: Identifiable{
     
     enum drink_type{
-        case soju, beer, korean_wine
+        case soju, beer, makgeolli
     }
     
     var id: UUID
@@ -39,10 +39,14 @@ struct Drink_List: View {
     
     @State var selected_type: Drink.drink_type
     @State var show_sheet: Bool = false
+    @State var cliked_button: Bool = false
     
     @State private var drinks = [
-        Drink(id: UUID(), name: "cham", type: Drink.drink_type.soju, price: 1350, img: Image("soju1")),
-        Drink(id: UUID(), name: "cass", type: Drink.drink_type.beer, price: 1500, img: Image("beer1"))
+        Drink(id: UUID(), name: "cham", type: Drink.drink_type.soju, price: 1950, img: Image("soju1")),
+        Drink(id: UUID(), name: "cass", type: Drink.drink_type.beer, price: 1500, img: Image("beer1")),
+        Drink(id: UUID(), name: "terra", type: Drink.drink_type.beer, price: 1500, img: Image("beer2")),
+        Drink(id: UUID(), name: "cheoeum", type: Drink.drink_type.soju, price: 1950, img: Image("soju2")),
+        Drink(id: UUID(), name: "jangsoo", type: Drink.drink_type.makgeolli, price: 1200, img: Image("makgeolli1"))
     ]
     
     let columns = [
@@ -60,16 +64,22 @@ struct Drink_List: View {
                     LazyVGrid(columns: columns, alignment: .center, spacing: 30, content:{
                         ForEach(filter_drink) { drink in
 
-                                VStack{
-                                    drink.img.resizable().frame(width: geo.size.width / 3, height: geo.size.height / 6)
-                                    
-                                                                        
-                                    HStack{
-                                        Text(drink.name)
-                                        Text(String(drink.price))
-                                    }
-                                }
+                                NavigationLink(destination: Review_View(), isActive: $cliked_button, label: {
+                                    Button(action: {
+                                        self.cliked_button.toggle()
+                                    }, label: {
+                                        VStack{
+                                            drink.img.resizable().frame(width: geo.size.width / 3, height: geo.size.height / 6)
+                               
+                                            HStack{
+                                                Text(drink.name)
+                                                Text(String(drink.price))
+                                            }
+                                        }
+                                        
+                                    })
 
+                                })
                             }
                             .padding()
                             .overlay(
@@ -86,7 +96,7 @@ struct Drink_List: View {
                 
                 .toolbar{
                     ToolbarItem(placement: .navigationBarLeading, content: {
-                        Menu("Create"){
+                        Menu("Menu"){
                             Button(action: {
                                 self.selected_type = .soju
                             }, label: {
@@ -100,10 +110,18 @@ struct Drink_List: View {
                                 Text("Beer")
                                     .foregroundColor(.black)
                             })
+                            
+                            Button(action: {
+                                self.selected_type = .makgeolli
+                            }, label: {
+                                Text("makgeolli")
+                                    .foregroundColor(.black)
+                            })
                         }
                         
                         
                     })
+                    
                     
                     ToolbarItem(placement: .bottomBar, content:{
                         Button(action: {
@@ -111,6 +129,8 @@ struct Drink_List: View {
                         }, label: {
                             Image(systemName: "plus.circle")
                                 .font(.system(size: 40))
+                                .foregroundColor(Color.black)
+                            
                             
                         })
                     })
