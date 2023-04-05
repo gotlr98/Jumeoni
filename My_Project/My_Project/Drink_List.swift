@@ -35,9 +35,10 @@ func img_adjust(img: Image) -> some View {
 }
 
 
-struct Drink_Info: View {
+struct Drink_List: View {
     
     @State var selected_type: Drink.drink_type
+    @State var show_sheet: Bool = false
     
     @State private var drinks = [
         Drink(id: UUID(), name: "cham", type: Drink.drink_type.soju, price: 1350, img: Image("soju1")),
@@ -79,7 +80,9 @@ struct Drink_Info: View {
                     .padding()
                     
                     
+                    
                 }
+
                 
                 .toolbar{
                     ToolbarItem(placement: .navigationBarLeading, content: {
@@ -98,20 +101,33 @@ struct Drink_Info: View {
                                     .foregroundColor(.black)
                             })
                         }
+                        
+                        
                     })
+                    
+                    ToolbarItem(placement: .bottomBar, content:{
+                        Button(action: {
+                            self.show_sheet.toggle()
+                        }, label: {
+                            Image(systemName: "plus.circle")
+                                .font(.system(size: 40))
+                            
+                        })
+                    })
+
                 }
+                
             }
+
         }
-        
-        
-        
-        
-        
+        .sheet(isPresented: $show_sheet){
+            Register_Drink()
+        }
     }
 }
 
 struct Drink_Info_Previews: PreviewProvider {
     static var previews: some View {
-        Drink_Info(selected_type: .soju)
+        Drink_List(selected_type: .soju)
     }
 }
