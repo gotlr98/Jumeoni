@@ -124,12 +124,13 @@ struct Drink_List: View {
                     
                     
                     ToolbarItem(placement: .bottomBar, content:{
+                        
                         Button(action: {
                             self.show_sheet.toggle()
                         }, label: {
                             Image(systemName: "plus.circle")
                                 .font(.system(size: 40))
-                                .foregroundColor(Color.black)
+                                .foregroundColor(Color.gray)
                             
                             
                         })
