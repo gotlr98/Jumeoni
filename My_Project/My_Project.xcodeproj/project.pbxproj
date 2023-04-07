@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8A2C72A529DC0182006B13AB /* Drink_Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C72A429DC0182006B13AB /* Drink_Rating.swift */; };
-		8A639FA429DABCCE00E25C93 /* SideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A639FA329DABCCE00E25C93 /* SideView.swift */; };
 		8A9B587329DD1E2A009277EF /* Register_Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B587229DD1E2A009277EF /* Register_Drink.swift */; };
 		8AAF92D729C2E80100BD892B /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAF92D629C2E80100BD892B /* KakaoSDK */; };
 		8AAF92D929C2E80100BD892B /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAF92D829C2E80100BD892B /* KakaoSDKAuth */; };
@@ -40,7 +39,6 @@
 
 /* Begin PBXFileReference section */
 		8A2C72A429DC0182006B13AB /* Drink_Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink_Rating.swift; sourceTree = "<group>"; };
-		8A639FA329DABCCE00E25C93 /* SideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideView.swift; sourceTree = "<group>"; };
 		8A9B587229DD1E2A009277EF /* Register_Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register_Drink.swift; sourceTree = "<group>"; };
 		8AD0C0F329C03CE700A5D77D /* My_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = My_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD0C0F629C03CE700A5D77D /* My_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_ProjectApp.swift; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 				8AE9212B29DD40EB00C22025 /* Review_View.swift */,
 				8A2C72A429DC0182006B13AB /* Drink_Rating.swift */,
 				8A9B587229DD1E2A009277EF /* Register_Drink.swift */,
-				8A639FA329DABCCE00E25C93 /* SideView.swift */,
 				8AE6765029D54CB40083C278 /* Shop.swift */,
 			);
 			path = My_Project;
@@ -239,7 +236,6 @@
 				8A2C72A529DC0182006B13AB /* Drink_Rating.swift in Sources */,
 				8AD0C0F929C03CE700A5D77D /* ContentView.swift in Sources */,
 				8AD0C0F729C03CE700A5D77D /* My_ProjectApp.swift in Sources */,
-				8A639FA429DABCCE00E25C93 /* SideView.swift in Sources */,
 				8AE6764F29D54CB00083C278 /* Drink_List.swift in Sources */,
 				8AF36D3129C2E95E008CDC21 /* Kakao_Login++Bundle.swift in Sources */,
 				8AE9212C29DD40EB00C22025 /* Review_View.swift in Sources */,
@@ -376,6 +372,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "My-Project-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -406,6 +403,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "My-Project-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -14,8 +14,6 @@ struct Signin_Complete: View{
     @StateObject var kakaoAuthVM: Kakao_AuthVM = Kakao_AuthVM()
     
     var user_name: String = ""
-
-
     var body: some View{
         
         VStack{
@@ -37,8 +35,6 @@ struct Signin_Complete: View{
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
     }
-        
-
 }
 
 

@@ -70,11 +70,9 @@ struct Drink_List: View {
                                     }, label: {
                                         VStack{
                                             drink.img.resizable().frame(width: geo.size.width / 3, height: geo.size.height / 6)
-                               
-                                            HStack{
                                                 Text(drink.name)
-                                                Text(String(drink.price))
-                                            }
+                                                .foregroundColor(Color.black)
+                                                .font(.system(size: 20))
                                         }
                                         
                                     })

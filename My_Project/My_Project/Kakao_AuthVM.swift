@@ -51,8 +51,7 @@ class Kakao_AuthVM: ObservableObject{
                 if let error = error {
                     print(error)
                     continuation.resume(returning: false)
-                    
-                    
+    
                 }
                 else {
                     print("loginWithKakaoTalk() success.")

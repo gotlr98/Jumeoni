@@ -16,8 +16,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         let kakaoAppKey = Bundle.main.apiKey
         // Kakao SDK 초기화
-
-        print("kakaoAppKey : \(kakaoAppKey)")
         
         KakaoSDK.initSDK(appKey: kakaoAppKey)
         

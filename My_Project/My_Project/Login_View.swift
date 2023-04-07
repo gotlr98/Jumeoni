@@ -11,6 +11,13 @@ import KakaoSDKAuth
 import KakaoSDKCommon
 import KakaoSDKUser
 
+func makeBlur(target: Image){
+    let blur = UIBlurEffect(style: .regular)
+    let visualBlurEffect = UIVisualEffectView(effect: blur)
+    visualBlurEffect.alpha = 0
+//    visualBlurEffect.frame = imageView
+}
+
 struct Login_View: View {
     
     @StateObject var kakaoAuthVM: Kakao_AuthVM = Kakao_AuthVM()
@@ -21,17 +28,20 @@ struct Login_View: View {
         
         NavigationView{
             
-            VStack {
+            ZStack {
+                
                 GeometryReader{ geo in
                     
-                    Text("Korean Traditional Wine \n\n             Community")
+//                    Image("house")
+//                        .edgesIgnoringSafeArea(.all)
+                    
+                    Text("술다방 / 주머니 / 술맛좋다")
                         .frame(alignment: .center)
                         .foregroundColor(Color.white)
                         .fontWeight(.bold)
-                        .font(.system(size: 25))
+                        .font(.system(size: 40))
                         .position(x: geo.size.width / 2, y: geo.size.height / 5)
-                    
-       
+
                     // Kakao Login Button
                     
                     NavigationLink(destination: Signin_Complete(user_name: kakaoAuthVM.user_name), isActive: $kakaoAuthVM.isLoggedIn,
@@ -56,7 +66,7 @@ struct Login_View: View {
                     .position(x: geo.size.width / 2, y: geo.size.height / 1.5)
                     
                     
-                        
+
                 }
             }
             .background(Color.indigo)

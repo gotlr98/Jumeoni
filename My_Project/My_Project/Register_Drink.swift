@@ -38,20 +38,8 @@ struct Register_Drink: View {
             .padding()
             .background(Color(uiColor: .secondarySystemBackground))
             .textContentType(.telephoneNumber)
-            .onReceive(Just(input_price)){ newValue in
-                let filtered = newValue.filter { "0123456789".contains($0)}
-                if filtered != newValue{
-                    self.input_price = filtered
-                    alertStat.toggle()
-                }
-            }
-            .alert("숫자를 입력하세요", isPresented: $alertStat){
-                Button(role: .cancel){
-                    
-                } label:{
-                    Text("Close")
-                }
-            }
+            
+            
         }
         
     }
