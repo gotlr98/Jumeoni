@@ -53,7 +53,10 @@ struct Review_View: View {
 //                set_Review(name: "sik", rating: 3, comment: "good")
                 
                 let review = get_Review(find_name: "sik")
-                print(review.first?.rating)
+                
+                for i in review{
+                    print(i.name, i.rating, i.comment)
+                }
                 
                 
             }, label: {
