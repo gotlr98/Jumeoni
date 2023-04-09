@@ -37,10 +37,18 @@ func set_Review(name: String, rating: Int8, comment: String){
     }
 }
 
-func get_Review(find_name: String) -> Results<Review>{
+func get_Review_Byname(find_name: String) -> Results<Review>{
     
     let realm = try! Realm()
     let result = realm.objects(Review.self).filter("name == '\(find_name)'")
+    
+    return result
+}
+
+func get_All_Review() -> Results<Review>{
+    
+    let realm = try! Realm()
+    let result = realm.objects(Review.self)
     
     return result
 }
@@ -51,11 +59,18 @@ struct Review_View: View {
         VStack {
             Button(action: {
 //                set_Review(name: "sik", rating: 3, comment: "good")
+//                set_Review(name: "hae", rating: 2, comment: "soso")
                 
-                let review = get_Review(find_name: "sik")
                 
-                for i in review{
-                    print(i.name, i.rating, i.comment)
+                let review_name = get_Review_Byname(find_name: "sik")
+                let all_review = get_All_Review()
+                
+    //                for i in review_name{
+    //                    print(i.name, i.rating, i.comment)
+    //                }
+                
+                for j in all_review{
+                    print(j.name)
                 }
                 
                 
