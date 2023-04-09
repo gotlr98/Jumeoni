@@ -13,14 +13,29 @@ class Review: Object{
     @Persisted var name: String
     @Persisted var rating: Int8
     @Persisted var comment: String
+    @Persisted var drink_type: String
     @Persisted(primaryKey: true) var objectID: ObjectId
     
-    convenience init(name: String, rating: Int8, commnet: String){
+    convenience init(name: String, rating: Int8, commnet: String, drink_type: String){
         self.init()
         self.name = name
         self.rating = rating
         self.comment = comment
+        self.drink_type = drink_type
     }
+}
+
+func get_drink_type() -> [String]{
+    let realm = try! Realm()
+    let get = realm.objects(Review.self)
+    
+    var result: [String] = []
+    
+    for i in get{
+        result.append(i.drink_type)
+    }
+    
+    return result
 }
 
 func set_Review(name: String, rating: Int8, comment: String){
@@ -70,7 +85,7 @@ struct Review_View: View {
     //                }
                 
                 for j in all_review{
-                    print(j.name)
+                    print(j.name, j.rating, j.comment)
                 }
                 
                 
