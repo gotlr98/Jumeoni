@@ -33,5 +33,5 @@ func add_user(name: String){
 
 func read_user(){
     let realm = try! Realm()
-    print(realm.objects(User_Info.self))
+//    print(realm.objects(User_Info.self))
 }

@@ -10,22 +10,21 @@ import SwiftUI
 import RealmSwift
 
 
-struct Drink: Identifiable{
+struct Drink: Identifiable, Hashable{
     
     enum drink_type{
-        case soju, beer, makgeolli
+        case makgeolli, spirits
     }
     
     var id: UUID
     var name: String
     var type: drink_type
     var price: Int64
-    var img: Image
+    var img_url: String
 
 }
 
 class Drink_Store: Object{
-    
     
     @Persisted var name: String
     @Persisted var price: Int64

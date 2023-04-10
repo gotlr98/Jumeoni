@@ -10,7 +10,7 @@ import Combine
 
 struct Register_Drink: View {
     
-    @State var selected_type: Drink.drink_type = Drink.drink_type.soju
+    @State var selected_type: Drink.drink_type = Drink.drink_type.makgeolli
     @State var alertStat: Bool = false
     @State var input_name: String = ""
     @State var input_price: String = ""
@@ -19,9 +19,8 @@ struct Register_Drink: View {
         
         VStack{
             Picker("종류", selection: $selected_type){
-                Text("소주").tag(Drink.drink_type.soju)
-                Text("맥주").tag(Drink.drink_type.beer)
                 Text("막걸리").tag(Drink.drink_type.makgeolli)
+                Text("증류주").tag(Drink.drink_type.spirits)
             }
             .pickerStyle(.segmented)
 

@@ -10,6 +10,7 @@ import Foundation
 import KakaoSDKAuth
 import KakaoSDKCommon
 import KakaoSDKUser
+import RealmSwift
 
 func makeBlur(target: Image){
     let blur = UIBlurEffect(style: .regular)
@@ -23,6 +24,7 @@ struct Login_View: View {
     @StateObject var kakaoAuthVM: Kakao_AuthVM = Kakao_AuthVM()
     @Binding var isLoggedIn: Bool
     @Binding var name: String
+    @State var drink: [Drink] = []
     
     
     var body: some View {
@@ -45,7 +47,7 @@ struct Login_View: View {
 
                     // Kakao Login Button
                     
-                    NavigationLink(destination: Signin_Complete(user_name: kakaoAuthVM.user_name), isActive: $kakaoAuthVM.isLoggedIn,
+                    NavigationLink(destination: Signin_Complete(user_name: kakaoAuthVM.user_name, drink: self.drink), isActive: $kakaoAuthVM.isLoggedIn,
                                    label:{
                         Button(action: {
                             
@@ -53,7 +55,27 @@ struct Login_View: View {
                             
                             if get_All_Drink().count == 0{
                                 set_primary_drink()
+                                print("Setting!")
                             }
+                            
+                            for i in get_All_Drink(){
+                                
+                                if i.drink_type == "makgeolli"{
+                                    self.drink.append(
+                                    Drink(id: UUID(), name: i.name, type: .makgeolli, price: i.price, img_url: i.img_url)
+                                    )
+                                }
+                                
+                                else if i.drink_type == "spirits"{
+                                    self.drink.append(
+                                    Drink(id: UUID(), name: i.name, type: .spirits, price: i.price, img_url: i.img_url)
+                                    )
+                                }
+                                
+                            }
+                            print("## realm file dir -> \(Realm.Configuration.defaultConfiguration.fileURL!)")
+                            
+                            
                         }, label: {
                             Rectangle()
                                 .foregroundColor(Color.gray)

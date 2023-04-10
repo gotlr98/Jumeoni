@@ -14,13 +14,14 @@ struct Signin_Complete: View{
     @StateObject var kakaoAuthVM: Kakao_AuthVM = Kakao_AuthVM()
     
     var user_name: String = ""
+    var drink: [Drink] = []
     var body: some View{
         
         VStack{
             
             TabView{
 
-                Drink_List(selected_type: .soju)
+                Drink_List(selected_type: .makgeolli, drink: self.drink)
                     .tabItem{
                         Image(systemName: "wineglass.fill")
                     }
@@ -29,6 +30,12 @@ struct Signin_Complete: View{
                         Image(systemName: "cart.fill")
                     }
             }
+            
+            Button(action: {
+                print(drink)
+            }, label: {
+                Text("Button")
+            })
             
         }
         .navigationTitle("Hello " + user_name + "님")
