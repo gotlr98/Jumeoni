@@ -26,17 +26,34 @@ struct Drink: Identifiable{
 
 class Drink_Store: Object{
     
-    @Persisted(primaryKey: true) var objectID: ObjectId
+    
     @Persisted var name: String
     @Persisted var price: Int64
     @Persisted var drink_type: String
-    
-    
-    
-    convenience init(name: String, price: Int64, drink_type: String){
+    @Persisted var img_url: String
+    @Persisted(primaryKey: true) var objectID: ObjectId
+
+    convenience init(name: String, price: Int64, drink_type: String, img_url: String){
         self.init()
         self.name = name
         self.price = price
         self.drink_type = drink_type
+        self.img_url = img_url
+    }
+}
+
+func set_drink(name: String, price: Int64, drink_type: String, img_url: String){
+    
+    let drink = Drink_Store()
+    
+    drink.name = name
+    drink.price = price
+    drink.drink_type = drink_type
+    drink.img_url = img_url
+    
+    let realm = try! Realm()
+    
+    try! realm.write{
+        realm.add(drink)
     }
 }
