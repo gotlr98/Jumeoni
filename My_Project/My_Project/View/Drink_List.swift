@@ -8,31 +8,6 @@
 import SwiftUI
 import Foundation
 
-struct Drink: Identifiable{
-    
-    enum drink_type{
-        case soju, beer, makgeolli
-    }
-    
-    var id: UUID
-    var name: String
-    var type: drink_type
-    var price: Int64
-    var img: Image
-    
-
-}
-
-func img_adjust(img: Image) -> some View {
-    
-    
-    let img_ = img
-                .resizable()
-                .frame(width: 70, height: 70)
-
-    
-    return img_
-}
 
 
 struct Drink_List: View {

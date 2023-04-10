@@ -35,7 +35,7 @@ struct Login_View: View {
 //                    Image("house")
 //                        .edgesIgnoringSafeArea(.all)
                     
-                    Text("술다방 / 주머니 / 술맛좋다")
+                    Text("술다방 / 酒머니 / 술맛좋다")
                         .frame(alignment: .center)
                         .foregroundColor(Color.white)
                         .fontWeight(.bold)
