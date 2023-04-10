@@ -8,8 +8,6 @@
 import SwiftUI
 import Foundation
 
-
-
 struct Drink_List: View {
     
     @State var selected_type: Drink.drink_type
@@ -23,6 +21,10 @@ struct Drink_List: View {
         Drink(id: UUID(), name: "cheoeum", type: Drink.drink_type.soju, price: 1950, img: Image("soju2")),
         Drink(id: UUID(), name: "jangsoo", type: Drink.drink_type.makgeolli, price: 1200, img: Image("makgeolli1"))
     ]
+    
+    @State private var drink = {
+        set_drink(name: "jangsoo", price: 1950, drink_type: "makgeolli", img_url: "http://www.koreawine.co.kr/2011/img/c1/page1_img2.jpg")
+    }
     
     let columns = [
         GridItem(.flexible()),

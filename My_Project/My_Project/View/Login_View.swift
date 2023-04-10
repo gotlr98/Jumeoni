@@ -24,6 +24,7 @@ struct Login_View: View {
     @Binding var isLoggedIn: Bool
     @Binding var name: String
     
+    
     var body: some View {
         
         NavigationView{
@@ -47,9 +48,12 @@ struct Login_View: View {
                     NavigationLink(destination: Signin_Complete(user_name: kakaoAuthVM.user_name), isActive: $kakaoAuthVM.isLoggedIn,
                                    label:{
                         Button(action: {
+                            
                             kakaoAuthVM.handleKakaoLogin()
                             
-
+                            if get_All_Drink().count == 0{
+                                set_primary_drink()
+                            }
                         }, label: {
                             Rectangle()
                                 .foregroundColor(Color.gray)
@@ -63,7 +67,7 @@ struct Login_View: View {
                         })
                     })
 
-                    .position(x: geo.size.width / 2, y: geo.size.height / 1.5)
+                    .position(x: geo.size.width / 2, y: geo.size.height / 1.3)
                     
                     
 
