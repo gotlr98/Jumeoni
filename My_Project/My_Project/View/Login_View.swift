@@ -55,7 +55,7 @@ struct Login_View: View {
                             
                             if get_All_Drink().count == 0{
                                 set_primary_drink()
-                                print("Setting!")
+                                
                             }
                             
                             for i in get_All_Drink(){
