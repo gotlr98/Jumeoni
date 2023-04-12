@@ -14,6 +14,7 @@ struct Drink_List: View {
     @State var selected_type: Drink.drink_type = .makgeolli
     @State var show_sheet: Bool = false
     @State var cliked_button: Bool = false
+    @State private var dismissed: Bool = false
     
 //    @State private var drinks = [
 //        Drink(id: UUID(), name: "cham", type: Drink.drink_type.makgeolli, price: 1950, img_url: "1"),
@@ -115,9 +116,13 @@ struct Drink_List: View {
             }
 
         }
-        .sheet(isPresented: $show_sheet){
-            Register_Drink()
+        .sheet(isPresented: $show_sheet, onDismiss: {
+            dismissed = true
+        }){
+            Register_Drink(drink: $drink, show_sheet: $show_sheet)
+            
         }
+        
     }
 }
 
