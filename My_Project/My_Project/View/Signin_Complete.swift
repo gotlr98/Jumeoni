@@ -30,15 +30,10 @@ struct Signin_Complete: View{
                         Image(systemName: "cart.fill")
                     }
             }
-            
-            Button(action: {
-                print(drink)
-            }, label: {
-                Text("Button")
-            })
+ 
             
         }
-        .navigationTitle("Hello " + user_name + "님")
+        .navigationTitle("안녕하세요 " + user_name + "님")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
     }

@@ -59,17 +59,28 @@ func set_drink(name: String, price: Int64, drink_type: String, img_url: String){
 
 func set_primary_drink(){
     
-    @State var drink_urls = [
-        "https://cdn.aflnews.co.kr/news/photo/202009/202082_41658_5018.jpg",
-        "https://www.soolsool.co.kr/html/soolsool/_images/sub/product_slowly_n2.jpg",
-        "https://biz.chosun.com/resizer/8TSIJXQK22BnhKs8QHMw2eAUOiM=/333x470/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosunbiz/TNQAYESGCMTCH5A2LW25OYLWWY.jpg",
-        "https://www.joeunsulsj.co.kr:5009/admode/upload/product/37/main_736946901640741471.jpg"
+    @State var drink_makgeolli_urls = [
+        "https://shop-phinf.pstatic.net/20210310_33/1615366607176Lcuku_JPEG/16502386893795886_360513017.jpg?type=f296_296",
+        "https://shop-phinf.pstatic.net/20191219_139/15767325002260Pgp4_JPEG/14094042834526025_302456124.jpg?type=f296_296",
+        "https://shop-phinf.pstatic.net/20200110_203/1578639707946HnVE6_JPEG/16000446576448255_1930707197.jpg?type=f296_296",
+        "https://shop-phinf.pstatic.net/20220308_196/1646723306901UvadW_JPEG/100193_1.jpg?type=f296_296"
     ]
     
-    set_drink(name: "jangsoo", price: 1300, drink_type: "makgeolli", img_url: drink_urls[0])
-    set_drink(name: "neurinmaeul", price: 2000, drink_type: "makgeolli", img_url: drink_urls[1])
-    set_drink(name: "jipyeong", price: 1600, drink_type: "makgeolli", img_url: drink_urls[2])
-    set_drink(name: "albam", price: 2100, drink_type: "makgeolli", img_url: drink_urls[3])
+    @State var drink_spirits_urls = [
+        "https://shop-phinf.pstatic.net/20190809_6/sk0121@hanmail.net_15653291581585yOnx_JPEG/2689896791116560_1805883291.jpg?type=f296_296",
+        "https://shop-phinf.pstatic.net/20210628_144/16248585845575Gsym_JPEG/100806_1.jpg?type=f296_296",
+        "https://shop-phinf.pstatic.net/20210727_34/1627353438848GHIaN_JPEG/100631_1.jpg?type=f296_296",
+        "https://shop-phinf.pstatic.net/20201224_42/1608799693244m4bcA_JPEG/100618_1.jpg?type=f296_296"
+    ]
+    
+    set_drink(name: "대대포 블루 꿀 막걸리", price: 3490, drink_type: "makgeolli", img_url: drink_makgeolli_urls[0])
+    set_drink(name: "금쌀 선호 생 막걸리", price: 1900, drink_type: "makgeolli", img_url: drink_makgeolli_urls[1])
+    set_drink(name: "정고집 옛날 생 동동주", price: 2430, drink_type: "makgeolli", img_url: drink_makgeolli_urls[2])
+    set_drink(name: "사곡양조 공주 알밤 왕밤주", price: 1620, drink_type: "makgeolli", img_url: drink_makgeolli_urls[3])
+    set_drink(name: "한주양조 한주 35도", price: 13320, drink_type: "spirits", img_url: drink_spirits_urls[0])
+    set_drink(name: "바다한잔 동해소주", price: 2600, drink_type: "spirits", img_url: drink_spirits_urls[1])
+    set_drink(name: "예산사과와인 추사백 25도", price: 13000, drink_type: "spirits", img_url: drink_spirits_urls[2])
+    set_drink(name: "시트러스 미상 25도", price: 12350, drink_type: "spirits", img_url: drink_spirits_urls[3])
 }
 
 func get_All_Drink() -> Results<Drink_Store>{
