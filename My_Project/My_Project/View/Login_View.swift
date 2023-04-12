@@ -53,9 +53,14 @@ struct Login_View: View {
                             
                             kakaoAuthVM.handleKakaoLogin()
                             
-                            if get_All_Drink().count == 0{
+                            if get_All_Drink().count != 0{
+                                
+                                remove_Drink()
                                 set_primary_drink()
                                 
+                            }
+                            else{
+                                set_primary_drink()
                             }
                             
                             for i in get_All_Drink(){
@@ -73,7 +78,7 @@ struct Login_View: View {
                                 }
                                 
                             }
-                            print("## realm file dir -> \(Realm.Configuration.defaultConfiguration.fileURL!)")
+                            print("## realm file dir -> \(Realm.Configuration   .defaultConfiguration.fileURL!)")
                             
                             
                         }, label: {

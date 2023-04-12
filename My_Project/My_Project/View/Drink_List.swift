@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Foundation
+import Kingfisher
 
 struct Drink_List: View {
     
@@ -14,13 +15,13 @@ struct Drink_List: View {
     @State var show_sheet: Bool = false
     @State var cliked_button: Bool = false
     
-    @State private var drinks = [
-        Drink(id: UUID(), name: "cham", type: Drink.drink_type.makgeolli, price: 1950, img_url: "1"),
-        Drink(id: UUID(), name: "cass", type: Drink.drink_type.makgeolli, price: 1500, img_url: "1"),
-        Drink(id: UUID(), name: "terra", type: Drink.drink_type.makgeolli, price: 1500, img_url: "1"),
-        Drink(id: UUID(), name: "cheoeum", type: Drink.drink_type.makgeolli, price: 1950, img_url: "1"),
-        Drink(id: UUID(), name: "jangsoo", type: Drink.drink_type.makgeolli, price: 1200, img_url: "1")
-    ]
+//    @State private var drinks = [
+//        Drink(id: UUID(), name: "cham", type: Drink.drink_type.makgeolli, price: 1950, img_url: "1"),
+//        Drink(id: UUID(), name: "cass", type: Drink.drink_type.makgeolli, price: 1500, img_url: "1"),
+//        Drink(id: UUID(), name: "terra", type: Drink.drink_type.makgeolli, price: 1500, img_url: "1"),
+//        Drink(id: UUID(), name: "cheoeum", type: Drink.drink_type.makgeolli, price: 1950, img_url: "1"),
+//        Drink(id: UUID(), name: "jangsoo", type: Drink.drink_type.makgeolli, price: 1200, img_url: "1")
+//    ]
 
     let columns = [
         GridItem(.flexible()),
@@ -36,30 +37,29 @@ struct Drink_List: View {
         GeometryReader{ geo in
             NavigationView{
                 ScrollView{
-                    LazyVGrid(columns: columns, alignment: .center, spacing: 30, content:{
+                    LazyVGrid(columns: columns, alignment: .center, spacing: 10, content:{
                         ForEach(filter_drink) { drink in
-//                                Button(action: {
-//                                    print(self.drink)
-//                                }, label: {
-//                                    Text("1")
-//                                    Text("1")
-//                                })
                                 NavigationLink(destination: Review_View(), isActive: $cliked_button, label: {
                                     Button(action: {
                                         self.cliked_button.toggle()
                                     }, label: {
+                                        
                                         VStack{
-                                            AsyncImage(url:URL(string: drink.img_url)){image in
-                                                image
-                                                    .resizable()
-                                                    .frame(width: 50, height: 50)
-                                            } placeholder: {
-                                                Color.gray
-                                            }
 
-                                                Text(drink.name)
-                                                .foregroundColor(Color.black)
-                                                .font(.system(size: 20))
+                                            KFImage(URL(string: drink.img_url))
+                                                .placeholder{
+                                                    Color.gray
+                                                }.retry(maxCount: 3, interval: .seconds(5))
+                                                .onFailure{ e in
+                                                    print("failure \(e)")
+                                                }
+                                                .resizable()
+                                                .frame(width: 70, height: 70)
+                                                .onAppear()
+
+                                            Text(drink.name)
+                                            .foregroundColor(Color.black)
+                                            .font(.system(size: 20))
                                         }
 
                                     })
@@ -75,12 +75,9 @@ struct Drink_List: View {
  
                     })
                     .padding()
-                    
-                    
-                    
+
                 }
 
-                
                 .toolbar{
                     ToolbarItem(placement: .navigationBarLeading, content: {
                         Menu("Menu"){
@@ -102,8 +99,6 @@ struct Drink_List: View {
                         
                         
                     })
-                    
-                    
                     ToolbarItem(placement: .bottomBar, content:{
                         
                         Button(action: {
@@ -112,8 +107,6 @@ struct Drink_List: View {
                             Image(systemName: "plus.circle")
                                 .font(.system(size: 40))
                                 .foregroundColor(Color.gray)
-                            
-                            
                         })
                     })
 
