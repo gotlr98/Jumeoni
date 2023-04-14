@@ -50,7 +50,7 @@ struct Drink_List: View {
                                             KFImage(URL(string: drink.img_url))
                                                 .placeholder{
                                                     Color.gray
-                                                }.retry(maxCount: 3, interval: .seconds(5))
+                                                }
                                                 .onFailure{ e in
                                                     print("failure \(e)")
                                                 }
@@ -120,9 +120,8 @@ struct Drink_List: View {
             dismissed = true
         }){
             Register_Drink(drink: $drink, show_sheet: $show_sheet)
-            
         }
-        
+
     }
 }
 

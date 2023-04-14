@@ -47,8 +47,8 @@ struct Login_View: View {
                             
                             kakaoAuthVM.handleKakaoLogin()
                             
-//                            remove_Drink()
-//                            set_primary_drink()
+                            remove_Drink()
+                            set_primary_drink()
                                 
                             if get_All_Drink().count == 0{
                                 set_primary_drink()
