@@ -41,15 +41,16 @@ struct Drink_List: View {
         GeometryReader{ geo in
             NavigationView{
                 ScrollView{
+                    ZStack {
+                        NavigationLink(destination: Review_View(drink: selected_drink, review: review), isActive: $cliked_button, label: {
+                            EmptyView()
+                        })
+                    }
+                    .opacity(0.0)
+                    .buttonStyle(PlainButtonStyle())
+                    
                     LazyVGrid(columns: columns, alignment: .center, spacing: 10, content:{
-                        ZStack {
-                            NavigationLink(destination: Review_View(drink: selected_drink, review: review), isActive: $cliked_button, label: {
-                                EmptyView()
-                            })
-                        }
-                        .opacity(0.0)
-                        .buttonStyle(PlainButtonStyle())
-                        
+                    
                         ForEach(filter_drink, id: \.id) { drink in
                             Button(action: {
                                 selected_drink = drink

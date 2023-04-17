@@ -17,14 +17,13 @@ struct Review_View: View {
         VStack {
            
             List{
-                ForEach(review){ review in
+                ForEach(review, id: \.self){ review in
                     if drink.name == review.drink_name{
                         HStack{
                             Text(review.name)
                             Text(String(review.rating))
                         }
                     }
-
                 }
             }
             .listStyle(.sidebar)
