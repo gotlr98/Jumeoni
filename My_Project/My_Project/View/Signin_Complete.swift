@@ -20,8 +20,7 @@ struct Signin_Complete: View{
         VStack{
             
             TabView{
-
-                Drink_List(selected_type: .makgeolli, drink: self.drink)
+                Drink_List(selected_type: .makgeolli, drinks: self.drink)
                     .tabItem{
                         Image(systemName: "wineglass.fill")
                     }

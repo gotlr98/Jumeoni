@@ -8,6 +8,7 @@
 import SwiftUI
 import Foundation
 import Kingfisher
+import RealmSwift
 
 struct Drink_List: View {
     
@@ -29,43 +30,52 @@ struct Drink_List: View {
         GridItem(.flexible())
     ]
     
-    @State var drink = Signin_Complete().drink
+    @State var drinks = Signin_Complete().drink
+    @State var review: Results<Review> = get_All_Review()
+    @State var selected_drink = Drink(id: UUID(), name: "", type: .makgeolli, price: 0, img_url: "")
     
     var body: some View {
         
-        let filter_drink = drink.filter{$0.type == selected_type}
+        let filter_drink = drinks.filter{$0.type == selected_type}
         
         GeometryReader{ geo in
             NavigationView{
                 ScrollView{
                     LazyVGrid(columns: columns, alignment: .center, spacing: 10, content:{
-                        ForEach(filter_drink) { drink in
-                                NavigationLink(destination: Review_View(), isActive: $cliked_button, label: {
-                                    Button(action: {
-                                        self.cliked_button.toggle()
-                                    }, label: {
-                                        
-                                        VStack{
-
-                                            KFImage(URL(string: drink.img_url))
-                                                .placeholder{
-                                                    Color.gray
-                                                }
-                                                .onFailure{ e in
-                                                    print("failure \(e)")
-                                                }
-                                                .resizable()
-                                                .frame(width: 100, height: 100)
-                                                .onAppear()
-
-                                            Text(drink.name)
-                                            .foregroundColor(Color.black)
-                                            .font(.system(size: 15))
+                        ZStack {
+                            NavigationLink(destination: Review_View(drink: selected_drink, review: review), isActive: $cliked_button, label: {
+                                EmptyView()
+                            })
+                        }
+                        .opacity(0.0)
+                        .buttonStyle(PlainButtonStyle())
+                        
+                        ForEach(filter_drink, id: \.id) { drink in
+                            Button(action: {
+                                selected_drink = drink
+                                self.cliked_button = true
+                                
+                            }, label: {
+                                VStack{
+                                    KFImage(URL(string: drink.img_url))
+                                        .placeholder{
+                                            Color.gray
                                         }
+                                        .onFailure{ e in
+                                            print("failure \(e)")
+                                        }
+                                        .resizable()
+                                        .frame(width: 100, height: 100)
+                                        .onAppear()
 
-                                    })
+                                    Text(drink.name)
+                                    .foregroundColor(Color.black)
+                                    .font(.system(size: 15))
+                                }
 
-                                })
+                            })
+//                            let filter_review = review.filter{$0.drink_name == drink.name}
+                            
                             
                             }
                             .padding()
@@ -119,14 +129,14 @@ struct Drink_List: View {
         .sheet(isPresented: $show_sheet, onDismiss: {
             dismissed = true
         }){
-            Register_Drink(drink: $drink, show_sheet: $show_sheet)
+            Register_Drink(drink: $drinks, show_sheet: $show_sheet)
         }
 
     }
 }
 
-struct Drink_Info_Previews: PreviewProvider {
-    static var previews: some View {
-        Drink_List(selected_type: .makgeolli)
-    }
-}
+//struct Drink_Info_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Drink_List(selected_type: .makgeolli)
+//    }
+//}

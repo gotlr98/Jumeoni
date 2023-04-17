@@ -8,6 +8,7 @@
 import SwiftUI
 import KakaoSDKCommon
 import KakaoSDKAuth
+import RealmSwift
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -18,6 +19,18 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // Kakao SDK 초기화
         
         KakaoSDK.initSDK(appKey: kakaoAppKey)
+        
+        let config = Realm.Configuration(
+                          schemaVersion: 2,
+                          migrationBlock: { migration, oldSchemaVersion in
+                              if oldSchemaVersion < 2 {
+                                  migration.enumerateObjects(ofType: Review.className()) { oldObject, newObject in
+                                      newObject!["drink_name"] = String() // 내가 수정한 부분
+                                  }
+                              }
+                          }
+                      )
+                      Realm.Configuration.defaultConfiguration = config
         
         return true
     }

@@ -8,38 +8,34 @@
 import SwiftUI
 import RealmSwift
 
-
 struct Review_View: View {
+    
+    var drink: Drink
+    var review: Results<Review>
     
     var body: some View {
         VStack {
-            Button(action: {
-//                set_Review(name: "sik", rating: 3, comment: "good")
-//                set_Review(name: "jang", rating: 2, comment: "soso", drink_type: "soju")
-//                remove_all()
-                
-//                let review_name = get_Review_Byname(find_name: "sik")
-                let all_review = get_All_Review()
-//                let get_drink = get_drink_type(drink_type: "soju")
-//
-                    for i in all_review{
-                        print(i.name, i.rating, i.comment)
+           
+            List{
+                ForEach(review){ review in
+                    if drink.name == review.drink_name{
+                        HStack{
+                            Text(review.name)
+                            Text(String(review.rating))
+                        }
                     }
-//
-//                for j in get_drink{
-//                    print(j.name, j.rating, j.comment, j.drink_type)
-//                }
 
-                
-            }, label: {
-                Text("Review test")
-            })
+                }
+            }
+            .listStyle(.sidebar)
+
+           
         }
     }
 }
-
-struct Review_View_Previews: PreviewProvider {
-    static var previews: some View {
-        Review_View()
-    }
-}
+//
+//struct Review_View_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Review_View(drink: Drink(id: UUID(), name: "", type: .makgeolli, price: 1, img_url: ""), review: .contains([Review()]))
+//    }
+//}

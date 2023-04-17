@@ -47,8 +47,9 @@ struct Login_View: View {
                             
                             kakaoAuthVM.handleKakaoLogin()
                             
-                            remove_Drink()
-                            set_primary_drink()
+//                            remove_Drink()
+//                            set_primary_drink()
+                            remove_all_review()
                                 
                             if get_All_Drink().count == 0{
                                 set_primary_drink()
@@ -68,6 +69,13 @@ struct Login_View: View {
                                     )
                                 }
                                 
+                            }
+                            
+                            for i in 1...2{
+                                set_Review(name: "sik", drink_name: "대대포 블루 꿀 막걸리", rating: Int8(i), comment: "Not bad", drink_type: "makgeolli")
+                            }
+                            for i in 1...2{
+                                set_Review(name: "hae", drink_name: "사곡양조 공주 알밤 왕밤주", rating: Int8(i), comment: "good", drink_type: "makgeolli")
                             }
                             print("## realm file dir -> \(Realm.Configuration   .defaultConfiguration.fileURL!)")
                             

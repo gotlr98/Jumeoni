@@ -37,7 +37,6 @@ struct Register_Drink: View {
             
     }
     
-    
     var body: some View {
         
         GeometryReader{ geo in
@@ -77,17 +76,22 @@ struct Register_Drink: View {
                 .padding()
                 .background(Color(uiColor: .secondarySystemBackground))
                 .textInputAutocapitalization(.never)
+                .onChange(of: input_img_url){ newValue in
+                    if input_img_url != newValue{
+                        button_clicked = false
+                    }
+                }
                 
             }
             .position(x: geo.size.width / 2, y: geo.size.height / 3)
             
+            
             HStack{
-                
                 Button(action: {
                     button_clicked = true
                 }, label: {
                     Rectangle()
-                        .frame(width: 80, height: 50)
+                        .frame(width: 100, height: 50)
                         .foregroundColor(Color.secondary)
                         .overlay{
                             Text("이미지 확인")
@@ -116,8 +120,6 @@ struct Register_Drink: View {
             }
             .position(x: geo.size.width / 2, y: geo.size.height / 1.6)
 
-                
-            
         }
         
         
