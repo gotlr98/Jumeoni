@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "cosmos",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/evgenyneu/Cosmos.git",
+      "state" : {
+        "revision" : "cce521e734d0090494bd4afab5fd2e2f2465c1af",
+        "version" : "23.0.0"
+      }
+    },
+    {
       "identity" : "kakao-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kakao/kakao-ios-sdk",
@@ -28,6 +37,15 @@
       }
     },
     {
+      "identity" : "prettyaxis",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RiuHDuo/PrettyAxis.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "280f8cf0373c52fc0eb32bf9dbebeecde36ccd95"
+      }
+    },
+    {
       "identity" : "realm-core",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-core.git",
@@ -43,6 +61,15 @@
       "state" : {
         "branch" : "master",
         "revision" : "80368adfbf58360104042522d9f4623a3de7863b"
+      }
+    },
+    {
+      "identity" : "starview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EnesKaraosman/StarView",
+      "state" : {
+        "revision" : "02208cf0b78b62eed4dde83b385c35da9c766944",
+        "version" : "1.0.4"
       }
     }
   ],

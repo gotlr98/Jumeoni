@@ -18,6 +18,7 @@ struct My_ProjectApp: App {
     var body: some Scene {
         WindowGroup {
             Login_View(isLoggedIn: .constant(false), name: .constant(""))
+//            Makgeolli_Review_View()
          
         }
     }
