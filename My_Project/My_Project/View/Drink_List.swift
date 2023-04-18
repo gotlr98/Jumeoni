@@ -39,7 +39,7 @@ struct Drink_List: View {
         let filter_drink = drinks.filter{$0.type == selected_type}
         
         GeometryReader{ geo in
-            NavigationView{
+            NavigationStack{
                 ScrollView{
                     ZStack {
                         NavigationLink(destination: Review_View(drink: selected_drink, review: review), isActive: $cliked_button, label: {
@@ -132,6 +132,7 @@ struct Drink_List: View {
         }){
             Register_Drink(drink: $drinks, show_sheet: $show_sheet)
         }
+        
 
     }
 }

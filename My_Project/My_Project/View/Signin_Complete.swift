@@ -8,18 +8,23 @@
 import SwiftUI
 
 
+enum Tabs{
+    case tab1, tab2
+}
 
 struct Signin_Complete: View{
     
     @StateObject var kakaoAuthVM: Kakao_AuthVM = Kakao_AuthVM()
     
+    @State var tabSelection: Tabs = .tab1
+    
     var user_name: String = ""
     var drink: [Drink] = []
     var body: some View{
         
-        VStack{
-            
-            TabView{
+        NavigationView{
+            TabView(selection: $tabSelection){
+
                 Drink_List(selected_type: .makgeolli, drinks: self.drink)
                     .tabItem{
                         Image(systemName: "wineglass.fill")
@@ -29,12 +34,13 @@ struct Signin_Complete: View{
                         Image(systemName: "cart.fill")
                     }
             }
- 
-            
+            .navigationTitle("안녕하세요 " + user_name + "님")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
         }
-        .navigationTitle("안녕하세요 " + user_name + "님")
-        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
+        
+        
     }
 }
 
