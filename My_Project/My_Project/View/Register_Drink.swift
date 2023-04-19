@@ -100,8 +100,14 @@ struct Register_Drink: View {
                         }
                 })
                 Button(action: {
-                    register_drink(id: UUID(), name: input_name, type: selected_type, price: Int64(input_price)!, img_url: input_img_url)
-                    show_sheet.toggle()
+                    if input_name.isEmpty || input_price.isEmpty || input_img_url.isEmpty{
+                        show_alert = true
+                    }
+                    else{
+                        register_drink(id: UUID(), name: input_name, type: selected_type, price: Int64(input_price)!, img_url: input_img_url)
+                        show_sheet.toggle()
+                    }
+                    
  
                 }, label: {
                     Rectangle()
@@ -113,9 +119,9 @@ struct Register_Drink: View {
                                 .foregroundColor(Color.black)
                         }
                 })
-//                .alert("이미지 URL을 확인해주세요", isPresented: $show_alert){
-//                    Button("OK", role: .cancel){}
-//                }
+                .alert("이미지 URL을 확인해주세요", isPresented: $show_alert){
+                    Button("OK", role: .cancel){}
+                }
                 
             }
             .position(x: geo.size.width / 2, y: geo.size.height / 1.6)

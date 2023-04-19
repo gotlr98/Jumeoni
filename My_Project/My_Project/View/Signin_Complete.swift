@@ -16,6 +16,7 @@ struct Signin_Complete: View{
     
     @StateObject var kakaoAuthVM: Kakao_AuthVM = Kakao_AuthVM()
     
+    @State var isToolBarItemHidden: Bool = true
     @State var tabSelection: Tabs = .tab1
     
     var user_name: String = ""
@@ -25,13 +26,21 @@ struct Signin_Complete: View{
         NavigationView{
             TabView(selection: $tabSelection){
 
-                Drink_List(selected_type: .makgeolli, drinks: self.drink)
+                Drink_List(selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden, drinks: self.drink)
                     .tabItem{
                         Image(systemName: "wineglass.fill")
                     }
-                Shop()
+                    .tag(Tabs.tab1)
+                    .onAppear {
+                        self.isToolBarItemHidden = true
+                    }
+                Shop(isToolBarItemHidden: $isToolBarItemHidden)
                     .tabItem{
                         Image(systemName: "cart.fill")
+                    }
+                    .tag(Tabs.tab2)
+                    .onAppear {
+                        self.isToolBarItemHidden = false
                     }
             }
             

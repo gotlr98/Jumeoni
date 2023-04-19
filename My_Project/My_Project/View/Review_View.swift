@@ -31,7 +31,7 @@ struct Review_View: View {
             }
             .listStyle(.sidebar)
             .toolbar{
-                ToolbarItem(placement: ToolbarItemPlacement.bottomBar, content:{
+                ToolbarItem(placement: .bottomBar, content:{
                     
                     Button(action: {
                         self.show_sheet.toggle()

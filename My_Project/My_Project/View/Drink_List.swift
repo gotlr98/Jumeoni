@@ -15,6 +15,7 @@ struct Drink_List: View {
     @State var selected_type: Drink.drink_type = .makgeolli
     @State var show_sheet: Bool = false
     @State var cliked_button: Bool = false
+    @Binding var isToolBarItemHidden: Bool
     @State private var dismissed: Bool = false
     
 //    @State private var drinks = [
@@ -89,7 +90,11 @@ struct Drink_List: View {
 
             }
 
-            .toolbar{
+            
+            
+        }
+        .toolbar{
+            if isToolBarItemHidden{
                 ToolbarItem(placement: .navigationBarLeading, content: {
                     Menu("Menu"){
                         
@@ -110,19 +115,19 @@ struct Drink_List: View {
                     
                     
                 })
-                ToolbarItem(placement: .bottomBar, content:{
+                ToolbarItem(placement: .navigationBarTrailing, content:{
                     
                     Button(action: {
                         self.show_sheet.toggle()
                     }, label: {
                         Image(systemName: "plus.circle")
-                            .font(.system(size: 40))
+                            .font(.system(size: 20))
                             .foregroundColor(Color.gray)
                     })
                 })
-
             }
             
+
         }
 
         .sheet(isPresented: $show_sheet, onDismiss: {

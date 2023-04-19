@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Shop: View {
+    
+    @Binding var isToolBarItemHidden: Bool
+    
     var body: some View {
         Text("This is Shop Page")
     }
@@ -15,6 +18,6 @@ struct Shop: View {
 
 struct Shop_Previews: PreviewProvider {
     static var previews: some View {
-        Shop()
+        Shop(isToolBarItemHidden: .constant(false))
     }
 }
