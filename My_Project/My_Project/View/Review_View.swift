@@ -11,7 +11,7 @@ import RealmSwift
 struct Review_View: View {
     
     var drink: Drink
-    var review: Results<Review>
+    @Binding var review: Results<Makgeolli_Review>
     
     @State var show_sheet: Bool = false
     @State private var dismissed: Bool = false
@@ -50,7 +50,7 @@ struct Review_View: View {
             dismissed = true
         }){
             if selected_type == .makgeolli{
-                Makgeolli_Review_View()
+                Makgeolli_Review_View(show_sheet: $show_sheet)
             }
             
         }

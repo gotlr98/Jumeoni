@@ -32,7 +32,7 @@ struct Drink_List: View {
     ]
     
     @State var drinks = Signin_Complete().drink
-    @State var review: Results<Review> = get_All_Review()
+    @State var review: Results<Makgeolli_Review> = get_All_Makgeolli_Review()
     @State var selected_drink = Drink(id: UUID(), name: "", type: .makgeolli, price: 0, img_url: "")
     
     var body: some View {
@@ -42,7 +42,7 @@ struct Drink_List: View {
         GeometryReader{ geo in
             ScrollView{
                 ZStack {
-                    NavigationLink(destination: Review_View(drink: selected_drink, review: review, selected_type: $selected_type), isActive: $cliked_button, label: {
+                    NavigationLink(destination: Review_View(drink: selected_drink, review: $review, selected_type: $selected_type), isActive: $cliked_button, label: {
                         EmptyView()
                     })
                 }
@@ -84,9 +84,11 @@ struct Drink_List: View {
                                 RoundedRectangle(cornerRadius: 16)
                                     .stroke(Color.blue, lineWidth: 4)
                             )
+                        
 
                 })
                 .padding()
+                
 
             }
         }
@@ -126,12 +128,14 @@ struct Drink_List: View {
             
 
         }
-
+        
         .sheet(isPresented: $show_sheet, onDismiss: {
             dismissed = true
         }){
             Register_Drink(drink: $drinks, show_sheet: $show_sheet)
         }
+        
+        .navigationViewStyle(.stack)
     }
 }
 

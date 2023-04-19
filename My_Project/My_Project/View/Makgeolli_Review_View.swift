@@ -10,6 +10,7 @@ import Cosmos
 
 struct MyCosmosView: UIViewRepresentable {
     @Binding var rating: Double
+    
 
     func makeUIView(context: Context) -> CosmosView {
         CosmosView()
@@ -32,11 +33,14 @@ struct MyCosmosView: UIViewRepresentable {
 
 struct Makgeolli_Review_View: View {
     
+    @Binding var show_sheet: Bool
+    
     @State var sweet = 0.0
     @State var bitter = 0.0
     @State var sour = 0.0
     @State var refreshing = 0.0
     @State var thick = 0.0
+    @State var rating = 0.0
     
     var body: some View{
         
@@ -77,7 +81,9 @@ struct Makgeolli_Review_View: View {
             }
             
             Button(action: {
-                print(sweet, bitter, sour, refreshing, thick)
+                print(Signin_Complete().user_name)
+                set_Makgeolli_Review(name: Signin_Complete().user_name, drink_name: "대대포 블루 꿀 막걸리", sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: "soso")
+                show_sheet.toggle()
             }, label: {
                 Text("Check")
             })
@@ -88,6 +94,6 @@ struct Makgeolli_Review_View: View {
 
 struct Makgeolli_Review_View_Previews: PreviewProvider {
     static var previews: some View {
-        Makgeolli_Review_View()
+        Makgeolli_Review_View(show_sheet: .constant(false))
     }
 }

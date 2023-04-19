@@ -21,9 +21,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         KakaoSDK.initSDK(appKey: kakaoAppKey)
         
         let config = Realm.Configuration(
-                          schemaVersion: 2,
+                          schemaVersion: 3,
                           migrationBlock: { migration, oldSchemaVersion in
-                              if oldSchemaVersion < 2 {
+                              if oldSchemaVersion < 3 {
                                   migration.enumerateObjects(ofType: Review.className()) { oldObject, newObject in
                                       newObject!["drink_name"] = String() // 내가 수정한 부분
                                   }

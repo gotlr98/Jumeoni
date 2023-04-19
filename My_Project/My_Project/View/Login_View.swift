@@ -101,7 +101,7 @@ struct Login_View: View {
             }
             .background(Color.indigo)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+//        .navigationViewStyle(StackNavigationViewStyle())
         
     }
 

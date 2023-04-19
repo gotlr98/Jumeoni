@@ -12,16 +12,16 @@ class Makgeolli_Review: Object, Identifiable{
     
     @Persisted var name: String
     @Persisted var drink_name: String
-    @Persisted var sweet: Int8
-    @Persisted var bitter: Int8
-    @Persisted var sour: Int8
-    @Persisted var refreshing: Int8
-    @Persisted var thick: Int8
-    @Persisted var rating: Int8
+    @Persisted var sweet: Double
+    @Persisted var bitter: Double
+    @Persisted var sour: Double
+    @Persisted var refreshing: Double
+    @Persisted var thick: Double
+    @Persisted var rating: Double
     @Persisted var comment: String
     @Persisted(primaryKey: true) var objectID: ObjectId
     
-    convenience init(name: String, drink_name: String, sweet: Int8, bitter: Int8, sour: Int8, refreshing: Int8, thick: Int8, rating: Int8, comment: String, objectID: ObjectId) {
+    convenience init(name: String, drink_name: String, sweet: Double, bitter: Double, sour: Double, refreshing: Double, thick: Double, rating: Double, comment: String, objectID: ObjectId) {
         self.init()
         self.name = name
         self.drink_name = drink_name
@@ -36,7 +36,7 @@ class Makgeolli_Review: Object, Identifiable{
     }
 }
 
-func set_Makgeolli_Review(name: String, drink_name: String, sweet: Int8, bitter: Int8, sour: Int8, refreshing: Int8, thick: Int8, rating: Int8, comment: String){
+func set_Makgeolli_Review(name: String, drink_name: String, sweet: Double, bitter: Double, sour: Double, refreshing: Double, thick: Double, rating: Double, comment: String){
     
     let review = Makgeolli_Review()
     
