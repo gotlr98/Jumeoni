@@ -15,6 +15,7 @@ struct Review_View: View {
     
     @State var show_sheet: Bool = false
     @State private var dismissed: Bool = false
+    @Binding var selected_type: Drink.drink_type
     
     var body: some View {
         VStack {
@@ -29,15 +30,16 @@ struct Review_View: View {
                     }
                 }
             }
+            
             .listStyle(.sidebar)
             .toolbar{
-                ToolbarItem(placement: .bottomBar, content:{
+                ToolbarItem(placement: .navigationBarTrailing, content:{
                     
                     Button(action: {
                         self.show_sheet.toggle()
                     }, label: {
                         Image(systemName: "plus.circle")
-                            .font(.system(size: 40))
+                            .font(.system(size: 20))
                             .foregroundColor(Color.gray)
                     })
                 })
@@ -47,9 +49,12 @@ struct Review_View: View {
         .sheet(isPresented: $show_sheet, onDismiss: {
             dismissed = true
         }){
-            Makgeolli_Review_View()
+            if selected_type == .makgeolli{
+                Makgeolli_Review_View()
+            }
+            
         }
-        .toolbar(.hidden, for: .tabBar)
+//        .toolbar(.hidden, for: .tabBar)
     }
 }
 //

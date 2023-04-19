@@ -34,6 +34,7 @@ struct Signin_Complete: View{
                     .onAppear {
                         self.isToolBarItemHidden = true
                     }
+                
                 Shop(isToolBarItemHidden: $isToolBarItemHidden)
                     .tabItem{
                         Image(systemName: "cart.fill")
@@ -48,7 +49,8 @@ struct Signin_Complete: View{
         .navigationTitle("안녕하세요 " + user_name + "님")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-        
+    
+        .navigationViewStyle(StackNavigationViewStyle())
         
     }
 }

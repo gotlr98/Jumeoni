@@ -42,7 +42,7 @@ struct Drink_List: View {
         GeometryReader{ geo in
             ScrollView{
                 ZStack {
-                    NavigationLink(destination: Review_View(drink: selected_drink, review: review), isActive: $cliked_button, label: {
+                    NavigationLink(destination: Review_View(drink: selected_drink, review: review, selected_type: $selected_type), isActive: $cliked_button, label: {
                         EmptyView()
                     })
                 }
@@ -89,9 +89,6 @@ struct Drink_List: View {
                 .padding()
 
             }
-
-            
-            
         }
         .toolbar{
             if isToolBarItemHidden{
