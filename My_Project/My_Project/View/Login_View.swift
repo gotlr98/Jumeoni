@@ -26,18 +26,17 @@ struct Login_View: View {
         NavigationView{
             
             ZStack {
-                
                 GeometryReader{ geo in
                     
 //                    Image("house")
 //                        .edgesIgnoringSafeArea(.all)
                     
-                    Text("술다방 / 酒머니 / 술맛좋다")
+                    Text("酒머니")
                         .frame(alignment: .center)
                         .foregroundColor(Color.white)
                         .fontWeight(.bold)
-                        .font(.system(size: 40))
-                        .position(x: geo.size.width / 2, y: geo.size.height / 5)
+                        .font(.system(size: 60))
+                        .position(x: geo.size.width / 2, y: geo.size.height / 4)
 
                     // Kakao Login Button
                     
@@ -83,10 +82,11 @@ struct Login_View: View {
                         }, label: {
                             Rectangle()
                                 .foregroundColor(Color.gray)
-                                .frame(width: 130, height: 50)
+                                .frame(width: 180, height: 70)
                                 .cornerRadius(15)
                                 .overlay{
                                     Text("Kakao Login")
+                                        .font(.system(size: 25))
                                         .foregroundColor(Color.white)
                                         .fontWeight(.black)
                                 }

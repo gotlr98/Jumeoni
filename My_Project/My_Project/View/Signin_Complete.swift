@@ -34,10 +34,10 @@ struct Signin_Complete: View{
                         Image(systemName: "cart.fill")
                     }
             }
-            .navigationTitle("안녕하세요 " + user_name + "님")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
+            
         }
+        .navigationTitle("안녕하세요 " + user_name + "님")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         
         
