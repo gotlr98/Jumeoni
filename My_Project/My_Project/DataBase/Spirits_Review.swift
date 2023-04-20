@@ -81,6 +81,6 @@ func remove_all_Spirits_review(){
     let realm = try! Realm()
     
     try! realm.write{
-        realm.deleteAll()
+        realm.delete(realm.objects(Spirits_Review.self))
     }
 }

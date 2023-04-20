@@ -24,12 +24,23 @@ struct Review_View: View {
             List{
                 ForEach(review, id: \.self){ review in
                     if drink.name == review.drink_name{
-                        HStack{
-                            Text(review.name)
-                            Text(String(review.rating))
+                        VStack(alignment: .leading){
+                            Text(review.name + "님: ")
+                            
+                            HStack{
+                                Text("단맛 : " + String(review.sweet))
+                                Text("신맛 : " + String(review.sour))
+                                Text("쓴맛 : " + String(review.bitter))
+                                Text("청량감 : " + String(review.refreshing))
+                                Text("걸쭉함 : " + String(review.thick))
+                            }
+                            
                         }
                     }
                 }
+            }
+            .refreshable{
+                review = get_All_Makgeolli_Review()
             }
             
             .listStyle(.sidebar)

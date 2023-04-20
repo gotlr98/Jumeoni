@@ -88,6 +88,6 @@ func remove_all_Makgeolli_review(){
     let realm = try! Realm()
     
     try! realm.write{
-        realm.deleteAll()
+        realm.delete(realm.objects(Makgeolli_Review.self))
     }
 }

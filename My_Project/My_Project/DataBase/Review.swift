@@ -82,6 +82,6 @@ func remove_all_review(){
     let realm = try! Realm()
     
     try! realm.write{
-        realm.deleteAll()
+        realm.delete(realm.objects(Review.self))
     }
 }

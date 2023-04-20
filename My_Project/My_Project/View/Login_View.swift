@@ -48,7 +48,7 @@ struct Login_View: View {
                             
 //                            remove_Drink()
 //                            set_primary_drink()
-//                            remove_all_review()
+                            remove_all_Makgeolli_review()
                                 
                             if get_All_Drink().count == 0{
                                 set_primary_drink()
