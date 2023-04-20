@@ -50,7 +50,7 @@ struct Signin_Complete: View{
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
     
-//        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(.stack)
         
     }
 }

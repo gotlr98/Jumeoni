@@ -48,7 +48,7 @@ struct Login_View: View {
                             
 //                            remove_Drink()
 //                            set_primary_drink()
-                            remove_all_review()
+//                            remove_all_review()
                                 
                             if get_All_Drink().count == 0{
                                 set_primary_drink()
@@ -71,10 +71,11 @@ struct Login_View: View {
                             }
                             
                             for i in 1...2{
-                                set_Review(name: "sik", drink_name: "대대포 블루 꿀 막걸리", rating: Int8(i), comment: "Not bad", drink_type: "makgeolli")
+                                set_Makgeolli_Review(name: "장해식", drink_name: "대대포 블루 꿀 막걸리", sweet: 3.0, bitter: Double(i), sour: 3.0, refreshing: 4.0, thick: 2.0, rating: 3.0, comment: "good")
+                                print(kakaoAuthVM.user_name + "님")
                             }
                             for i in 1...2{
-                                set_Review(name: "hae", drink_name: "사곡양조 공주 알밤 왕밤주", rating: Int8(i), comment: "good", drink_type: "makgeolli")
+                                set_Makgeolli_Review(name: "장해식", drink_name: "사곡양조 공주 알밤 왕밤주", sweet: Double(i), bitter: 2.0, sour: 3.0, refreshing: 4.0, thick: 2.0, rating: 3.0, comment: "good")
                             }
                             print("## realm file dir -> \(Realm.Configuration   .defaultConfiguration.fileURL!)")
                             
@@ -101,7 +102,7 @@ struct Login_View: View {
             }
             .background(Color.indigo)
         }
-//        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(.stack)
         
     }
 

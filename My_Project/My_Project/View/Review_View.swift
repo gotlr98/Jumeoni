@@ -47,7 +47,7 @@ struct Review_View: View {
             }
 
         }
-        .sheet(isPresented: $show_sheet, onDismiss: {
+        .fullScreenCover(isPresented: $show_sheet, onDismiss: {
             dismissed = true
         }){
             if selected_type == .makgeolli{
