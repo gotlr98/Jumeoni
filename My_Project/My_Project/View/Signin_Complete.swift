@@ -26,7 +26,7 @@ struct Signin_Complete: View{
         NavigationView{
             TabView(selection: $tabSelection){
 
-                Drink_List(selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden, drinks: self.drink)
+                Drink_List(selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden, name: user_name, drinks: self.drink)
                     .tabItem{
                         Image(systemName: "wineglass.fill")
                     }
