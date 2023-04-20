@@ -33,7 +33,10 @@ struct Review_View: View {
                                 Text("쓴맛 : " + String(review.bitter))
                                 Text("청량감 : " + String(review.refreshing))
                                 Text("걸쭉함 : " + String(review.thick))
+                                
                             }
+                            Text("총점 : " + String(review.rating))
+                            Text("코멘트 : " + review.comment)
                             
                         }
                     }

@@ -42,6 +42,7 @@ struct Makgeolli_Review_View: View {
     @State var refreshing = 0.0
     @State var thick = 0.0
     @State var rating = 0.0
+    @State var comment = ""
     
     var body: some View{
         
@@ -80,13 +81,39 @@ struct Makgeolli_Review_View: View {
                     .padding(.all)
                 MyCosmosView(rating: $thick)
             }
+            Divider()
+            
+            HStack {
+                Text("총점")
+                    .font(.title)
+                    .padding(.all)
+                MyCosmosView(rating: $rating)
+            }
+            
+            HStack(alignment: .center) {
+                Text("한줄평")
+                    .font(.title)
+                    .padding(.all)
+                TextField(text: $comment, label:{
+                    Text("한줄평 입력해주세요")
+                })
+                .frame(width: 250)
+                .textInputAutocapitalization(.never)
+            }
             
             Button(action: {
                 print(name + "님")
-                set_Makgeolli_Review(name: name, drink_name: "대대포 블루 꿀 막걸리", sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: "soso")
+                set_Makgeolli_Review(name: name, drink_name: "대대포 블루 꿀 막걸리", sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment)
                 show_sheet.toggle()
             }, label: {
-                Text("Check")
+                Rectangle()
+                    .frame(width: 120, height: 50)
+                    .foregroundColor(Color.secondary)
+                    .overlay{
+                        Text("리뷰 등록하기")
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.black)
+                    }
             })
         }
         
