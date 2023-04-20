@@ -88,7 +88,13 @@ struct Register_Drink: View {
             
             HStack{
                 Button(action: {
-                    button_clicked = true
+                    if input_img_url.isEmpty{
+                        show_alert = true
+                    }
+                    else{
+                        button_clicked = true
+                    }
+                    
                 }, label: {
                     Rectangle()
                         .frame(width: 100, height: 50)
