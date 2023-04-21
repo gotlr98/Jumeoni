@@ -65,7 +65,7 @@ struct Review_View: View {
             dismissed = true
         }){
             if selected_type == .makgeolli{
-                Makgeolli_Review_View(show_sheet: $show_sheet, name: name)
+                Makgeolli_Review_View(show_sheet: $show_sheet, name: name, drink: drink)
             }
             
         }

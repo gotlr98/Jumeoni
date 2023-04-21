@@ -33,6 +33,7 @@ struct Login_View: View {
                     
                     Text("酒머니")
                         .frame(alignment: .center)
+                        .tracking(7)
                         .foregroundColor(Color.white)
                         .fontWeight(.bold)
                         .font(.system(size: 60))
@@ -83,11 +84,11 @@ struct Login_View: View {
                         }, label: {
                             Rectangle()
                                 .foregroundColor(Color.gray)
-                                .frame(width: 180, height: 70)
+                                .frame(width: 170, height: 68)
                                 .cornerRadius(15)
                                 .overlay{
                                     Text("Kakao Login")
-                                        .font(.system(size: 25))
+                                        .font(.system(size: 23))
                                         .foregroundColor(Color.white)
                                         .fontWeight(.black)
                                 }

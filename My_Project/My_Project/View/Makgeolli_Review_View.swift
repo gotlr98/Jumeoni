@@ -44,6 +44,8 @@ struct Makgeolli_Review_View: View {
     @State var rating = 0.0
     @State var comment = ""
     
+    var drink: Drink
+    
     var body: some View{
         
         VStack{
@@ -103,7 +105,7 @@ struct Makgeolli_Review_View: View {
             
             Button(action: {
                 print(name + "님")
-                set_Makgeolli_Review(name: name, drink_name: "대대포 블루 꿀 막걸리", sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment)
+                set_Makgeolli_Review(name: name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment)
                 show_sheet.toggle()
             }, label: {
                 Rectangle()
@@ -122,6 +124,6 @@ struct Makgeolli_Review_View: View {
 
 struct Makgeolli_Review_View_Previews: PreviewProvider {
     static var previews: some View {
-        Makgeolli_Review_View(show_sheet: .constant(false), name: "")
+        Makgeolli_Review_View(show_sheet: .constant(false), name: "", drink: Drink(id: UUID(), name: "", type: .makgeolli, price: 12, img_url: ""))
     }
 }

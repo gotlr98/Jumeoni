@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8A2C72A529DC0182006B13AB /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C72A429DC0182006B13AB /* Review.swift */; };
 		8A36991829E3C5C00098CBE4 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36991729E3C5C00098CBE4 /* Drink.swift */; };
+		8A45E8A129F2849B00D5EEDF /* Store_WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */; };
 		8A93F60029ED3E2000663E96 /* PrettyAxis in Frameworks */ = {isa = PBXBuildFile; productRef = 8A93F5FF29ED3E2000663E96 /* PrettyAxis */; };
 		8A93F60729EE523200663E96 /* Makgeolli_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93F60629EE523200663E96 /* Makgeolli_Review.swift */; };
 		8A93F60929EE591200663E96 /* Spirits_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93F60829EE591200663E96 /* Spirits_Review.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		8A2C72A429DC0182006B13AB /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		8A36991729E3C5C00098CBE4 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store_WebView.swift; sourceTree = "<group>"; };
 		8A93F60629EE523200663E96 /* Makgeolli_Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Makgeolli_Review.swift; sourceTree = "<group>"; };
 		8A93F60829EE591200663E96 /* Spirits_Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spirits_Review.swift; sourceTree = "<group>"; };
 		8A93F60A29EE5B5F00663E96 /* Makgeolli_Review_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Makgeolli_Review_View.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				8AE6765029D54CB40083C278 /* Shop.swift */,
 				8AE9212B29DD40EB00C22025 /* Review_View.swift */,
 				8A93F60A29EE5B5F00663E96 /* Makgeolli_Review_View.swift */,
+				8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				8AE6764929D53ADF0083C278 /* User_Info.swift in Sources */,
 				8AE6764D29D549D50083C278 /* Login_View.swift in Sources */,
 				8A93F60729EE523200663E96 /* Makgeolli_Review.swift in Sources */,
+				8A45E8A129F2849B00D5EEDF /* Store_WebView.swift in Sources */,
 				8A2C72A529DC0182006B13AB /* Review.swift in Sources */,
 				8AD0C0F929C03CE700A5D77D /* ContentView.swift in Sources */,
 				8A93F60929EE591200663E96 /* Spirits_Review.swift in Sources */,
