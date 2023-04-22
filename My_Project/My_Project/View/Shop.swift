@@ -12,7 +12,7 @@ struct Shop: View {
     @Binding var isToolBarItemHidden: Bool
     
     var body: some View {
-        Text("This is Shop Page")
+        Store_WebView(urlToLoad: "https://smartstore.naver.com/wooridoga")
     }
 }
 

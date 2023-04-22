@@ -24,7 +24,7 @@ struct Store_WebView: UIViewRepresentable {
         
         return webview
     }
-    
+        
     func updateUIView(_ uiView: WKWebView, context: Context) {
         
     }
