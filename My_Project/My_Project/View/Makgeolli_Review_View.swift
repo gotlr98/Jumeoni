@@ -34,15 +34,18 @@ struct MyCosmosView: UIViewRepresentable {
 struct Makgeolli_Review_View: View {
     
     @Binding var show_sheet: Bool
+    @State var show_alert: Bool = false
     var name: String
     
-    @State var sweet = 0.0
-    @State var bitter = 0.0
-    @State var sour = 0.0
-    @State var refreshing = 0.0
-    @State var thick = 0.0
-    @State var rating = 0.0
+    @State var sweet = 1.0
+    @State var bitter = 1.0
+    @State var sour = 1.0
+    @State var refreshing = 1.0
+    @State var thick = 1.0
+    @State var rating = 1.0
     @State var comment = ""
+    
+    
     
     var drink: Drink
     
@@ -105,8 +108,15 @@ struct Makgeolli_Review_View: View {
             
             Button(action: {
                 print(name + "님")
-                set_Makgeolli_Review(name: name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment)
-                show_sheet.toggle()
+                
+                if comment.isEmpty{
+                    show_alert = true
+                }
+                else{
+                    set_Makgeolli_Review(name: name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment)
+                    show_sheet.toggle()
+                }
+                
             }, label: {
                 Rectangle()
                     .frame(width: 120, height: 50)
@@ -117,6 +127,9 @@ struct Makgeolli_Review_View: View {
                             .foregroundColor(Color.black)
                     }
             })
+            .alert("한줄평 입력해주세요", isPresented: $show_alert){
+                Button("OK", role: .cancel){}
+            }
         }
         
     }

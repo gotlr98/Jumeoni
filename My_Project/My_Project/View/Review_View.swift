@@ -61,9 +61,13 @@ struct Review_View: View {
             }
 
         }
-        .fullScreenCover(isPresented: $show_sheet, onDismiss: {
-            dismissed = true
-        }){
+        .fullScreenCover(isPresented: $show_sheet){
+            
+            Button(role: .cancel, action: {
+                show_sheet = false
+            }, label: {
+                Text("닫기")
+            })
             if selected_type == .makgeolli{
                 Makgeolli_Review_View(show_sheet: $show_sheet, name: name, drink: drink)
             }
