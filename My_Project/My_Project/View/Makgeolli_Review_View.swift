@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Cosmos
+import RealmSwift
 
 struct MyCosmosView: UIViewRepresentable {
     @Binding var rating: Double
@@ -36,6 +37,7 @@ struct Makgeolli_Review_View: View {
     @Binding var show_sheet: Bool
     @State var show_alert: Bool = false
     var name: String
+    var user: User_Info
     
     @State var sweet = 1.0
     @State var bitter = 1.0
@@ -113,7 +115,9 @@ struct Makgeolli_Review_View: View {
                     show_alert = true
                 }
                 else{
+                    let makgeolli_review = Makgeolli_Review(name: name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment, objectID: ObjectId())
                     set_Makgeolli_Review(name: name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment)
+                    user.makgeolli_reviews.append(makgeolli_review)
                     show_sheet.toggle()
                 }
                 
@@ -137,6 +141,6 @@ struct Makgeolli_Review_View: View {
 
 struct Makgeolli_Review_View_Previews: PreviewProvider {
     static var previews: some View {
-        Makgeolli_Review_View(show_sheet: .constant(false), name: "", drink: Drink(id: UUID(), name: "", type: .makgeolli, price: 12, img_url: ""))
+        Makgeolli_Review_View(show_sheet: .constant(false), name: "", user: User_Info(), drink: Drink(id: UUID(), name: "", type: .makgeolli, price: 12, img_url: ""))
     }
 }

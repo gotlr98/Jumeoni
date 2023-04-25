@@ -9,7 +9,7 @@ import SwiftUI
 
 
 enum Tabs{
-    case tab1, tab2
+    case tab1, tab2, tab3
 }
 
 struct Signin_Complete: View{
@@ -21,12 +21,14 @@ struct Signin_Complete: View{
     
     var user_name: String = ""
     var drink: [Drink] = []
+    var user: User_Info = User_Info()
+    
     var body: some View{
         
         NavigationView{
             TabView(selection: $tabSelection){
 
-                Drink_List(selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden, name: user_name, drinks: self.drink)
+                Drink_List(selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden, name: user_name,user: user, drinks: self.drink)
                     .tabItem{
                         Image(systemName: "wineglass.fill")
                     }
@@ -41,6 +43,15 @@ struct Signin_Complete: View{
                     }
                     .tag(Tabs.tab2)
                     .onAppear {
+                        self.isToolBarItemHidden = false
+                    }
+                
+                User_View(user: self.user)
+                    .tabItem{
+                        Image(systemName: "person.circle")
+                    }
+                    .tag(Tabs.tab3)
+                    .onAppear{
                         self.isToolBarItemHidden = false
                     }
             }

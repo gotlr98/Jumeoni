@@ -16,6 +16,7 @@ class Kakao_AuthVM: ObservableObject{
     
     @Published var isLoggedIn : Bool = false
     @Published var user_name: String = ""
+    @Published var user: User_Info = User_Info()
     
     
 //    @MainActor
@@ -73,8 +74,9 @@ class Kakao_AuthVM: ObservableObject{
                                  }
 
                            self.user_name = name
+                           self.user.name = name
+                           
                            add_user(name: user_name)
-                           read_user()
                        }
                    }
                     
@@ -111,6 +113,9 @@ class Kakao_AuthVM: ObservableObject{
                                      }
 
                                self.user_name = name
+
+                               self.user.name = name
+                               
                                add_user(name: user_name)
                                read_user()
                            }

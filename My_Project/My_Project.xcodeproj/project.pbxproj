@@ -10,6 +10,7 @@
 		8A2C72A529DC0182006B13AB /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C72A429DC0182006B13AB /* Review.swift */; };
 		8A36991829E3C5C00098CBE4 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36991729E3C5C00098CBE4 /* Drink.swift */; };
 		8A45E8A129F2849B00D5EEDF /* Store_WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */; };
+		8A6327AE29F77ED3007B1BFD /* User_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6327AD29F77ED3007B1BFD /* User_View.swift */; };
 		8A93F60029ED3E2000663E96 /* PrettyAxis in Frameworks */ = {isa = PBXBuildFile; productRef = 8A93F5FF29ED3E2000663E96 /* PrettyAxis */; };
 		8A93F60729EE523200663E96 /* Makgeolli_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93F60629EE523200663E96 /* Makgeolli_Review.swift */; };
 		8A93F60929EE591200663E96 /* Spirits_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93F60829EE591200663E96 /* Spirits_Review.swift */; };
@@ -49,6 +50,7 @@
 		8A2C72A429DC0182006B13AB /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		8A36991729E3C5C00098CBE4 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store_WebView.swift; sourceTree = "<group>"; };
+		8A6327AD29F77ED3007B1BFD /* User_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User_View.swift; sourceTree = "<group>"; };
 		8A93F60629EE523200663E96 /* Makgeolli_Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Makgeolli_Review.swift; sourceTree = "<group>"; };
 		8A93F60829EE591200663E96 /* Spirits_Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spirits_Review.swift; sourceTree = "<group>"; };
 		8A93F60A29EE5B5F00663E96 /* Makgeolli_Review_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Makgeolli_Review_View.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				8AE9212B29DD40EB00C22025 /* Review_View.swift */,
 				8A93F60A29EE5B5F00663E96 /* Makgeolli_Review_View.swift */,
 				8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */,
+				8A6327AD29F77ED3007B1BFD /* User_View.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				8AF36D3329C2EAE7008CDC21 /* Kakao_AuthVM.swift in Sources */,
 				8AD0C11729C0428800A5D77D /* Signin_Complete.swift in Sources */,
 				8AF36D3529C2EB3E008CDC21 /* SceneDelegate.swift in Sources */,
+				8A6327AE29F77ED3007B1BFD /* User_View.swift in Sources */,
 				8AE6765129D54CB40083C278 /* Shop.swift in Sources */,
 				8A93F60B29EE5B5F00663E96 /* Makgeolli_Review_View.swift in Sources */,
 				8AD0C11029C03F8700A5D77D /* AppDelegate.swift in Sources */,

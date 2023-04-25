@@ -18,6 +18,7 @@ struct Login_View: View {
     @StateObject var kakaoAuthVM: Kakao_AuthVM = Kakao_AuthVM()
     @Binding var isLoggedIn: Bool
     @Binding var name: String
+    @Binding var user: User_Info
     @State var drink: [Drink] = []
     
     
@@ -41,7 +42,7 @@ struct Login_View: View {
 
                     // Kakao Login Button
                     
-                    NavigationLink(destination: Signin_Complete(user_name: kakaoAuthVM.user_name, drink: self.drink), isActive: $kakaoAuthVM.isLoggedIn,
+                    NavigationLink(destination: Signin_Complete(user_name: kakaoAuthVM.user_name, drink: self.drink, user: kakaoAuthVM.user), isActive: $kakaoAuthVM.isLoggedIn,
                                    label:{
                         Button(action: {
                             
@@ -112,6 +113,6 @@ struct Login_View: View {
 
 struct Login_View_Previews: PreviewProvider {
     static var previews: some View {
-        Login_View(isLoggedIn: .constant(false), name: .constant(""))
+        Login_View(isLoggedIn: .constant(false), name: .constant(""), user: .constant(User_Info()))
     }
 }

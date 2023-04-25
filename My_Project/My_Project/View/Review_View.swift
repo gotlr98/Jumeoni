@@ -17,6 +17,7 @@ struct Review_View: View {
     @State private var dismissed: Bool = false
     @Binding var selected_type: Drink.drink_type
     var name: String
+    var user: User_Info
     
     var body: some View {
         VStack {
@@ -69,7 +70,7 @@ struct Review_View: View {
                 Text("닫기")
             })
             if selected_type == .makgeolli{
-                Makgeolli_Review_View(show_sheet: $show_sheet, name: name, drink: drink)
+                Makgeolli_Review_View(show_sheet: $show_sheet, name: name, user: user, drink: drink)
             }
             
         }
