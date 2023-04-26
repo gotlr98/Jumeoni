@@ -15,7 +15,7 @@ import RealmSwift
 
 struct Login_View: View {
     
-    @StateObject var kakaoAuthVM: Kakao_AuthVM = Kakao_AuthVM()
+    @EnvironmentObject var kakaoAuthVM: Kakao_AuthVM
     @Binding var isLoggedIn: Bool
     @Binding var name: String
     @Binding var user: User_Info
@@ -45,6 +45,7 @@ struct Login_View: View {
                     NavigationLink(destination: Signin_Complete(user_name: kakaoAuthVM.user_name, drink: self.drink, user: kakaoAuthVM.user), isActive: $kakaoAuthVM.isLoggedIn,
                                    label:{
                         Button(action: {
+                            
                             
                             kakaoAuthVM.handleKakaoLogin()
                             
@@ -78,9 +79,7 @@ struct Login_View: View {
                             }
                             for i in 1...2{
                                 set_Makgeolli_Review(name: "장해식", drink_name: "사곡양조 공주 알밤 왕밤주", sweet: Double(i), bitter: 2.0, sour: 3.0, refreshing: 4.0, thick: 2.0, rating: 3.0, comment: "good")
-                            }
-                            print("## realm file dir -> \(Realm.Configuration   .defaultConfiguration.fileURL!)")
-                            
+                            }                            
                             
                         }, label: {
                             Rectangle()

@@ -150,5 +150,12 @@ class Kakao_AuthVM: ObservableObject{
         }
 
     }
+    
+    func add_user_review(review: Makgeolli_Review){
+        
+        user.makgeolli_reviews.append(review)
+        
+        self.objectWillChange.send()
+    }
 
 }
