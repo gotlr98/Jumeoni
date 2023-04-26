@@ -24,7 +24,7 @@ struct User_View: View {
                 ForEach(kakao.user.makgeolli_reviews, id: \.self){ review in
                     VStack(alignment: .leading){
                         Text(review.name + "님: ")
-                        Text(" " + review.drink_name + "review")
+                        Text(review.drink_name + " review - ")
 
                         HStack{
                             Text("단맛 : " + String(review.sweet))

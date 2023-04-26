@@ -58,6 +58,14 @@ struct Review_View: View {
                     })
                 })
             }
+            
+            NavigationLink(destination: {
+                Shop(url: drink.name, isToolBarItemHidden: $dismissed)
+                    
+            }, label: {
+                Text("사러가기")
+                
+            })
 
         }
         .fullScreenCover(isPresented: $show_sheet){
