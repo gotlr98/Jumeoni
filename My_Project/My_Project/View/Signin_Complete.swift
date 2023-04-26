@@ -14,21 +14,19 @@ enum Tabs{
 
 struct Signin_Complete: View{
     
-    @EnvironmentObject var kakaoAuthVM: Kakao_AuthVM
+    @EnvironmentObject var kakao: Kakao_AuthVM
     
     @State var isToolBarItemHidden: Bool = true
     @State var tabSelection: Tabs = .tab1
     
-    var user_name: String = ""
     var drink: [Drink] = []
-    @State var user: User_Info = User_Info()
     
     var body: some View{
         
         NavigationView{
             TabView(selection: $tabSelection){
 
-                Drink_List(selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden, name: user_name, drinks: self.drink)
+                Drink_List(selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden, drinks: self.drink)
                     .tabItem{
                         Image(systemName: "wineglass.fill")
                     }
@@ -58,7 +56,7 @@ struct Signin_Complete: View{
             
             
         }
-        .navigationTitle("안녕하세요 " + user_name + "님")
+        .navigationTitle("안녕하세요 " + kakao.user_name + "님")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
     

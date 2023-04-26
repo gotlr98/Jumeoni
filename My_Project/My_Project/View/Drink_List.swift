@@ -17,7 +17,6 @@ struct Drink_List: View {
     @State var cliked_button: Bool = false
     @Binding var isToolBarItemHidden: Bool
     @State private var dismissed: Bool = false
-    var name: String
     
 //    @State private var drinks = [
 //        Drink(id: UUID(), name: "cham", type: Drink.drink_type.makgeolli, price: 1950, img_url: "1"),
@@ -43,7 +42,7 @@ struct Drink_List: View {
         GeometryReader{ geo in
             ScrollView{
                 ZStack {
-                    NavigationLink(destination: Review_View(drink: selected_drink, review: $review, selected_type: $selected_type, name: name), isActive: $cliked_button, label: {
+                    NavigationLink(destination: Review_View(drink: selected_drink, review: $review, selected_type: $selected_type), isActive: $cliked_button, label: {
                         EmptyView()
                     })
                 }

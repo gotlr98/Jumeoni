@@ -17,7 +17,7 @@ struct My_ProjectApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Login_View(isLoggedIn: .constant(false), name: .constant(""), user: .constant(User_Info()))
+            Login_View()
                 .environmentObject(Kakao_AuthVM())
 //            Makgeolli_Review_View()
          

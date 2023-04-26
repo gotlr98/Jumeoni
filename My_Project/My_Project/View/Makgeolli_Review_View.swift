@@ -37,7 +37,7 @@ struct Makgeolli_Review_View: View {
     @EnvironmentObject var kakao: Kakao_AuthVM
     @Binding var show_sheet: Bool
     @State var show_alert: Bool = false
-    var name: String
+    
     
     @State var sweet = 1.0
     @State var bitter = 1.0
@@ -46,8 +46,6 @@ struct Makgeolli_Review_View: View {
     @State var thick = 1.0
     @State var rating = 1.0
     @State var comment = ""
-    
-    
     
     var drink: Drink
     
@@ -109,14 +107,14 @@ struct Makgeolli_Review_View: View {
             }
             
             Button(action: {
-                print(name + "님")
+                print(kakao.user_name + "님")
                 
                 if comment.isEmpty{
                     show_alert = true
                 }
                 else{
-                    let makgeolli_review = Makgeolli_Review(name: name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment, objectID: ObjectId())
-                    set_Makgeolli_Review(name: name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment)
+                    let makgeolli_review = Makgeolli_Review(name: kakao.user_name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment, objectID: ObjectId())
+                    set_Makgeolli_Review(name: kakao.user_name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment)
                     kakao.add_user_review(review: makgeolli_review)
                     show_sheet.toggle()
                 }
@@ -141,6 +139,6 @@ struct Makgeolli_Review_View: View {
 
 struct Makgeolli_Review_View_Previews: PreviewProvider {
     static var previews: some View {
-        Makgeolli_Review_View(show_sheet: .constant(false), name: "", drink: Drink(id: UUID(), name: "", type: .makgeolli, price: 12, img_url: ""))
+        Makgeolli_Review_View(show_sheet: .constant(false), drink: Drink(id: UUID(), name: "", type: .makgeolli, price: 12, img_url: ""))
     }
 }
