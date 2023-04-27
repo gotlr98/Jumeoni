@@ -22,7 +22,9 @@ struct Shop: View {
     
     var body: some View {
         Store_WebView(urlToLoad: "https://msearch.shopping.naver.com/search/all?query=\(url)&cat_id=&frm=NVSHATC".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+            
     }
+        
 }
 
 struct Shop_Previews: PreviewProvider {
