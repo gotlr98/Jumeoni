@@ -10,7 +10,13 @@ import WebKit
 
 struct Store_WebView: UIViewRepresentable {
     
-    var urlToLoad: String
+    let request: URLRequest
+    var webview: WKWebView?
+    
+    init(web: WKWebView?, req: URLRequest) {
+            self.webview = WKWebView()
+            self.request = req
+        }
     
     class Coordinator: NSObject, WKUIDelegate {
             var parent: Store_WebView
@@ -26,28 +32,36 @@ struct Store_WebView: UIViewRepresentable {
             }
         }
     
-    func makeUIView(context: Context) -> WKWebView{
-        
-        guard let url = URL(string: urlToLoad) else {
-            return WKWebView()
+    func makeCoordinator() -> Coordinator {
+            Coordinator(self)
         }
-        
-        let webview = WKWebView()
-        
-        webview.load(URLRequest(url: url))
-        
-        return webview
-    }
-        
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        
-    }
+
+        func makeUIView(context: Context) -> WKWebView  {
+            return webview!
+        }
+
+        func updateUIView(_ uiView: WKWebView, context: Context) {
+            uiView.uiDelegate = context.coordinator
+            uiView.load(request)
+        }
+
+        func goBack(){
+            webview?.goBack()
+        }
+
+        func goForward(){
+            webview?.goForward()
+        }
+
+        func reload(){
+            webview?.reload()
+        }
     
     
 }
 
 struct Store_WebView_Previews: PreviewProvider {
     static var previews: some View {
-        Store_WebView(urlToLoad: "https://www.naver.com")
+        Store_WebView()
     }
 }
