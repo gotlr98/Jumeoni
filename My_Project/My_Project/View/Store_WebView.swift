@@ -62,6 +62,6 @@ struct Store_WebView: UIViewRepresentable {
 
 struct Store_WebView_Previews: PreviewProvider {
     static var previews: some View {
-        Store_WebView()
+        Store_WebView(web: nil, req: URLRequest(url: URL(string:"https://www.google.com")!))
     }
 }

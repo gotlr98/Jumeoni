@@ -60,7 +60,7 @@ struct Review_View: View {
             }
             
             NavigationLink(destination: {
-                Shop(url: drink.name, isToolBarItemHidden: $dismissed)
+                Shop(isToolBarItemHidden: $dismissed)
                     
             }, label: {
                 Text("사러가기")

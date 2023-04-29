@@ -16,12 +16,34 @@ func encodingURL(url: String) -> URL? {
 
 struct Shop: View {
     
-    var url: String
+    let webview = Store_WebView(web: nil, req: URLRequest(url: URL(string: "https://google.com")!))
     
     @Binding var isToolBarItemHidden: Bool
     
     var body: some View {
-        Store_WebView(urlToLoad: "https://msearch.shopping.naver.com/search/all?query=\(url)&cat_id=&frm=NVSHATC".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+        VStack{
+            webview
+            HStack() {
+                Button(action: {
+                    self.webview.goBack()
+                }){
+                    Image(systemName: "chevron.left")
+                }.padding(32)
+
+                Button(action: {
+                    self.webview.reload()
+                }){
+                    Image(systemName: "arrow.clockwise")
+                }.padding(32)
+
+                Button(action: {
+                    self.webview.goForward()
+                }){
+                    Image(systemName: "chevron.right")
+                }.padding(32)
+            }.frame(height: 32)
+        }
+        
             
     }
         
@@ -29,6 +51,6 @@ struct Shop: View {
 
 struct Shop_Previews: PreviewProvider {
     static var previews: some View {
-        Shop(url: "", isToolBarItemHidden: .constant(false))
+        Shop(isToolBarItemHidden: .constant(false))
     }
 }
