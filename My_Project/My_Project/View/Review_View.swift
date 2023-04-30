@@ -60,7 +60,7 @@ struct Review_View: View {
             }
             
             NavigationLink(destination: {
-                Shop(isToolBarItemHidden: $dismissed)
+                Shop(url: "https://search.shopping.naver.com/search/all?query=\(drink.name)&cat_id=&frm=NVSHATC", isToolBarItemHidden: $dismissed)
                     
             }, label: {
                 Text("사러가기")
