@@ -19,13 +19,15 @@ struct Review_View: View {
     
     var body: some View {
         VStack {
+            
+            Text(drink.name + "리뷰")
            
             List{
                 ForEach(review, id: \.self){ review in
                     if drink.name == review.drink_name{
                         VStack(alignment: .leading){
                             Text(review.name + "님: ")
-                            
+                        
                             HStack{
                                 Text("단맛 : " + String(review.sweet))
                                 Text("신맛 : " + String(review.sour))
@@ -58,13 +60,13 @@ struct Review_View: View {
                     })
                 })
             }
-            
+
             NavigationLink(destination: {
-                Shop(url: "https://search.shopping.naver.com/search/all?query=\(drink.name)&cat_id=&frm=NVSHATC", isToolBarItemHidden: $dismissed)
-                    
+                Shop(webview: Store_WebView(web: nil, req: URLRequest(url: URL(string: "https://msearch.shopping.naver.com/search/all?query=\(drink.name)&frm=NVSHSRC&vertical=home")!)), isToolBarItemHidden: $dismissed)
+
             }, label: {
                 Text("사러가기")
-                
+
             })
 
         }
