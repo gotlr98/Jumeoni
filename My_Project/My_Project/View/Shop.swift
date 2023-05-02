@@ -16,12 +16,14 @@ func encodingURL(url: String) -> URL? {
 
 struct Shop: View {
     
-    let webview: Store_WebView
+    var url: String
     @Binding var isToolBarItemHidden: Bool
+    
+    let webview = Store_WebView(web: nil, req: URLRequest(url: URL(string: url)!))
     
     var body: some View {
         
-//        let webview = Store_WebView(web: nil, req: URLRequest(url: URL(string: url)!))
+        
         
         VStack{
             HStack() {
@@ -52,6 +54,6 @@ struct Shop: View {
 
 struct Shop_Previews: PreviewProvider {
     static var previews: some View {
-        Shop(webview: Store_WebView(web: nil, req: URLRequest(url: URL(string:"")!)), isToolBarItemHidden: .constant(false))
+        Shop(url: "",isToolBarItemHidden: .constant(false))
     }
 }
