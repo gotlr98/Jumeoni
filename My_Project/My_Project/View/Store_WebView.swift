@@ -36,26 +36,26 @@ struct Store_WebView: UIViewRepresentable {
             Coordinator(self)
         }
 
-        func makeUIView(context: Context) -> WKWebView  {
-            return webview!
-        }
+    func makeUIView(context: Context) -> WKWebView  {
+        return webview!
+    }
 
-        func updateUIView(_ uiView: WKWebView, context: Context) {
-            uiView.uiDelegate = context.coordinator
-            uiView.load(request)
-        }
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        uiView.uiDelegate = context.coordinator
+        uiView.load(request)
+    }
 
-        func goBack(){
-            webview?.goBack()
-        }
+    func goBack(){
+        webview?.goBack()
+    }
 
-        func goForward(){
-            webview?.goForward()
-        }
+    func goForward(){
+        webview?.goForward()
+    }
 
-        func reload(){
-            webview?.reload()
-        }
+    func reload(){
+        webview?.reload()
+    }
     
     
 }
