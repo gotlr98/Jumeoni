@@ -11,7 +11,6 @@
 		8A36991829E3C5C00098CBE4 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36991729E3C5C00098CBE4 /* Drink.swift */; };
 		8A45E8A129F2849B00D5EEDF /* Store_WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */; };
 		8A6327AE29F77ED3007B1BFD /* User_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6327AD29F77ED3007B1BFD /* User_View.swift */; };
-		8A93F60029ED3E2000663E96 /* PrettyAxis in Frameworks */ = {isa = PBXBuildFile; productRef = 8A93F5FF29ED3E2000663E96 /* PrettyAxis */; };
 		8A93F60729EE523200663E96 /* Makgeolli_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93F60629EE523200663E96 /* Makgeolli_Review.swift */; };
 		8A93F60929EE591200663E96 /* Spirits_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93F60829EE591200663E96 /* Spirits_Review.swift */; };
 		8A93F60B29EE5B5F00663E96 /* Makgeolli_Review_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93F60A29EE5B5F00663E96 /* Makgeolli_Review_View.swift */; };
@@ -81,7 +80,6 @@
 			files = (
 				8A93F61129EE6C4400663E96 /* Cosmos in Frameworks */,
 				8AFE5E2329E66A1200937903 /* Kingfisher in Frameworks */,
-				8A93F60029ED3E2000663E96 /* PrettyAxis in Frameworks */,
 				8AAF92DF29C2E80100BD892B /* KakaoSDKShare in Frameworks */,
 				8AE6764729D539850083C278 /* RealmSwift in Frameworks */,
 				8AAF92E129C2E80100BD892B /* KakaoSDKStory in Frameworks */,
@@ -207,7 +205,6 @@
 				8AE6764429D539850083C278 /* Realm */,
 				8AE6764629D539850083C278 /* RealmSwift */,
 				8AFE5E2229E66A1200937903 /* Kingfisher */,
-				8A93F5FF29ED3E2000663E96 /* PrettyAxis */,
 				8A93F61029EE6C4400663E96 /* Cosmos */,
 			);
 			productName = My_Project;
@@ -242,8 +239,6 @@
 				8AAF92D529C2E80100BD892B /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				8AE6764329D539850083C278 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				8AFE5E2129E66A1200937903 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				8A93F5FE29ED3E2000663E96 /* XCRemoteSwiftPackageReference "PrettyAxis" */,
-				8A93F60C29EE5CF600663E96 /* XCRemoteSwiftPackageReference "StarView" */,
 				8A93F60F29EE6C4400663E96 /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = 8AD0C0F429C03CE700A5D77D /* Products */;
@@ -499,22 +494,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8A93F5FE29ED3E2000663E96 /* XCRemoteSwiftPackageReference "PrettyAxis" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RiuHDuo/PrettyAxis.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		8A93F60C29EE5CF600663E96 /* XCRemoteSwiftPackageReference "StarView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/EnesKaraosman/StarView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		8A93F60F29EE6C4400663E96 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
@@ -550,11 +529,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8A93F5FF29ED3E2000663E96 /* PrettyAxis */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8A93F5FE29ED3E2000663E96 /* XCRemoteSwiftPackageReference "PrettyAxis" */;
-			productName = PrettyAxis;
-		};
 		8A93F61029EE6C4400663E96 /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8A93F60F29EE6C4400663E96 /* XCRemoteSwiftPackageReference "Cosmos" */;
