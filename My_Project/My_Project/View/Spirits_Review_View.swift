@@ -9,7 +9,7 @@ import SwiftUI
 import Cosmos
 import RealmSwift
 
-struct Spirits_Review_View: UIViewRepresentable {
+struct Stars_View: UIViewRepresentable {
     @Binding var rating: Double
     
 
@@ -32,7 +32,7 @@ struct Spirits_Review_View: UIViewRepresentable {
     }
 }
 
-struct Makgeolli_Review_View: View {
+struct Spirits_Review_View: View {
     
     @EnvironmentObject var kakao: Kakao_AuthVM
     @Binding var show_sheet: Bool
@@ -137,7 +137,7 @@ struct Makgeolli_Review_View: View {
     }
 }
 
-struct Spirits_Review_View_Previews: PreviewProvider {
+struct Spritis_Previews: PreviewProvider {
     static var previews: some View {
         Makgeolli_Review_View(show_sheet: .constant(false), drink: Drink(id: UUID(), name: "", type: .makgeolli, price: 12, img_url: ""))
     }
