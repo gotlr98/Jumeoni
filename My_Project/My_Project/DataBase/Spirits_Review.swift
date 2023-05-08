@@ -12,14 +12,14 @@ class Spirits_Review: Object, Identifiable{
     
     @Persisted var name: String
     @Persisted var drink_name: String
-    @Persisted var scent: Int8
-    @Persisted var bodied: Int8
-    @Persisted var drinkability: Int8
-    @Persisted var rating: Int8
+    @Persisted var scent: Double
+    @Persisted var bodied: Double
+    @Persisted var drinkability: Double
+    @Persisted var rating: Double
     @Persisted var comment: String
     @Persisted(primaryKey: true) var objectID: ObjectId
     
-    convenience init(name: String, drink_name: String, scent: Int8, bodied: Int8, drinkability: Int8, rating: Int8, comment: String) {
+    convenience init(name: String, drink_name: String, scent: Double, bodied: Double, drinkability: Double, rating: Double, comment: String) {
         self.init()
         self.name = name
         self.drink_name = drink_name
@@ -31,7 +31,7 @@ class Spirits_Review: Object, Identifiable{
     }
 }
 
-func set_Spirits_Review(name: String, drink_name: String, scent: Int8, bodied: Int8, drinkability: Int8, rating: Int8, comment: String){
+func set_Spirits_Review(name: String, drink_name: String, scent: Double, bodied: Double, drinkability: Double, rating: Double, comment: String){
     
     let review = Spirits_Review()
     

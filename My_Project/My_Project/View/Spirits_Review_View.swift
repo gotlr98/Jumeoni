@@ -39,11 +39,9 @@ struct Spirits_Review_View: View {
     @State var show_alert: Bool = false
     
     
-    @State var sweet = 1.0
-    @State var bitter = 1.0
-    @State var sour = 1.0
-    @State var refreshing = 1.0
-    @State var thick = 1.0
+    @State var scent = 1.0
+    @State var bodied = 1.0
+    @State var drinkability = 1.0
     @State var rating = 1.0
     @State var comment = ""
     
@@ -56,36 +54,24 @@ struct Spirits_Review_View: View {
                 Text("단맛")
                     .font(.title)
                     .padding(.all)
-                MyCosmosView(rating: $sweet)
+                MyCosmosView(rating: $scent)
             }
             
             HStack {
                 Text("쓴맛")
                     .font(.title)
                     .padding(.all)
-                MyCosmosView(rating: $bitter)
+                MyCosmosView(rating: $bodied)
             }
             
             HStack {
                 Text("신맛")
                     .font(.title)
                     .padding(.all)
-                MyCosmosView(rating: $sour)
+                MyCosmosView(rating: $drinkability)
             }
+
             
-            HStack {
-                Text("청량감")
-                    .font(.title)
-                    .padding(.all)
-                MyCosmosView(rating: $refreshing)
-            }
-            
-            HStack {
-                Text("걸쭉함")
-                    .font(.title)
-                    .padding(.all)
-                MyCosmosView(rating: $thick)
-            }
             Divider()
             
             HStack {
@@ -113,9 +99,9 @@ struct Spirits_Review_View: View {
                     show_alert = true
                 }
                 else{
-                    let makgeolli_review = Makgeolli_Review(name: kakao.user_name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment, objectID: ObjectId())
-                    set_Makgeolli_Review(name: kakao.user_name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment)
-                    kakao.add_user_review(review: makgeolli_review)
+                    let spirits_review = Spirits_Review(name: kakao.user_name, drink_name: drink.name, scent: scent, bodied: bodied, drinkability: drinkability, rating: rating, comment: comment)
+                    set_Spirits_Review(name: kakao.user_name, drink_name: drink.name, scent: scent, bodied: bodied, drinkability: drinkability, rating: rating, comment: comment)
+                    kakao.add_user_spirits_review(review: spirits_review)
                     show_sheet.toggle()
                 }
                 
