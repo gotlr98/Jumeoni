@@ -51,21 +51,21 @@ struct Spirits_Review_View: View {
         
         VStack{
             HStack{
-                Text("단맛")
+                Text("향")
                     .font(.title)
                     .padding(.all)
                 MyCosmosView(rating: $scent)
             }
             
             HStack {
-                Text("쓴맛")
+                Text("바디감")
                     .font(.title)
                     .padding(.all)
                 MyCosmosView(rating: $bodied)
             }
             
             HStack {
-                Text("신맛")
+                Text("목넘김")
                     .font(.title)
                     .padding(.all)
                 MyCosmosView(rating: $drinkability)
@@ -123,8 +123,8 @@ struct Spirits_Review_View: View {
     }
 }
 
-struct Spritis_Previews: PreviewProvider {
+struct Spirits_Review_View_Previews: PreviewProvider {
     static var previews: some View {
-        Makgeolli_Review_View(show_sheet: .constant(false), drink: Drink(id: UUID(), name: "", type: .makgeolli, price: 12, img_url: ""))
+        Spirits_Review_View(show_sheet: .constant(false), drink: Drink(id: UUID(), name: "", type: .spirits, price: 0, img_url: ""))
     }
 }

@@ -42,7 +42,7 @@ func add_user_makgeolli_review(user: User_Info, review: Makgeolli_Review){
     }
 }
 
-func add_user_spritis_review(user: User_Info, review: Spirits_Review){
+func add_user_spirits_review(user: User_Info, review: Spirits_Review){
 
     let realm = try! Realm()
     

@@ -75,7 +75,11 @@ struct Login_View: View {
                             }
                             for i in 1...2{
                                 set_Makgeolli_Review(name: "장해식", drink_name: "사곡양조 공주 알밤 왕밤주", sweet: Double(i), bitter: 2.0, sour: 3.0, refreshing: 4.0, thick: 2.0, rating: 3.0, comment: "good")
-                            }                            
+                            }
+                            
+                            for i in 1...2{
+                                set_Spirits_Review(name: "Unknown", drink_name: "한주양조 한주 35도", scent: 2.0, bodied: 3.0, drinkability: 3.0, rating: 3.0, comment: "좋아요")
+                            }
                             
                         }, label: {
                             Rectangle()

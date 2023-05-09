@@ -23,7 +23,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         let config = Realm.Configuration(
                           schemaVersion: 4,
                           migrationBlock: { migration, oldSchemaVersion in
-                              if oldSchemaVersion < 4 {
+                              if oldSchemaVersion < 5 {
                                   migration.enumerateObjects(ofType: User_Info.className()) { oldObject, newObject in
                                       newObject!["drink_name"] = Review() // 내가 수정한 부분
                                   }
