@@ -9,6 +9,7 @@ import SwiftUI
 import KakaoSDKCommon
 import KakaoSDKAuth
 import RealmSwift
+import FirebaseCore
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -32,6 +33,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                       )
                       Realm.Configuration.defaultConfiguration = config
         
+        FirebaseApp.configure()
+        
         return true
     }
     
@@ -51,6 +54,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         return sceneConfiguration
     }
+    
+
+    
 }
 
 

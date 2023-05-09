@@ -55,7 +55,7 @@ struct User_View: View {
                                 Text("향 : " + String(review.scent))
                                 Text("바디감 : " + String(review.bodied))
                                 Text("목넘김 : " + String(review.drinkability))
-
+                                
                             }
                             Text("총점 : " + String(review.rating))
                             Text("코멘트 : " + review.comment)
