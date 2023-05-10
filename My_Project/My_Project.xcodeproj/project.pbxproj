@@ -15,6 +15,7 @@
 		8A5653712A0A4EFC00523C6A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8A5653702A0A4EFC00523C6A /* FirebaseFirestore */; };
 		8A5653732A0A4EFC00523C6A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8A5653722A0A4EFC00523C6A /* FirebaseFirestoreSwift */; };
 		8A5653752A0B47D400523C6A /* Firebase_Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5653742A0B47D400523C6A /* Firebase_Database.swift */; };
+		8A56537B2A0B58F600523C6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A56537A2A0B58F600523C6A /* GoogleService-Info.plist */; };
 		8A6327AE29F77ED3007B1BFD /* User_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6327AD29F77ED3007B1BFD /* User_View.swift */; };
 		8A93F60729EE523200663E96 /* Makgeolli_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93F60629EE523200663E96 /* Makgeolli_Review.swift */; };
 		8A93F60929EE591200663E96 /* Spirits_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93F60829EE591200663E96 /* Spirits_Review.swift */; };
@@ -56,6 +57,7 @@
 		8A36991729E3C5C00098CBE4 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store_WebView.swift; sourceTree = "<group>"; };
 		8A5653742A0B47D400523C6A /* Firebase_Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_Database.swift; sourceTree = "<group>"; };
+		8A56537A2A0B58F600523C6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A6327AD29F77ED3007B1BFD /* User_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User_View.swift; sourceTree = "<group>"; };
 		8A93F60629EE523200663E96 /* Makgeolli_Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Makgeolli_Review.swift; sourceTree = "<group>"; };
 		8A93F60829EE591200663E96 /* Spirits_Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spirits_Review.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		8AD0C11129C03F8E00A5D77D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				8A56537A2A0B58F600523C6A /* GoogleService-Info.plist */,
 				8AD0C10F29C03F8700A5D77D /* AppDelegate.swift */,
 				8AF36D2E29C2E90D008CDC21 /* MyApi.plist */,
 				8AF36D3029C2E95E008CDC21 /* Kakao_Login++Bundle.swift */,
@@ -275,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AD0C0FE29C03CE800A5D77D /* Preview Assets.xcassets in Resources */,
+				8A56537B2A0B58F600523C6A /* GoogleService-Info.plist in Resources */,
 				8ADFF99829DBD553003CEE45 /* Assets.xcassets in Resources */,
 				8AF36D2F29C2E90D008CDC21 /* MyApi.plist in Resources */,
 			);
