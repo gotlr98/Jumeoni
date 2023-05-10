@@ -17,7 +17,7 @@ struct My_ProjectApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Login_View()
+            Login_View(drinkStore: DrinkStore())
                 .environmentObject(Kakao_AuthVM())
 //            Makgeolli_Review_View()
          
