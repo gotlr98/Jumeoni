@@ -12,11 +12,14 @@ import RealmSwift
 
 struct Drink_List: View {
     
+    @ObservedObject var drinkStore: DrinkStore
+    
     @State var selected_type: Drink.drink_type = .makgeolli
     @State var show_sheet: Bool = false
     @State var cliked_button: Bool = false
     @Binding var isToolBarItemHidden: Bool
     @State private var dismissed: Bool = false
+    
     
 //    @State private var drinks = [
 //        Drink(id: UUID(), name: "cham", type: Drink.drink_type.makgeolli, price: 1950, img_url: "1"),
@@ -31,7 +34,7 @@ struct Drink_List: View {
         GridItem(.flexible())
     ]
     
-    @State var drinks = Signin_Complete().drink
+    @State var drinks = Signin_Complete(drinkStore: DrinkStore()).drink
     
     @State var spirits_review: Results<Spirits_Review> = get_All_Spirits_Review()
     @State var makgeolli_review: Results<Makgeolli_Review> = get_All_Makgeolli_Review()
@@ -57,6 +60,8 @@ struct Drink_List: View {
                         Button(action: {
                             selected_drink = drink
                             self.cliked_button = true
+                            print(drinkStore.drinks)
+                            print(drinkStore.drinks.count)
                             
                         }, label: {
                             VStack{
@@ -90,10 +95,27 @@ struct Drink_List: View {
 
                 })
                 .padding()
-                
-
+//                .onAppear(perform: {
+//                    drinkStore.listenToRealtimeDatabase()
+//                    print(drinkStore.drinks)
+//                    print(drinkStore.drinks.count)
+//                })
+//                .onDisappear{
+//                    drinkStore.stopListening()
+//                }
             }
+            
         }
+        .onAppear{
+            drinkStore.listenToRealtimeDatabase()
+            print(drinkStore.drinks)
+            print(drinkStore.drinks.count)
+            
+        }
+        .onDisappear{
+            drinkStore.stopListening()
+        }
+        
         .toolbar{
             if isToolBarItemHidden{
                 ToolbarItem(placement: .navigationBarLeading, content: {
@@ -131,10 +153,10 @@ struct Drink_List: View {
 
         }
         
-        .sheet(isPresented: $show_sheet, onDismiss: {
+        .fullScreenCover(isPresented: $show_sheet, onDismiss: {
             dismissed = true
         }){
-            Register_Drink(drink: $drinks, show_sheet: $show_sheet)
+            Register_Drink(drinkStore: drinkStore, drink: $drinks, show_sheet: $show_sheet)
         }
         
         .navigationViewStyle(.stack)

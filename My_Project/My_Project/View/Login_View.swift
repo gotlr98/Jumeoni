@@ -16,7 +16,7 @@ import RealmSwift
 struct Login_View: View {
     
     @EnvironmentObject var kakaoAuthVM: Kakao_AuthVM
-    @ObservedObject var drinkStore: DrinkStore
+    @StateObject var drinkStore: DrinkStore = DrinkStore()
     @State var drink: [Drink] = []
     
     var body: some View {
@@ -25,9 +25,6 @@ struct Login_View: View {
             
             ZStack {
                 GeometryReader{ geo in
-                    
-//                    Image("house")
-//                        .edgesIgnoringSafeArea(.all)
                     
                     Text("酒머니")
                         .frame(alignment: .center)
@@ -39,14 +36,14 @@ struct Login_View: View {
 
                     // Kakao Login Button
                     
-                    NavigationLink(destination: Signin_Complete(drink: self.drink), isActive: $kakaoAuthVM.isLoggedIn,
+                    NavigationLink(destination: Signin_Complete(drinkStore: drinkStore, drink: self.drink), isActive: $kakaoAuthVM.isLoggedIn,
                                    label:{
                         Button(action: {
                             
                             
                             kakaoAuthVM.handleKakaoLogin()
                             
-//                            remove_Drink()
+                            remove_Drink()
 //                            set_primary_drink()
                             remove_all_Makgeolli_review()
                                 
@@ -72,7 +69,6 @@ struct Login_View: View {
                             
                             for i in 1...2{
                                 set_Makgeolli_Review(name: "장해식", drink_name: "대대포 블루 꿀 막걸리", sweet: 3.0, bitter: Double(i), sour: 3.0, refreshing: 4.0, thick: 2.0, rating: 3.0, comment: "good")
-                                print(kakaoAuthVM.user_name + "님")
                             }
                             for i in 1...2{
                                 set_Makgeolli_Review(name: "장해식", drink_name: "사곡양조 공주 알밤 왕밤주", sweet: Double(i), bitter: 2.0, sour: 3.0, refreshing: 4.0, thick: 2.0, rating: 3.0, comment: "good")
@@ -82,7 +78,12 @@ struct Login_View: View {
                                 set_Spirits_Review(name: "Unknown", drink_name: "한주양조 한주 35도", scent: 2.0, bodied: 3.0, drinkability: 3.0, rating: 3.0, comment: "좋아요")
                             }
                             
-                            drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: "test", price: 0, drink_type: "makgeolli", img_url: ""))
+
+                                
+//                            drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: "test1", price: 1000, drink_type: "spirits", img_url: ""))
+//                                
+//                            print(drinkStore.drinks)
+//                            print("개")
                             
                         }, label: {
                             Rectangle()
@@ -99,14 +100,18 @@ struct Login_View: View {
                     })
 
                     .position(x: geo.size.width / 2, y: geo.size.height / 1.3)
-                    
-                    
 
                 }
             }
             .background(Color.indigo)
         }
         .navigationViewStyle(.stack)
+//        .onAppear{
+//            drinkStore.listenToRealtimeDatabase()
+//        }
+//        .onDisappear{
+//            drinkStore.stopListening()
+//        }
         
     }
 
@@ -115,6 +120,6 @@ struct Login_View: View {
 
 struct Login_View_Previews: PreviewProvider {
     static var previews: some View {
-        Login_View(drinkStore: DrinkStore())
+        Login_View()
     }
 }

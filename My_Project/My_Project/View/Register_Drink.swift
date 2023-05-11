@@ -13,6 +13,8 @@ import Kingfisher
 
 struct Register_Drink: View {
     
+    @ObservedObject var drinkStore: DrinkStore
+    
     @State var selected_type: Drink.drink_type = Drink.drink_type.makgeolli
     @State var alertStat: Bool = false
     @State var input_name: String = ""
@@ -111,6 +113,7 @@ struct Register_Drink: View {
                     }
                     else{
                         register_drink(id: UUID(), name: input_name, type: selected_type, price: Int64(input_price)!, img_url: input_img_url)
+                        drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: input_name, price: Int64(input_price)!, drink_type: "makgeolli", img_url: input_img_url))
                         show_sheet.toggle()
                     }
                     
@@ -131,6 +134,13 @@ struct Register_Drink: View {
                 
             }
             .position(x: geo.size.width / 2, y: geo.size.height / 1.6)
+            .onAppear{
+                drinkStore.listenToRealtimeDatabase()
+            }
+            .onDisappear{
+                drinkStore.stopListening()
+            }
+            
 
         }
         
