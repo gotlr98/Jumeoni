@@ -34,6 +34,8 @@ struct Signin_Complete: View{
                     .tag(Tabs.tab1)
                     .onAppear {
                         self.isToolBarItemHidden = true
+                        
+                        
                     }
                 
 //                Shop(url: "", isToolBarItemHidden: $isToolBarItemHidden)
@@ -54,15 +56,24 @@ struct Signin_Complete: View{
                         self.isToolBarItemHidden = false
                     }
             }
-
-            
-            
         }
+        
+//        .onAppear(perform: {
+//            drinkStore.listenToRealtimeDatabase()
+//            print(drinkStore.drinks)
+//            print(drinkStore.drinks.count)
+//        })
+//        .onDisappear{
+//            drinkStore.stopListening()
+//        }
+        
         .navigationTitle("안녕하세요 " + kakao.user_name + "님")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
     
         .navigationViewStyle(.stack)
+        
+        
 
     }
 }
@@ -71,5 +82,6 @@ struct Signin_Complete: View{
 struct Signin_Complete_Previews: PreviewProvider{
     static var previews: some View{
         Signin_Complete(drinkStore: DrinkStore())
+            .environmentObject(Kakao_AuthVM())
     }
 }

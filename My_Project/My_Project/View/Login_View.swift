@@ -16,7 +16,7 @@ import RealmSwift
 struct Login_View: View {
     
     @EnvironmentObject var kakaoAuthVM: Kakao_AuthVM
-    @StateObject var drinkStore: DrinkStore = DrinkStore()
+    @ObservedObject var drinkStore: DrinkStore = DrinkStore()
     @State var drink: [Drink] = []
     
     var body: some View {
@@ -121,5 +121,6 @@ struct Login_View: View {
 struct Login_View_Previews: PreviewProvider {
     static var previews: some View {
         Login_View()
+            .environmentObject(Kakao_AuthVM())
     }
 }

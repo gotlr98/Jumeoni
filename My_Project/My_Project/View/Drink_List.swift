@@ -50,7 +50,16 @@ struct Drink_List: View {
                     NavigationLink(destination: Review_View(drink: selected_drink, makgeolli_review: $makgeolli_review, spirits_review: $spirits_review, selected_type: $selected_type), isActive: $cliked_button, label: {
                         EmptyView()
                     })
+                    .onAppear(perform: {
+                        drinkStore.listenToRealtimeDatabase()
+                        print(drinkStore.drinks)
+                        print(drinkStore.drinks.count)
+                    })
+                    .onDisappear{
+                        drinkStore.stopListening()
+                    }
                 }
+
                 .opacity(0.0)
                 .buttonStyle(PlainButtonStyle())
                 
@@ -60,8 +69,6 @@ struct Drink_List: View {
                         Button(action: {
                             selected_drink = drink
                             self.cliked_button = true
-                            print(drinkStore.drinks)
-                            print(drinkStore.drinks.count)
                             
                         }, label: {
                             VStack{
@@ -94,7 +101,7 @@ struct Drink_List: View {
                         
 
                 })
-                .padding()
+                
 //                .onAppear(perform: {
 //                    drinkStore.listenToRealtimeDatabase()
 //                    print(drinkStore.drinks)
@@ -103,18 +110,20 @@ struct Drink_List: View {
 //                .onDisappear{
 //                    drinkStore.stopListening()
 //                }
+                .padding()
+
             }
             
         }
-        .onAppear{
-            drinkStore.listenToRealtimeDatabase()
-            print(drinkStore.drinks)
-            print(drinkStore.drinks.count)
-            
-        }
-        .onDisappear{
-            drinkStore.stopListening()
-        }
+//        .onAppear{
+//            drinkStore.listenToRealtimeDatabase()
+//            print(drinkStore.drinks)
+//            print(drinkStore.drinks.count)
+//
+//        }
+//        .onDisappear{
+//            drinkStore.stopListening()
+//        }
         
         .toolbar{
             if isToolBarItemHidden{
@@ -153,9 +162,13 @@ struct Drink_List: View {
 
         }
         
-        .fullScreenCover(isPresented: $show_sheet, onDismiss: {
-            dismissed = true
-        }){
+        .fullScreenCover(isPresented: $show_sheet){
+            Button(role: .cancel, action: {
+                show_sheet = false
+            }, label: {
+                Text("닫기")
+            })
+        
             Register_Drink(drinkStore: drinkStore, drink: $drinks, show_sheet: $show_sheet)
         }
         

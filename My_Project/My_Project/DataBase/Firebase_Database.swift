@@ -45,6 +45,7 @@ class DrinkStore: ObservableObject {
                 do {
                     let drinkData = try JSONSerialization.data(withJSONObject: json)
                     let drink = try self.decoder.decode(drink_s.self, from: drinkData)
+                    self.drinks.append(drink)
                     
                 } catch {
                     print("an error occurred", error)

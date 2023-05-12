@@ -134,12 +134,6 @@ struct Register_Drink: View {
                 
             }
             .position(x: geo.size.width / 2, y: geo.size.height / 1.6)
-            .onAppear{
-                drinkStore.listenToRealtimeDatabase()
-            }
-            .onDisappear{
-                drinkStore.stopListening()
-            }
             
 
         }
