@@ -57,6 +57,7 @@ struct Drink_List: View {
                     })
                     .onDisappear{
                         drinkStore.stopListening()
+                        print("stop listening")
                     }
                 }
 
