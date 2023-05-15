@@ -16,7 +16,7 @@ import RealmSwift
 struct Login_View: View {
     
     @EnvironmentObject var kakaoAuthVM: Kakao_AuthVM
-    @ObservedObject var drinkStore: DrinkStore = DrinkStore()
+    @EnvironmentObject var drinkStore: DrinkStore
     @State var drink: [Drink] = []
     
     var body: some View {
@@ -36,7 +36,7 @@ struct Login_View: View {
 
                     // Kakao Login Button
                     
-                    NavigationLink(destination: Signin_Complete(drinkStore: drinkStore, drink: self.drink), isActive: $kakaoAuthVM.isLoggedIn,
+                    NavigationLink(destination: Signin_Complete(drink: self.drink), isActive: $kakaoAuthVM.isLoggedIn,
                                    label:{
                         Button(action: {
                             

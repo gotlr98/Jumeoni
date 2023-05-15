@@ -12,7 +12,7 @@ import RealmSwift
 
 struct Drink_List: View {
     
-    @ObservedObject var drinkStore: DrinkStore
+    @EnvironmentObject var drinkStore: DrinkStore
     
     @State var selected_type: Drink.drink_type = .makgeolli
     @State var show_sheet: Bool = false
@@ -34,7 +34,7 @@ struct Drink_List: View {
         GridItem(.flexible())
     ]
     
-    @State var drinks = Signin_Complete(drinkStore: DrinkStore()).drink
+    @State var drinks = Signin_Complete().drink
     
     @State var spirits_review: Results<Spirits_Review> = get_All_Spirits_Review()
     @State var makgeolli_review: Results<Makgeolli_Review> = get_All_Makgeolli_Review()
@@ -170,7 +170,7 @@ struct Drink_List: View {
                 Text("닫기")
             })
         
-            Register_Drink(drinkStore: drinkStore, drink: $drinks, show_sheet: $show_sheet)
+            Register_Drink(drink: $drinks, show_sheet: $show_sheet)
         }
         
         .navigationViewStyle(.stack)

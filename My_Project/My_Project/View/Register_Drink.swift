@@ -13,7 +13,7 @@ import Kingfisher
 
 struct Register_Drink: View {
     
-    @ObservedObject var drinkStore: DrinkStore
+    @EnvironmentObject var drinkStore: DrinkStore
     
     @State var selected_type: Drink.drink_type = Drink.drink_type.makgeolli
     @State var alertStat: Bool = false

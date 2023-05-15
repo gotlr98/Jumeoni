@@ -15,7 +15,7 @@ enum Tabs{
 struct Signin_Complete: View{
     
     @EnvironmentObject var kakao: Kakao_AuthVM
-    @ObservedObject var drinkStore: DrinkStore
+    @EnvironmentObject var drinkStore: DrinkStore
     
     @State var isToolBarItemHidden: Bool = true
     @State var tabSelection: Tabs = .tab1
@@ -27,7 +27,7 @@ struct Signin_Complete: View{
         NavigationView{
             TabView(selection: $tabSelection){
 
-                Drink_List(drinkStore: drinkStore, selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden, drinks: self.drink)
+                Drink_List(selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden, drinks: self.drink)
                     .tabItem{
                         Image(systemName: "wineglass.fill")
                     }
@@ -81,7 +81,8 @@ struct Signin_Complete: View{
 
 struct Signin_Complete_Previews: PreviewProvider{
     static var previews: some View{
-        Signin_Complete(drinkStore: DrinkStore())
+        Signin_Complete()
             .environmentObject(Kakao_AuthVM())
+            .environmentObject(DrinkStore())
     }
 }
