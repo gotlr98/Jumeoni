@@ -80,10 +80,10 @@ struct Login_View: View {
                             
 
                                 
-//                            drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: "test1", price: 1000, drink_type: "spirits", img_url: ""))
-//                                
-//                            print(drinkStore.drinks)
-//                            print("개")
+                            drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: "test1", price: 1000, drink_type: "spirits", img_url: ""))
+                                
+                            print(drinkStore.drinks)
+                            print("개")
                             
                         }, label: {
                             Rectangle()
