@@ -24,7 +24,6 @@ struct Review_View: View {
             
             Text(drink.name + "리뷰")
            
-            
             List{
                 if selected_type == .makgeolli{
                     ForEach(makgeolli_review, id: \.self){ review in
