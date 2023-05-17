@@ -26,7 +26,7 @@ struct Login_View: View {
             ZStack {
                 GeometryReader{ geo in
                     
-                    Text("酒머니")
+                    Text("주(酒)머니")
                         .frame(alignment: .center)
                         .tracking(7)
                         .foregroundColor(Color.white)
