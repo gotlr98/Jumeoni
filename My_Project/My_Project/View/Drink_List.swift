@@ -20,14 +20,7 @@ struct Drink_List: View {
     @Binding var isToolBarItemHidden: Bool
     @State private var dismissed: Bool = false
     
-    
-//    @State private var drinks = [
-//        Drink(id: UUID(), name: "cham", type: Drink.drink_type.makgeolli, price: 1950, img_url: "1"),
-//        Drink(id: UUID(), name: "cass", type: Drink.drink_type.makgeolli, price: 1500, img_url: "1"),
-//        Drink(id: UUID(), name: "terra", type: Drink.drink_type.makgeolli, price: 1500, img_url: "1"),
-//        Drink(id: UUID(), name: "cheoeum", type: Drink.drink_type.makgeolli, price: 1950, img_url: "1"),
-//        Drink(id: UUID(), name: "jangsoo", type: Drink.drink_type.makgeolli, price: 1200, img_url: "1")
-//    ]
+
 
     let columns = [
         GridItem(.flexible()),
@@ -50,15 +43,17 @@ struct Drink_List: View {
                     NavigationLink(destination: Review_View(drink: selected_drink, makgeolli_review: $makgeolli_review, spirits_review: $spirits_review, selected_type: $selected_type), isActive: $cliked_button, label: {
                         EmptyView()
                     })
-                    .onAppear(perform: {
-                        drinkStore.listenToRealtimeDatabase()
-                        print(drinkStore.drinks)
-                        print(drinkStore.drinks.count)
-                    })
-                    .onDisappear{
-                        drinkStore.stopListening()
-                        print("stop listening")
-                    }
+                    
+
+                }
+                .onAppear(perform: {
+                    drinkStore.listenToRealtimeDatabase()
+                    print(drinkStore.drinks)
+                    print(drinkStore.drinks.count)
+                })
+                .onDisappear{
+                    drinkStore.stopListening()
+                    print("view disappear")
                 }
 
                 .opacity(0.0)

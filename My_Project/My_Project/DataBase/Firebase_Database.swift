@@ -19,6 +19,7 @@ struct drink_s: Codable, Identifiable, Hashable{
 }
 
 class DrinkStore: ObservableObject {
+    
     @Published var drinks: [drink_s] = []
     @Published var changeCount: Int = 0
     
@@ -97,15 +98,15 @@ class DrinkStore: ObservableObject {
                 }
             }
         
-        databasePath
-            .observe(.value){[weak self] snapshot in
-                guard
-                    let self = self
-                else {
-                    return
-                }
-                self.changeCount += 1
-            }
+//        databasePath
+//            .observe(.value){[weak self] snapshot in
+//                guard
+//                    let self = self
+//                else {
+//                    return
+//                }
+//                self.changeCount += 1
+//            }
     }
     
     func stopListening() {

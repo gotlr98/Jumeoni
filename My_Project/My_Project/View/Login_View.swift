@@ -16,7 +16,7 @@ import RealmSwift
 struct Login_View: View {
     
     @EnvironmentObject var kakaoAuthVM: Kakao_AuthVM
-    @EnvironmentObject var drinkStore: DrinkStore
+//    @EnvironmentObject var drinkStore: DrinkStore
     @State var drink: [Drink] = []
     
     var body: some View {
@@ -80,10 +80,10 @@ struct Login_View: View {
                             
 
                                 
-                            drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: "test1", price: 1000, drink_type: "spirits", img_url: ""))
-                                
-                            print(drinkStore.drinks)
-                            print("개")
+//                            drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: "test1", price: 1000, drink_type: "spirits", img_url: ""))
+//
+//                            print(drinkStore.drinks)
+//                            print("개")
                             
                         }, label: {
                             Rectangle()
@@ -106,12 +106,6 @@ struct Login_View: View {
             .background(Color.indigo)
         }
         .navigationViewStyle(.stack)
-//        .onAppear{
-//            drinkStore.listenToRealtimeDatabase()
-//        }
-//        .onDisappear{
-//            drinkStore.stopListening()
-//        }
         
     }
 
