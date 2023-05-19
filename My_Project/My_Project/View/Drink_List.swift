@@ -20,8 +20,6 @@ struct Drink_List: View {
     @Binding var isToolBarItemHidden: Bool
     @State private var dismissed: Bool = false
     
-
-
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -43,18 +41,17 @@ struct Drink_List: View {
                     NavigationLink(destination: Review_View(drink: selected_drink, makgeolli_review: $makgeolli_review, spirits_review: $spirits_review, selected_type: $selected_type), isActive: $cliked_button, label: {
                         EmptyView()
                     })
-                    
+                    .onAppear(perform: {
+                        drinkStore.listenToRealtimeDatabase()
+                        print(drinkStore.drinks)
+                        print(drinkStore.drinks.count)
+                    })
+                    .onDisappear{
+                        drinkStore.stopListening()
+                        print("view disappear")
+                    }
+                }
 
-                }
-                .onAppear(perform: {
-                    drinkStore.listenToRealtimeDatabase()
-                    print(drinkStore.drinks)
-                    print(drinkStore.drinks.count)
-                })
-                .onDisappear{
-                    drinkStore.stopListening()
-                    print("view disappear")
-                }
 
                 .opacity(0.0)
                 .buttonStyle(PlainButtonStyle())
@@ -94,6 +91,8 @@ struct Drink_List: View {
                                 RoundedRectangle(cornerRadius: 16)
                                     .stroke(Color.blue, lineWidth: 4)
                             )
+                    
+                        
                         
 
                 })
@@ -168,7 +167,7 @@ struct Drink_List: View {
             Register_Drink(drink: $drinks, show_sheet: $show_sheet)
         }
         
-        .navigationViewStyle(.stack)
+//        .navigationViewStyle(.stack)
     }
 }
 
