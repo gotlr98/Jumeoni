@@ -21,7 +21,6 @@ struct drink_s: Codable, Identifiable, Hashable{
 class DrinkStore: ObservableObject {
     
     @Published var drinks: [drink_s] = []
-    @Published var drink_number: UInt = 0
     
     let ref: DatabaseReference? = Database.database().reference() // (1)
     
@@ -123,9 +122,10 @@ class DrinkStore: ObservableObject {
 //            self.drink_number = snapshot.childrenCount
 //        })
         
-        self.drink_number += 1
         
-        self.ref?.child("drinks").child("\(self.drink_number)").setValue([
+        let key = ref?.child("drinks").childByAutoId().key
+        
+        self.ref?.child("drinks").child("\(key)").setValue([
             "id": drink.id,
             "name": drink.name,
             "drink_type": drink.drink_type,
@@ -177,51 +177,35 @@ class DrinkStore: ObservableObject {
         ref?.child("drinks/\(key)").removeValue()
     }
     
-    func editDrink(drink: drink_s) {
-        let updates: [String : Any] = [
-            "id": drink.id,
-            "drink_type": drink.drink_type,
-            "price": drink.price,
-            "img_url": drink.img_url
-        ]
-        
-        let childUpdates = ["drinks/\(self.drink_number)": updates]
-        for (index, drinkItem) in drinks.enumerated() where drinkItem.id == drink.id {
-            drinks[index] = drink
-        }
-        self.ref?.updateChildValues(childUpdates)
-        
-    }
+//    func editDrink(drink: drink_s) {
+//        let updates: [String : Any] = [
+//            "id": drink.id,
+//            "drink_type": drink.drink_type,
+//            "price": drink.price,
+//            "img_url": drink.img_url
+//        ]
+//        
+//        let childUpdates = ["drinks/\(self.drink_number)": updates]
+//        for (index, drinkItem) in drinks.enumerated() where drinkItem.id == drink.id {
+//            drinks[index] = drink
+//        }
+//        self.ref?.updateChildValues(childUpdates)
+//        
+//    }
     
     func getDrink(){
+
         ref?.child("drinks").observeSingleEvent(of: .value, with: { snapshot in
 
             
-            let value = snapshot.value as? NSDictionary
+            for child in snapshot.children{
+                let autoIdSnap = child as! DataSnapshot
+                let childDict = autoIdSnap.value as! [String: Any]
+                print(childDict["drink_type"]!)
+            }
             
-//            for i in 1...self.drink_number{
-//                let drink = value?[i] as? String ?? ""
-//                print(drink["drink_type"])
-//            }
-            print(value)
-//            let drink_type = value?["drink_type"] as? String ?? ""
-//            print(drink_type)
-//            print(value)
-        })
-    }
-    
-    func set_drink_count(){
-        
-        self.ref?.child("drinks").observeSingleEvent(of: .value, with: { snapshot in
-            
-            self.drink_number = snapshot.childrenCount
-            print("set drink count \(self.drink_number)")
 
         })
-        
-        
     }
-    
-    
-    
+
 }

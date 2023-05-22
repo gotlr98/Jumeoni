@@ -34,7 +34,6 @@ struct Signin_Complete: View{
                     .tag(Tabs.tab1)
                     .onAppear {
                         self.isToolBarItemHidden = true
-                        drinkStore.drink_number
                     }
                 
 //                Shop(url: "", isToolBarItemHidden: $isToolBarItemHidden)

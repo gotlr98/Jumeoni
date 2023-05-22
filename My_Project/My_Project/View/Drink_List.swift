@@ -42,13 +42,14 @@ struct Drink_List: View {
                         EmptyView()
                     })
                     .onAppear(perform: {
-                        drinkStore.listenToRealtimeDatabase()
-                        print(drinkStore.drinks)
-                        print(drinkStore.drinks.count)
+//                        drinkStore.listenToRealtimeDatabase()
+//                        print(drinkStore.drinks)
+//                        print(drinkStore.drinks.count)
+                        drinkStore.getDrink()
                     })
                     .onDisappear{
-                        drinkStore.stopListening()
-                        print("view disappear")
+//                        drinkStore.stopListening()
+//                        print("view disappear")
                     }
                 }
 

@@ -79,7 +79,6 @@ struct Login_View: View {
                             for i in 1...2{
                                 set_Spirits_Review(name: "Unknown", drink_name: "한주양조 한주 35도", scent: 2.0, bodied: 3.0, drinkability: 3.0, rating: 3.0, comment: "좋아요")
                             }
-                            drinkStore.set_drink_count()
                             
                             
                             drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: "test1", price: 1000, drink_type: "spirits", img_url: ""))
