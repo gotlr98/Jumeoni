@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		8A2C72A529DC0182006B13AB /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C72A429DC0182006B13AB /* Review.swift */; };
 		8A36991829E3C5C00098CBE4 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36991729E3C5C00098CBE4 /* Drink.swift */; };
+		8A4461FA2A17256A002F1472 /* Firebase_User_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4461F92A17256A002F1472 /* Firebase_User_Review.swift */; };
 		8A45E8A129F2849B00D5EEDF /* Store_WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */; };
 		8A56536D2A0A4EFC00523C6A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8A56536C2A0A4EFC00523C6A /* FirebaseDatabase */; };
 		8A56536F2A0A4EFC00523C6A /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8A56536E2A0A4EFC00523C6A /* FirebaseDatabaseSwift */; };
 		8A5653712A0A4EFC00523C6A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8A5653702A0A4EFC00523C6A /* FirebaseFirestore */; };
 		8A5653732A0A4EFC00523C6A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8A5653722A0A4EFC00523C6A /* FirebaseFirestoreSwift */; };
-		8A5653752A0B47D400523C6A /* Firebase_Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5653742A0B47D400523C6A /* Firebase_Database.swift */; };
+		8A5653752A0B47D400523C6A /* Firebase_Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5653742A0B47D400523C6A /* Firebase_Drink.swift */; };
 		8A56537B2A0B58F600523C6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A56537A2A0B58F600523C6A /* GoogleService-Info.plist */; };
 		8A6327AE29F77ED3007B1BFD /* User_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6327AD29F77ED3007B1BFD /* User_View.swift */; };
 		8A93F60729EE523200663E96 /* Makgeolli_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93F60629EE523200663E96 /* Makgeolli_Review.swift */; };
@@ -55,8 +56,9 @@
 /* Begin PBXFileReference section */
 		8A2C72A429DC0182006B13AB /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		8A36991729E3C5C00098CBE4 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		8A4461F92A17256A002F1472 /* Firebase_User_Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_User_Review.swift; sourceTree = "<group>"; };
 		8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store_WebView.swift; sourceTree = "<group>"; };
-		8A5653742A0B47D400523C6A /* Firebase_Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_Database.swift; sourceTree = "<group>"; };
+		8A5653742A0B47D400523C6A /* Firebase_Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_Drink.swift; sourceTree = "<group>"; };
 		8A56537A2A0B58F600523C6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A6327AD29F77ED3007B1BFD /* User_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User_View.swift; sourceTree = "<group>"; };
 		8A93F60629EE523200663E96 /* Makgeolli_Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Makgeolli_Review.swift; sourceTree = "<group>"; };
@@ -119,7 +121,8 @@
 				8A36991729E3C5C00098CBE4 /* Drink.swift */,
 				8A93F60829EE591200663E96 /* Spirits_Review.swift */,
 				8A93F60629EE523200663E96 /* Makgeolli_Review.swift */,
-				8A5653742A0B47D400523C6A /* Firebase_Database.swift */,
+				8A5653742A0B47D400523C6A /* Firebase_Drink.swift */,
+				8A4461F92A17256A002F1472 /* Firebase_User_Review.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -294,7 +297,7 @@
 				8AF36D3329C2EAE7008CDC21 /* Kakao_AuthVM.swift in Sources */,
 				8AD0C11729C0428800A5D77D /* Signin_Complete.swift in Sources */,
 				8AF36D3529C2EB3E008CDC21 /* SceneDelegate.swift in Sources */,
-				8A5653752A0B47D400523C6A /* Firebase_Database.swift in Sources */,
+				8A5653752A0B47D400523C6A /* Firebase_Drink.swift in Sources */,
 				8A6327AE29F77ED3007B1BFD /* User_View.swift in Sources */,
 				8AE6765129D54CB40083C278 /* Shop.swift in Sources */,
 				8A93F60B29EE5B5F00663E96 /* Makgeolli_Review_View.swift in Sources */,
@@ -312,6 +315,7 @@
 				8AE9212C29DD40EB00C22025 /* Review_View.swift in Sources */,
 				8A36991829E3C5C00098CBE4 /* Drink.swift in Sources */,
 				8A9B587329DD1E2A009277EF /* Register_Drink.swift in Sources */,
+				8A4461FA2A17256A002F1472 /* Firebase_User_Review.swift in Sources */,
 				8AB437FC2A04B9A600072D1C /* Spirits_Review_View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

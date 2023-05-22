@@ -16,7 +16,8 @@ import RealmSwift
 struct Login_View: View {
     
     @EnvironmentObject var kakaoAuthVM: Kakao_AuthVM
-//    @EnvironmentObject var drinkStore: DrinkStore
+    @EnvironmentObject var drinkStore: DrinkStore
+    @EnvironmentObject var userreview: UserReviewStore
     @State var drink: [Drink] = []
     
     var body: some View {
@@ -46,6 +47,7 @@ struct Login_View: View {
                             remove_Drink()
 //                            set_primary_drink()
                             remove_all_Makgeolli_review()
+                            
                                 
                             if get_All_Drink().count == 0{
                                 set_primary_drink()
@@ -77,10 +79,10 @@ struct Login_View: View {
                             for i in 1...2{
                                 set_Spirits_Review(name: "Unknown", drink_name: "한주양조 한주 35도", scent: 2.0, bodied: 3.0, drinkability: 3.0, rating: 3.0, comment: "좋아요")
                             }
+                            drinkStore.set_drink_count()
                             
-
-                                
-//                            drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: "test1", price: 1000, drink_type: "spirits", img_url: ""))
+                            
+                            drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: "test1", price: 1000, drink_type: "spirits", img_url: ""))
 //
 //                            print(drinkStore.drinks)
 //                            print("개")

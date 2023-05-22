@@ -137,6 +137,9 @@ struct Register_Drink: View {
             
 
         }
+        .onAppear{
+            drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: "test1", price: 1000, drink_type: "spirits", img_url: ""))
+        }
         
         
     }
