@@ -14,7 +14,7 @@ struct Drink_List: View {
     
     @EnvironmentObject var drinkStore: DrinkStore
     
-    @State var selected_type: Drink.drink_type = .makgeolli
+    @State var selected_type: drink_s.drink_type = .makgeolli
     @State var show_sheet: Bool = false
     @State var cliked_button: Bool = false
     @Binding var isToolBarItemHidden: Bool
@@ -25,15 +25,19 @@ struct Drink_List: View {
         GridItem(.flexible())
     ]
     
-    @State var drinks = Signin_Complete().drink
+//    @State var drinks = Signin_Complete().drink
+    @State var drinks: [drink_s] = []
+
     
     @State var spirits_review: Results<Spirits_Review> = get_All_Spirits_Review()
     @State var makgeolli_review: Results<Makgeolli_Review> = get_All_Makgeolli_Review()
-    @State var selected_drink = Drink(id: UUID(), name: "", type: .makgeolli, price: 0, img_url: "")
+    @State var selected_drink = drink_s(id: UUID().uuidString, name: "", price: 0, drink_type: "", img_url: "")
+
     
     var body: some View {
         
-        let filter_drink = drinks.filter{$0.type == selected_type}
+//        let filter_drink = drinkStore.drinks.filter{$0.drink_type == selected_type}
+        let filter_drink = drinkStore.drinks
         
         GeometryReader{ geo in
             ScrollView{
@@ -41,19 +45,10 @@ struct Drink_List: View {
                     NavigationLink(destination: Review_View(drink: selected_drink, makgeolli_review: $makgeolli_review, spirits_review: $spirits_review, selected_type: $selected_type), isActive: $cliked_button, label: {
                         EmptyView()
                     })
-                    .onAppear(perform: {
-//                        drinkStore.listenToRealtimeDatabase()
-//                        print(drinkStore.drinks)
-//                        print(drinkStore.drinks.count)
-                        drinkStore.getDrink()
-                    })
-                    .onDisappear{
-//                        drinkStore.stopListening()
-//                        print("view disappear")
-                    }
                 }
-
-
+                .onAppear{
+                    print(filter_drink)
+                }
                 .opacity(0.0)
                 .buttonStyle(PlainButtonStyle())
                 
@@ -83,8 +78,6 @@ struct Drink_List: View {
                             }
 
                         })
-//                            let filter_review = review.filter{$0.drink_name == drink.name}
-                        
                         
                         }
                         .padding()

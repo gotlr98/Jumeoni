@@ -10,14 +10,14 @@ import RealmSwift
 
 struct Review_View: View {
     
-    var drink: Drink
+    var drink: drink_s
     
     @Binding var makgeolli_review: Results<Makgeolli_Review>
     @Binding var spirits_review: Results<Spirits_Review>
     
     @State var show_sheet: Bool = false
     @State private var dismissed: Bool = false
-    @Binding var selected_type: Drink.drink_type
+    @Binding var selected_type: drink_s.drink_type
     
     var body: some View {
         VStack {

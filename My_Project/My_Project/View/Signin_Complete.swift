@@ -20,7 +20,7 @@ struct Signin_Complete: View{
     @State var isToolBarItemHidden: Bool = true
     @State var tabSelection: Tabs = .tab1
     
-    var drink: [Drink] = []
+    var drink: [drink_s] = []
     
     var body: some View{
         
@@ -34,6 +34,7 @@ struct Signin_Complete: View{
                     .tag(Tabs.tab1)
                     .onAppear {
                         self.isToolBarItemHidden = true
+//                        drink = drinkStore.drinks
                     }
                 
 //                Shop(url: "", isToolBarItemHidden: $isToolBarItemHidden)

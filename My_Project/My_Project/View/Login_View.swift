@@ -18,7 +18,7 @@ struct Login_View: View {
     @EnvironmentObject var kakaoAuthVM: Kakao_AuthVM
     @EnvironmentObject var drinkStore: DrinkStore
     @EnvironmentObject var userreview: UserReviewStore
-    @State var drink: [Drink] = []
+    @State var drink: [drink_s] = []
     
     var body: some View {
         
@@ -53,38 +53,39 @@ struct Login_View: View {
                                 set_primary_drink()
                             }
                             
-                            for i in get_All_Drink(){
-                                
-                                if i.drink_type == "makgeolli"{
-                                    self.drink.append(
-                                    Drink(id: UUID(), name: i.name, type: .makgeolli, price: i.price, img_url: i.img_url)
-                                    )
-                                }
-                                
-                                else if i.drink_type == "spirits"{
-                                    self.drink.append(
-                                    Drink(id: UUID(), name: i.name, type: .spirits, price: i.price, img_url: i.img_url)
-                                    )
-                                }
-                                
-                            }
+//                            for i in get_All_Drink(){
+//                                
+//                                if i.drink_type == "makgeolli"{
+//                                    self.drink.append(
+//                                    Drink(id: UUID(), name: i.name, type: .makgeolli, price: i.price, img_url: i.img_url)
+//                                    )
+//                                }
+//                                
+//                                else if i.drink_type == "spirits"{
+//                                    self.drink.append(
+//                                    Drink(id: UUID(), name: i.name, type: .spirits, price: i.price, img_url: i.img_url)
+//                                    )
+//                                }
+//                                
+//                            }
                             
-                            for i in 1...2{
-                                set_Makgeolli_Review(name: "장해식", drink_name: "대대포 블루 꿀 막걸리", sweet: 3.0, bitter: Double(i), sour: 3.0, refreshing: 4.0, thick: 2.0, rating: 3.0, comment: "good")
-                            }
-                            for i in 1...2{
-                                set_Makgeolli_Review(name: "장해식", drink_name: "사곡양조 공주 알밤 왕밤주", sweet: Double(i), bitter: 2.0, sour: 3.0, refreshing: 4.0, thick: 2.0, rating: 3.0, comment: "good")
-                            }
-                            
-                            for i in 1...2{
-                                set_Spirits_Review(name: "Unknown", drink_name: "한주양조 한주 35도", scent: 2.0, bodied: 3.0, drinkability: 3.0, rating: 3.0, comment: "좋아요")
-                            }
-                            
-                            
-                            drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: "test1", price: 1000, drink_type: "spirits", img_url: ""))
+//                            for i in 1...2{
+//                                set_Makgeolli_Review(name: "장해식", drink_name: "대대포 블루 꿀 막걸리", sweet: 3.0, bitter: Double(i), sour: 3.0, refreshing: 4.0, thick: 2.0, rating: 3.0, comment: "good")
+//                            }
+//                            for i in 1...2{
+//                                set_Makgeolli_Review(name: "장해식", drink_name: "사곡양조 공주 알밤 왕밤주", sweet: Double(i), bitter: 2.0, sour: 3.0, refreshing: 4.0, thick: 2.0, rating: 3.0, comment: "good")
+//                            }
 //
-//                            print(drinkStore.drinks)
-//                            print("개")
+//                            for i in 1...2{
+//                                set_Spirits_Review(name: "Unknown", drink_name: "한주양조 한주 35도", scent: 2.0, bodied: 3.0, drinkability: 3.0, rating: 3.0, comment: "좋아요")
+//                            }
+                            
+                            
+                            drinkStore.set_base_drink()
+                            
+                            drinkStore.setDrink()
+                            
+                            print(drinkStore.drinks)
                             
                         }, label: {
                             Rectangle()

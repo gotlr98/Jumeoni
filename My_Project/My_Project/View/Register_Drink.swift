@@ -15,7 +15,7 @@ struct Register_Drink: View {
     
     @EnvironmentObject var drinkStore: DrinkStore
     
-    @State var selected_type: Drink.drink_type = Drink.drink_type.makgeolli
+    @State var selected_type: drink_s.drink_type = drink_s.drink_type.makgeolli
     @State var alertStat: Bool = false
     @State var input_name: String = ""
     @State var input_price: String = ""
@@ -23,12 +23,12 @@ struct Register_Drink: View {
     @State var show_alert: Bool = false
     @State var is_url_valid: Bool = false
     @State var button_clicked: Bool = false
-    @Binding var drink: [Drink]
+    @Binding var drink: [drink_s]
     @Binding var show_sheet: Bool
     
     func register_drink(id: UUID, name: String, type: Drink.drink_type, price: Int64, img_url: String){
 
-            drink.append(Drink(id: UUID(), name: name, type: type, price: Int64(price), img_url: img_url))
+//            drink.append(Drink(id: UUID(), name: name, type: type, price: Int64(price), img_url: img_url))
             switch type {
             case .makgeolli:
                 set_drink(name: name, price: Int64(price), drink_type: "makgeolli", img_url: img_url)
@@ -112,8 +112,8 @@ struct Register_Drink: View {
                         show_alert = true
                     }
                     else{
-                        register_drink(id: UUID(), name: input_name, type: selected_type, price: Int64(input_price)!, img_url: input_img_url)
-                        drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: input_name, price: Int64(input_price)!, drink_type: "makgeolli", img_url: input_img_url))
+//                        register_drink(id: UUID(), name: input_name, type: selected_type, price: Int64(input_price)!, img_url: input_img_url)
+//                        drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: input_name, price: Int64(input_price)!, drink_type: "", img_url: input_img_url))
                         show_sheet.toggle()
                     }
                     
@@ -137,11 +137,6 @@ struct Register_Drink: View {
             
 
         }
-        .onAppear{
-            drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: "test1", price: 1000, drink_type: "spirits", img_url: ""))
-        }
-        
-        
     }
 }
 //
