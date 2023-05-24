@@ -99,9 +99,9 @@ struct Spirits_Review_View: View {
                     show_alert = true
                 }
                 else{
-                    let spirits_review = Spirits_Review(name: kakao.user_name, drink_name: drink.name, scent: scent, bodied: bodied, drinkability: drinkability, rating: rating, comment: comment)
-                    set_Spirits_Review(name: kakao.user_name, drink_name: drink.name, scent: scent, bodied: bodied, drinkability: drinkability, rating: rating, comment: comment)
-                    kakao.add_user_spirits_review(review: spirits_review)
+//                    let spirits_review = Spirits_Review(name: kakao.user_name, drink_name: drink.name, scent: scent, bodied: bodied, drinkability: drinkability, rating: rating, comment: comment)
+//                    set_Spirits_Review(name: kakao.user_name, drink_name: drink.name, scent: scent, bodied: bodied, drinkability: drinkability, rating: rating, comment: comment)
+//                    kakao.add_user_spirits_review(review: spirits_review)
                     show_sheet.toggle()
                 }
                 

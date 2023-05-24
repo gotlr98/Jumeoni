@@ -44,14 +44,14 @@ struct Login_View: View {
                             
                             kakaoAuthVM.handleKakaoLogin()
                             
-                            remove_Drink()
+//                            remove_Drink()
 //                            set_primary_drink()
-                            remove_all_Makgeolli_review()
+//                            remove_all_Makgeolli_review()
                             
                                 
-                            if get_All_Drink().count == 0{
-                                set_primary_drink()
-                            }
+//                            if get_All_Drink().count == 0{
+//                                set_primary_drink()
+//                            }
                             
 //                            for i in get_All_Drink(){
 //                                
@@ -81,9 +81,9 @@ struct Login_View: View {
 //                            }
                             
                             
-                            drinkStore.set_base_drink()
+//                            drinkStore.set_base_drink()
                             
-                            drinkStore.setDrink()
+//                            drinkStore.setDrink()
                             
                             print(drinkStore.drinks)
                             

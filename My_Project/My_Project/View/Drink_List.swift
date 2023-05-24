@@ -19,6 +19,8 @@ struct Drink_List: View {
     @State var cliked_button: Bool = false
     @Binding var isToolBarItemHidden: Bool
     @State private var dismissed: Bool = false
+    @State var didAppear = false
+    @State var appearCount = 0
     
     let columns = [
         GridItem(.flexible()),
@@ -29,8 +31,8 @@ struct Drink_List: View {
     @State var drinks: [drink_s] = []
 
     
-    @State var spirits_review: Results<Spirits_Review> = get_All_Spirits_Review()
-    @State var makgeolli_review: Results<Makgeolli_Review> = get_All_Makgeolli_Review()
+//    @State var spirits_review: Results<Spirits_Review> = get_All_Spirits_Review()
+//    @State var makgeolli_review: Results<Makgeolli_Review> = get_All_Makgeolli_Review()
     @State var selected_drink = drink_s(id: UUID().uuidString, name: "", price: 0, drink_type: "", img_url: "")
 
     
@@ -42,12 +44,17 @@ struct Drink_List: View {
         GeometryReader{ geo in
             ScrollView{
                 ZStack {
-                    NavigationLink(destination: Review_View(drink: selected_drink, makgeolli_review: $makgeolli_review, spirits_review: $spirits_review, selected_type: $selected_type), isActive: $cliked_button, label: {
+//                    NavigationLink(destination: Review_View(drink: selected_drink, makgeolli_review: $makgeolli_review, spirits_review: $spirits_review, selected_type: $selected_type), isActive: $cliked_button, label: {
+//                        EmptyView()
+//                    })
+                    NavigationLink(destination: Review_View(drink: selected_drink, selected_type: $selected_type), isActive: $cliked_button, label: {
                         EmptyView()
                     })
                 }
-                .onAppear{
-                    print(filter_drink)
+                .onAppear(perform: onLoad)
+                .onDisappear{
+                    drinkStore.stopListening()
+                    didAppear = false
                 }
                 .opacity(0.0)
                 .buttonStyle(PlainButtonStyle())
@@ -85,9 +92,6 @@ struct Drink_List: View {
                                 RoundedRectangle(cornerRadius: 16)
                                     .stroke(Color.blue, lineWidth: 4)
                             )
-                    
-                        
-                        
 
                 })
                 
@@ -104,15 +108,7 @@ struct Drink_List: View {
             }
             
         }
-//        .onAppear{
-//            drinkStore.listenToRealtimeDatabase()
-//            print(drinkStore.drinks)
-//            print(drinkStore.drinks.count)
-//
-//        }
-//        .onDisappear{
-//            drinkStore.stopListening()
-//        }
+
         
         .toolbar{
             if isToolBarItemHidden{
@@ -163,7 +159,19 @@ struct Drink_List: View {
         
 //        .navigationViewStyle(.stack)
     }
+    
+    func onLoad(){
+        if !didAppear{
+            appearCount += 1
+            
+            drinkStore.listenToRealtimeDatabase()
+            print(drinkStore.drinks.count)
+        }
+        didAppear = true
+    }
 }
+
+
 
 //struct Drink_Info_Previews: PreviewProvider {
 //    static var previews: some View {

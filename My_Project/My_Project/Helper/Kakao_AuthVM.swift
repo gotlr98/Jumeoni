@@ -17,7 +17,7 @@ class Kakao_AuthVM: ObservableObject{
     @Published var isLoggedIn : Bool = false
     @Published var user_name: String = ""
     @Published var email: String = ""
-    @Published var user: User_Info = User_Info()
+//    @Published var user: User_Info = User_Info()
     
     
 //    @MainActor
@@ -75,10 +75,10 @@ class Kakao_AuthVM: ObservableObject{
                                  }
 
                            self.user_name = name
-                           self.user.name = name
+//                           self.user.name = name
                            self.email = email
                            
-                           add_user(name: user_name)
+//                           add_user(name: user_name)
                        }
                    }
                     
@@ -116,10 +116,10 @@ class Kakao_AuthVM: ObservableObject{
 
                                self.user_name = name
 
-                               self.user.name = name
+//                               self.user.name = name
                                
-                               add_user(name: user_name)
-                               read_user()
+//                               add_user(name: user_name)
+//                               read_user()
                            }
                        }
                     }
@@ -153,18 +153,18 @@ class Kakao_AuthVM: ObservableObject{
 
     }
     
-    func add_user_makgeolli_review(review: Makgeolli_Review){
-        
-        user.makgeolli_reviews.append(review)
-        
-        self.objectWillChange.send()
-    }
-    
-    func add_user_spirits_review(review: Spirits_Review){
-        
-        user.spirits_reviews.append(review)
-        
-        self.objectWillChange.send()
-    }
+//    func add_user_makgeolli_review(review: Makgeolli_Review){
+//
+//        user.makgeolli_reviews.append(review)
+//
+//        self.objectWillChange.send()
+//    }
+//
+//    func add_user_spirits_review(review: Spirits_Review){
+//
+//        user.spirits_reviews.append(review)
+//
+//        self.objectWillChange.send()
+//    }
 
 }

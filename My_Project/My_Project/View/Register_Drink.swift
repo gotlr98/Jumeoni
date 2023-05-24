@@ -26,18 +26,18 @@ struct Register_Drink: View {
     @Binding var drink: [drink_s]
     @Binding var show_sheet: Bool
     
-    func register_drink(id: UUID, name: String, type: Drink.drink_type, price: Int64, img_url: String){
-
-//            drink.append(Drink(id: UUID(), name: name, type: type, price: Int64(price), img_url: img_url))
-            switch type {
-            case .makgeolli:
-                set_drink(name: name, price: Int64(price), drink_type: "makgeolli", img_url: img_url)
-            case .spirits:
-                set_drink(name: name, price: Int64(price), drink_type: "spirits", img_url: img_url)
-            }
-            self.is_url_valid = true
-            
-    }
+//    func register_drink(id: UUID, name: String, type: Drink.drink_type, price: Int64, img_url: String){
+//
+////            drink.append(Drink(id: UUID(), name: name, type: type, price: Int64(price), img_url: img_url))
+//            switch type {
+//            case .makgeolli:
+//                set_drink(name: name, price: Int64(price), drink_type: "makgeolli", img_url: img_url)
+//            case .spirits:
+//                set_drink(name: name, price: Int64(price), drink_type: "spirits", img_url: img_url)
+//            }
+//            self.is_url_valid = true
+//
+//    }
     
     var body: some View {
         
@@ -51,8 +51,8 @@ struct Register_Drink: View {
                 }
                 
                 Picker("종류", selection: $selected_type){
-                    Text("막걸리").tag(Drink.drink_type.makgeolli)
-                    Text("증류주").tag(Drink.drink_type.spirits)
+                    Text("막걸리").tag(drink_s.drink_type.makgeolli)
+                    Text("증류주").tag(drink_s.drink_type.spirits)
                 }
                 .pickerStyle(.segmented)
                 

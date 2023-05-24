@@ -113,9 +113,9 @@ struct Makgeolli_Review_View: View {
                     show_alert = true
                 }
                 else{
-                    let makgeolli_review = Makgeolli_Review(name: kakao.user_name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment, objectID: ObjectId())
-                    set_Makgeolli_Review(name: kakao.user_name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment)
-                    kakao.add_user_makgeolli_review(review: makgeolli_review)
+//                    let makgeolli_review = Makgeolli_Review(name: kakao.user_name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment, objectID: ObjectId())
+//                    set_Makgeolli_Review(name: kakao.user_name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment)
+//                    kakao.add_user_makgeolli_review(review: makgeolli_review)
                     show_sheet.toggle()
                 }
                 

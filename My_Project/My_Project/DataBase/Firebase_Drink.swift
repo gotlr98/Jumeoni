@@ -9,7 +9,7 @@ import Foundation
 import FirebaseDatabase
 import FirebaseDatabaseSwift
 
-struct drink_s: Identifiable, Hashable{
+struct drink_s: Identifiable, Hashable, Decodable{
     
     enum drink_type{
         case makgeolli, spirits
@@ -32,31 +32,31 @@ class DrinkStore: ObservableObject {
     private let decoder = JSONDecoder() // (2)
 
     
-//    func listenToRealtimeDatabase() {
-//
-//        guard let databasePath = ref?.child("drinks") else {
-//            return
-//        }
-//
-//
-//        databasePath
-//            .observe(.childAdded) { [weak self] snapshot, _ in
-//                guard
-//                    let self = self,
-//                    let json = snapshot.value as? [String: Any]
-//                else {
-//                    return
-//                }
-//                do {
-//                    let drinkData = try JSONSerialization.data(withJSONObject: json)
-//                    let drink = try self.decoder.decode(drink_s.self, from: drinkData)
-//                    self.drinks.append(drink)
-//
-//                } catch {
-//                    print("an error occurred", error)
-//                }
-//            }
-//
+    func listenToRealtimeDatabase() {
+
+        guard let databasePath = ref?.child("drinks") else {
+            return
+        }
+
+
+        databasePath
+            .observe(.childAdded) { [weak self] snapshot, _ in
+                guard
+                    let self = self,
+                    let json = snapshot.value as? [String: Any]
+                else {
+                    return
+                }
+                do {
+                    let drinkData = try JSONSerialization.data(withJSONObject: json)
+                    let drink = try self.decoder.decode(drink_s.self, from: drinkData)
+                    self.drinks.append(drink)
+
+                } catch {
+                    print("an error occurred", error)
+                }
+            }
+
 //        databasePath
 //            .observe(.childChanged){[weak self] snapshot, _ in
 //                guard
@@ -111,7 +111,7 @@ class DrinkStore: ObservableObject {
 //                }
 //                self.changeCount += 1
 //            }
-//    }
+    }
     
     func stopListening() {
         ref?.removeAllObservers()
@@ -170,7 +170,6 @@ class DrinkStore: ObservableObject {
                 let childDict = autoIdSnap.value as! [String: Any]
                 
                 self.drinks.append(drink_s(id: childDict["id"] as! String, name: childDict["name"] as! String, price: childDict["price"] as! Int64, drink_type: childDict["drink_type"] as! String, img_url: childDict["img_url"] as! String))
- 
             }
         })
     }
