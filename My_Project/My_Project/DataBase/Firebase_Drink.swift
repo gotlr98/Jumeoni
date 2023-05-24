@@ -25,6 +25,7 @@ struct drink_s: Identifiable, Hashable, Decodable{
 class DrinkStore: ObservableObject {
     
     @Published var drinks: [drink_s] = []
+    @Published var isListening: Bool = false
     
     let ref: DatabaseReference? = Database.database().reference() // (1)
     

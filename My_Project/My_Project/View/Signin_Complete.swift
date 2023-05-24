@@ -20,6 +20,9 @@ struct Signin_Complete: View{
     @State var isToolBarItemHidden: Bool = true
     @State var tabSelection: Tabs = .tab1
     
+    @State var didAppear = false
+    @State var appearCount = 0
+    
     var drink: [drink_s] = []
     
     var body: some View{
@@ -57,23 +60,30 @@ struct Signin_Complete: View{
             }
         }
         
-//        .onAppear(perform: {
-//            drinkStore.listenToRealtimeDatabase()
-//            print(drinkStore.drinks)
-//            print(drinkStore.drinks.count)
-//        })
-//        .onDisappear{
-//            drinkStore.stopListening()
-//        }
+        .onAppear(perform: onLoad)
+        .onDisappear{
+            didAppear = false
+        }
         
         .navigationTitle("안녕하세요 " + kakao.user_name + "님")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
     
         .navigationViewStyle(.stack)
-        
-        
 
+    }
+    
+    func onLoad(){
+        if !didAppear{
+            appearCount += 1
+            
+            if !drinkStore.isListening{
+                drinkStore.listenToRealtimeDatabase()
+                drinkStore.isListening = true
+            }
+            
+        }
+        didAppear = true
     }
 }
 

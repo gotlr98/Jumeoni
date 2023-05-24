@@ -19,8 +19,7 @@ struct Drink_List: View {
     @State var cliked_button: Bool = false
     @Binding var isToolBarItemHidden: Bool
     @State private var dismissed: Bool = false
-    @State var didAppear = false
-    @State var appearCount = 0
+
     
     let columns = [
         GridItem(.flexible()),
@@ -51,11 +50,11 @@ struct Drink_List: View {
                         EmptyView()
                     })
                 }
-                .onAppear(perform: onLoad)
-                .onDisappear{
-                    drinkStore.stopListening()
-                    didAppear = false
-                }
+//                .onAppear(perform: onLoad)
+//                .onDisappear{
+//                    drinkStore.stopListening()
+//                    didAppear = false
+//                }
                 .opacity(0.0)
                 .buttonStyle(PlainButtonStyle())
                 
@@ -94,15 +93,7 @@ struct Drink_List: View {
                             )
 
                 })
-                
-//                .onAppear(perform: {
-//                    drinkStore.listenToRealtimeDatabase()
-//                    print(drinkStore.drinks)
-//                    print(drinkStore.drinks.count)
-//                })
-//                .onDisappear{
-//                    drinkStore.stopListening()
-//                }
+
                 .padding()
 
             }
@@ -160,15 +151,7 @@ struct Drink_List: View {
 //        .navigationViewStyle(.stack)
     }
     
-    func onLoad(){
-        if !didAppear{
-            appearCount += 1
-            
-            drinkStore.listenToRealtimeDatabase()
-            print(drinkStore.drinks.count)
-        }
-        didAppear = true
-    }
+
 }
 
 

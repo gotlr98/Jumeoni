@@ -113,7 +113,7 @@ struct Register_Drink: View {
                     }
                     else{
 //                        register_drink(id: UUID(), name: input_name, type: selected_type, price: Int64(input_price)!, img_url: input_img_url)
-//                        drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: input_name, price: Int64(input_price)!, drink_type: "", img_url: input_img_url))
+                        drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: input_name, price: Int64(input_price)!, drink_type: "", img_url: input_img_url))
                         show_sheet.toggle()
                     }
                     

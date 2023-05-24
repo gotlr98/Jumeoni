@@ -108,6 +108,10 @@ struct Login_View: View {
             .background(Color.indigo)
         }
 //        .navigationViewStyle(.stack)
+        .onAppear{
+            drinkStore.stopListening()
+            drinkStore.drinks = []
+        }
         
     }
 
