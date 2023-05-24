@@ -25,6 +25,7 @@ struct drink_s: Identifiable, Hashable, Decodable{
 class DrinkStore: ObservableObject {
     
     @Published var drinks: [drink_s] = []
+    @Published var temp_drink: [drink_s] = []
     @Published var isListening: Bool = false
     
     let ref: DatabaseReference? = Database.database().reference() // (1)
@@ -154,17 +155,17 @@ class DrinkStore: ObservableObject {
 //        
 //    }
 //
-//    func setDrink(){
-//        ref?.child("drinks").observeSingleEvent(of: .value, with: { snapshot in
-//
-//            for child in snapshot.children{
-//                let autoIdSnap = child as! DataSnapshot
-//                let childDict = autoIdSnap.value as! [String: Any]
-//
-//                self.drinks.append(drink_s(id: childDict["id"] as! String, name: childDict["name"] as! String, price: childDict["price"] as! Int64, drink_type: childDict["drink_type"] as! String, img_url: childDict["img_url"] as! String))
-//            }
-//        })
-//    }
+    func setDrink(){
+        
+        ref?.child("drinks").observeSingleEvent(of: .value, with: { snapshot in
+            for child in snapshot.children{
+                let autoIdSnap = child as! DataSnapshot
+                let childDict = autoIdSnap.value as! [String: Any]
+                self.temp_drink.append(drink_s(id: childDict["id"] as! String, name: childDict["name"] as! String, price: childDict["price"] as! Int64, drink_type: childDict["drink_type"] as! String, img_url: childDict["img_url"] as! String))
+            }
+//            return temp_drink
+        })
+    }
     
     func set_base_drink(){
         

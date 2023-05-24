@@ -80,11 +80,9 @@ struct Login_View: View {
 //                            }
                             
                             
-                            drinkStore.set_base_drink()
+//                            drinkStore.set_base_drink()
                             
-//                            drinkStore.setDrink()
-                            
-                            print(drinkStore.drinks)
+                            self.drink = drinkStore.temp_drink
                             
                         }, label: {
                             Rectangle()
@@ -108,9 +106,13 @@ struct Login_View: View {
         }
 //        .navigationViewStyle(.stack)
         .onAppear{
+            drinkStore.setDrink()
             drinkStore.stopListening()
             drinkStore.drinks = []
         }
+        
+
+
         
     }
 

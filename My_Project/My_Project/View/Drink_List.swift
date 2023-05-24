@@ -42,15 +42,25 @@ struct Drink_List: View {
     
     var body: some View {
         
-//        let filter_drink = drinkStore.drinks.filter{$0.drink_type == selected_type}
-        let filter_drink = drinkStore.drinks.filter{ (element) -> Bool in
+//        let filter_drink = drinkStore.drinks.filter{ (element) -> Bool in
+//            if selected_type == .makgeolli{
+//                return element.drink_type == "makgeolli"
+//            }
+//            else if selected_type == .spirits{
+//                return element.drink_type == "spirits"
+//            }
+//
+//            return false
+//        }
+        
+        let filter_drink = drinks.filter{ (element) -> Bool in
             if selected_type == .makgeolli{
                 return element.drink_type == "makgeolli"
             }
             else if selected_type == .spirits{
                 return element.drink_type == "spirits"
             }
-            
+
             return false
         }
         
@@ -64,11 +74,6 @@ struct Drink_List: View {
                         EmptyView()
                     })
                 }
-//                .onAppear(perform: onLoad)
-//                .onDisappear{
-//                    drinkStore.stopListening()
-//                    didAppear = false
-//                }
                 .opacity(0.0)
                 .buttonStyle(PlainButtonStyle())
                 
@@ -110,6 +115,9 @@ struct Drink_List: View {
 
                 .padding()
 
+            }
+            .refreshable {
+                self.drinks = drinkStore.drinks
             }
             
         }
