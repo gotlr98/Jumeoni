@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Cosmos
-import RealmSwift
 
 struct MyCosmosView: UIViewRepresentable {
     @Binding var rating: Double

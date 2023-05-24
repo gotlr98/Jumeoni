@@ -8,7 +8,6 @@
 import SwiftUI
 import Foundation
 import Kingfisher
-import RealmSwift
 
 struct Drink_List: View {
     
@@ -33,12 +32,27 @@ struct Drink_List: View {
 //    @State var spirits_review: Results<Spirits_Review> = get_All_Spirits_Review()
 //    @State var makgeolli_review: Results<Makgeolli_Review> = get_All_Makgeolli_Review()
     @State var selected_drink = drink_s(id: UUID().uuidString, name: "", price: 0, drink_type: "", img_url: "")
+    
+//    convenience init() {
+//        self.init()
+//
+//
+//    }
 
     
     var body: some View {
         
 //        let filter_drink = drinkStore.drinks.filter{$0.drink_type == selected_type}
-        let filter_drink = drinkStore.drinks
+        let filter_drink = drinkStore.drinks.filter{ (element) -> Bool in
+            if selected_type == .makgeolli{
+                return element.drink_type == "makgeolli"
+            }
+            else if selected_type == .spirits{
+                return element.drink_type == "spirits"
+            }
+            
+            return false
+        }
         
         GeometryReader{ geo in
             ScrollView{

@@ -120,14 +120,6 @@ class DrinkStore: ObservableObject {
     
     func addNewDrink(drink: drink_s) {
         
-//        self.drink_number += 1
-//        print(self.drink_number)
-        
-//        self.ref?.child("drinks").observeSingleEvent(of: .value, with: { snapshot in
-//            self.drink_number = snapshot.childrenCount
-//        })
-        
-        
         let key = ref?.child("drinks").childByAutoId().key
         
         self.ref?.child("drinks").child("\(key)").setValue([
@@ -139,7 +131,6 @@ class DrinkStore: ObservableObject {
         ])
         
         
-//        self.objectWillChange.send()
     }
 
     
@@ -162,18 +153,18 @@ class DrinkStore: ObservableObject {
 //        self.ref?.updateChildValues(childUpdates)
 //        
 //    }
-    
-    func setDrink(){
-        ref?.child("drinks").observeSingleEvent(of: .value, with: { snapshot in
-
-            for child in snapshot.children{
-                let autoIdSnap = child as! DataSnapshot
-                let childDict = autoIdSnap.value as! [String: Any]
-                
-                self.drinks.append(drink_s(id: childDict["id"] as! String, name: childDict["name"] as! String, price: childDict["price"] as! Int64, drink_type: childDict["drink_type"] as! String, img_url: childDict["img_url"] as! String))
-            }
-        })
-    }
+//
+//    func setDrink(){
+//        ref?.child("drinks").observeSingleEvent(of: .value, with: { snapshot in
+//
+//            for child in snapshot.children{
+//                let autoIdSnap = child as! DataSnapshot
+//                let childDict = autoIdSnap.value as! [String: Any]
+//
+//                self.drinks.append(drink_s(id: childDict["id"] as! String, name: childDict["name"] as! String, price: childDict["price"] as! Int64, drink_type: childDict["drink_type"] as! String, img_url: childDict["img_url"] as! String))
+//            }
+//        })
+//    }
     
     func set_base_drink(){
         

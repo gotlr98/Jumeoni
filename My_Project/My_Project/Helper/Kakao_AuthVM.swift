@@ -116,10 +116,6 @@ class Kakao_AuthVM: ObservableObject{
 
                                self.user_name = name
 
-//                               self.user.name = name
-                               
-//                               add_user(name: user_name)
-//                               read_user()
                            }
                        }
                     }

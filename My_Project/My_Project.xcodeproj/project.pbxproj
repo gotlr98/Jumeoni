@@ -39,8 +39,6 @@
 		8AD0C11029C03F8700A5D77D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD0C10F29C03F8700A5D77D /* AppDelegate.swift */; };
 		8AD0C11729C0428800A5D77D /* Signin_Complete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD0C11629C0428800A5D77D /* Signin_Complete.swift */; };
 		8ADFF99829DBD553003CEE45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ADFF99729DBD553003CEE45 /* Assets.xcassets */; };
-		8AE6764529D539850083C278 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8AE6764429D539850083C278 /* Realm */; };
-		8AE6764729D539850083C278 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8AE6764629D539850083C278 /* RealmSwift */; };
 		8AE6764929D53ADF0083C278 /* User_Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6764829D53ADF0083C278 /* User_Info.swift */; };
 		8AE6764D29D549D50083C278 /* Login_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6764C29D549D50083C278 /* Login_View.swift */; };
 		8AE6764F29D54CB00083C278 /* Drink_List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6764E29D54CB00083C278 /* Drink_List.swift */; };
@@ -95,7 +93,6 @@
 				8A93F61129EE6C4400663E96 /* Cosmos in Frameworks */,
 				8AFE5E2329E66A1200937903 /* Kingfisher in Frameworks */,
 				8AAF92DF29C2E80100BD892B /* KakaoSDKShare in Frameworks */,
-				8AE6764729D539850083C278 /* RealmSwift in Frameworks */,
 				8A5653712A0A4EFC00523C6A /* FirebaseFirestore in Frameworks */,
 				8AAF92E129C2E80100BD892B /* KakaoSDKStory in Frameworks */,
 				8AAF92E529C2E80100BD892B /* KakaoSDKTemplate in Frameworks */,
@@ -104,7 +101,6 @@
 				8AAF92E729C2E80100BD892B /* KakaoSDKUser in Frameworks */,
 				8AAF92E329C2E80100BD892B /* KakaoSDKTalk in Frameworks */,
 				8AAF92DB29C2E80100BD892B /* KakaoSDKCommon in Frameworks */,
-				8AE6764529D539850083C278 /* Realm in Frameworks */,
 				8A56536D2A0A4EFC00523C6A /* FirebaseDatabase in Frameworks */,
 				8AAF92D929C2E80100BD892B /* KakaoSDKAuth in Frameworks */,
 			);
@@ -222,8 +218,6 @@
 				8AAF92E229C2E80100BD892B /* KakaoSDKTalk */,
 				8AAF92E429C2E80100BD892B /* KakaoSDKTemplate */,
 				8AAF92E629C2E80100BD892B /* KakaoSDKUser */,
-				8AE6764429D539850083C278 /* Realm */,
-				8AE6764629D539850083C278 /* RealmSwift */,
 				8AFE5E2229E66A1200937903 /* Kingfisher */,
 				8A93F61029EE6C4400663E96 /* Cosmos */,
 				8A56536C2A0A4EFC00523C6A /* FirebaseDatabase */,
@@ -261,7 +255,6 @@
 			mainGroup = 8AD0C0EA29C03CE700A5D77D;
 			packageReferences = (
 				8AAF92D529C2E80100BD892B /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
-				8AE6764329D539850083C278 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				8AFE5E2129E66A1200937903 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				8A93F60F29EE6C4400663E96 /* XCRemoteSwiftPackageReference "Cosmos" */,
 				8A56536B2A0A4EFB00523C6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
@@ -547,14 +540,6 @@
 				kind = branch;
 			};
 		};
-		8AE6764329D539850083C278 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		8AFE5E2129E66A1200937903 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -635,16 +620,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8AAF92D529C2E80100BD892B /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
-		};
-		8AE6764429D539850083C278 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AE6764329D539850083C278 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		8AE6764629D539850083C278 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AE6764329D539850083C278 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 		8AFE5E2229E66A1200937903 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

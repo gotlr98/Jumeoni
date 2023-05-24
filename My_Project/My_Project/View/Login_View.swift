@@ -10,7 +10,6 @@ import Foundation
 import KakaoSDKAuth
 import KakaoSDKCommon
 import KakaoSDKUser
-import RealmSwift
 
 
 struct Login_View: View {
@@ -81,7 +80,7 @@ struct Login_View: View {
 //                            }
                             
                             
-//                            drinkStore.set_base_drink()
+                            drinkStore.set_base_drink()
                             
 //                            drinkStore.setDrink()
                             
