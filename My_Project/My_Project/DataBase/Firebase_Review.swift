@@ -9,18 +9,11 @@ import Foundation
 import FirebaseDatabase
 import FirebaseDatabaseSwift
 
-struct user_s: Codable, Identifiable, Hashable{
-    
-    var id: String
-    var name: String
-    var email: String
-
-}
 
 struct review_s: Codable, Identifiable, Hashable{
     
     var id: String
-    var name: String
+    var user_name: String
     var drink_name: String
     var comment: String
     var drink_type: String
@@ -28,11 +21,9 @@ struct review_s: Codable, Identifiable, Hashable{
 
 }
 
-class UserReviewStore: ObservableObject {
+class ReviewStore: ObservableObject {
     
-    @Published var users: [user_s] = []
     @Published var reviews: [review_s] = []
-    @Published var changeCount: Int = 0
     
     let ref: DatabaseReference? = Database.database().reference() // (1)
     
@@ -109,15 +100,15 @@ class UserReviewStore: ObservableObject {
                 }
             }
         
-        databasePath
-            .observe(.value){[weak self] snapshot in
-                guard
-                    let self = self
-                else {
-                    return
-                }
-                self.changeCount += 1
-            }
+//        databasePath
+//            .observe(.value){[weak self] snapshot in
+//                guard
+//                    let self = self
+//                else {
+//                    return
+//                }
+//                self.changeCount += 1
+//            }
     }
     
     func stopListening() {
@@ -127,7 +118,7 @@ class UserReviewStore: ObservableObject {
     func addNewReview(review: review_s) {
         self.ref?.child("reviews").child("\(review.id)").setValue([
             "id": review.id,
-            "name": review.name,
+            "name": review.user_name,
             "drink_type": review.drink_type,
             "drink_name": review.drink_name,
             "comment": review.comment,
@@ -144,7 +135,7 @@ class UserReviewStore: ObservableObject {
     func editReview(review: review_s) {
         let updates: [String : Any] = [
             "id": review.id,
-            "name": review.name,
+            "name": review.user_name,
             "drink_type": review.drink_type,
             "drink_name": review.drink_name,
             "comment": review.comment,

@@ -20,8 +20,8 @@ struct My_ProjectApp: App {
             Login_View()
                 .environmentObject(Kakao_AuthVM())
                 .environmentObject(DrinkStore())
-                .environmentObject(UserReviewStore())
-//            Makgeolli_Review_View()
+                .environmentObject(ReviewStore())
+                .environmentObject(UserStore())
          
         }
     }
