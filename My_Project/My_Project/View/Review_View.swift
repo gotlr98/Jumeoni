@@ -11,12 +11,14 @@ struct Review_View: View {
     
     var drink: drink
     
-//    @Binding var makgeolli_review: Results<Makgeolli_Review>
-//    @Binding var spirits_review: Results<Spirits_Review>
     
+    @EnvironmentObject var review: UserReviewStore
     @State var show_sheet: Bool = false
     @State private var dismissed: Bool = false
     @Binding var selected_type: drink.drink_type
+    
+    @State var didAppear = false
+    @State var appearCount = 0
     
     var body: some View {
         VStack {
@@ -24,46 +26,46 @@ struct Review_View: View {
             Text(drink.name + "리뷰")
            
             List{
-//                if selected_type == .makgeolli{
-//                    ForEach(makgeolli_review, id: \.self){ review in
-//                        if drink.name == review.drink_name{
-//                            VStack(alignment: .leading){
-//                                Text(review.name + "님: ")
-//
-//                                HStack{
-//                                    Text("단맛 : " + String(review.sweet))
-//                                    Text("신맛 : " + String(review.sour))
-//                                    Text("쓴맛 : " + String(review.bitter))
-//                                    Text("청량감 : " + String(review.refreshing))
-//                                    Text("걸쭉함 : " + String(review.thick))
-//
-//                                }
-//                                Text("총점 : " + String(review.rating))
-//                                Text("코멘트 : " + review.comment)
-//
-//                            }
-//                        }
-//                    }
-//                }
-//                else if selected_type == .spirits{
-//                    ForEach(spirits_review, id: \.self){ reviews in
-//                        if drink.name == reviews.drink_name{
-//                            VStack(alignment: .leading){
-//                                Text(reviews.name + "님: ")
-//
-//                                HStack{
-//                                    Text("향 : " + String(reviews.scent))
-//                                    Text("바디감 : " + String(reviews.bodied))
-//                                    Text("목넘김 : " + String(reviews.drinkability))
-//
-//                                }
-//                                Text("총점 : " + String(reviews.rating))
-//                                Text("코멘트 : " + reviews.comment)
-//
-//                            }
-//                        }
-//                    }
-//                }
+                if selected_type == .makgeolli{
+                    ForEach(review.makgeolli_reviews, id: \.self){ review in
+                        if drink.name == review.drink_name{
+                            VStack(alignment: .leading){
+                                Text(review.user_name + "님: ")
+
+                                HStack{
+                                    Text("단맛 : " + String(review.sweet))
+                                    Text("신맛 : " + String(review.sour))
+                                    Text("쓴맛 : " + String(review.bitter))
+                                    Text("청량감 : " + String(review.refreshing))
+                                    Text("걸쭉함 : " + String(review.thick))
+
+                                }
+                                Text("총점 : " + String(review.rating))
+                                Text("코멘트 : " + review.comment)
+
+                            }
+                        }
+                    }
+                }
+                else if selected_type == .spirits{
+                    ForEach(review.spirit_reviews, id: \.self){ reviews in
+                        if drink.name == reviews.drink_name{
+                            VStack(alignment: .leading){
+                                Text(reviews.user_name + "님: ")
+
+                                HStack{
+                                    Text("향 : " + String(reviews.scent))
+                                    Text("바디감 : " + String(reviews.bodied))
+                                    Text("목넘김 : " + String(reviews.drinkability))
+
+                                }
+                                Text("총점 : " + String(reviews.rating))
+                                Text("코멘트 : " + reviews.comment)
+
+                            }
+                        }
+                    }
+                }
                 
             }
             .refreshable{
@@ -112,6 +114,14 @@ struct Review_View: View {
             
         }
 //        .toolbar(.hidden, for: .tabBar)
+    }
+    
+    func onLoad(){
+        if !didAppear{
+            appearCount += 1
+            review.setBaseReview()
+        }
+        didAppear = true
     }
 }
 //

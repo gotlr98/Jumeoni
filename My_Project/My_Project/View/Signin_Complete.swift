@@ -16,6 +16,7 @@ struct Signin_Complete: View{
     
     @EnvironmentObject var kakao: Kakao_AuthVM
     @EnvironmentObject var drinkStore: DrinkStore
+    @EnvironmentObject var user_review: UserReviewStore
     
     @State var isToolBarItemHidden: Bool = true
     @State var tabSelection: Tabs = .tab1
@@ -80,6 +81,8 @@ struct Signin_Complete: View{
                 drinkStore.listenToRealtimeDatabase()
                 drinkStore.isListening = true
             }
+            
+            print(user_review.makgeolli_reviews.count)
             
         }
         didAppear = true
