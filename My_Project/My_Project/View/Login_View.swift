@@ -16,8 +16,7 @@ struct Login_View: View {
     
     @EnvironmentObject var kakaoAuthVM: Kakao_AuthVM
     @EnvironmentObject var drinkStore: DrinkStore
-    @EnvironmentObject var reviewStore: ReviewStore
-    @EnvironmentObject var userStore: UserStore
+    @EnvironmentObject var user_review: UserReviewStore
     
     @State var drink: [drink_s] = []
     @State var user: [user_s] = []
@@ -87,7 +86,7 @@ struct Login_View: View {
 //                            drinkStore.set_base_drink()
                             
                             self.drink = drinkStore.temp_drink
-                            userStore.addNewUser(user: user_s(id: UUID().uuidString, name: kakaoAuthVM.user_name, email: kakaoAuthVM.email))
+//                            userStore.addNewUser(user: user_s(id: UUID().uuidString, name: kakaoAuthVM.user_name, email: kakaoAuthVM.email))
                             
                         }, label: {
                             Rectangle()
@@ -113,8 +112,7 @@ struct Login_View: View {
         .onAppear{
             drinkStore.setDrink()
             drinkStore.stopListening()
-            userStore.stopListening()
-            userStore.users = []
+
             drinkStore.drinks = []
         }
         

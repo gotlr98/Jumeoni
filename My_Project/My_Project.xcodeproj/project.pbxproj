@@ -33,7 +33,7 @@
 		8AAF92E529C2E80100BD892B /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAF92E429C2E80100BD892B /* KakaoSDKTemplate */; };
 		8AAF92E729C2E80100BD892B /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 8AAF92E629C2E80100BD892B /* KakaoSDKUser */; };
 		8AB437FC2A04B9A600072D1C /* Spirits_Review_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB437FB2A04B9A600072D1C /* Spirits_Review_View.swift */; };
-		8ABF56932A1F248E00574783 /* Firebase_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF56922A1F248E00574783 /* Firebase_User.swift */; };
+		8ABF56932A1F248E00574783 /* Firebase_User_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF56922A1F248E00574783 /* Firebase_User_Review.swift */; };
 		8AD0C0F729C03CE700A5D77D /* My_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD0C0F629C03CE700A5D77D /* My_ProjectApp.swift */; };
 		8AD0C0F929C03CE700A5D77D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD0C0F829C03CE700A5D77D /* ContentView.swift */; };
 		8AD0C0FE29C03CE800A5D77D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD0C0FD29C03CE800A5D77D /* Preview Assets.xcassets */; };
@@ -65,7 +65,7 @@
 		8A93F60A29EE5B5F00663E96 /* Makgeolli_Review_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Makgeolli_Review_View.swift; sourceTree = "<group>"; };
 		8A9B587229DD1E2A009277EF /* Register_Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register_Drink.swift; sourceTree = "<group>"; };
 		8AB437FB2A04B9A600072D1C /* Spirits_Review_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spirits_Review_View.swift; sourceTree = "<group>"; };
-		8ABF56922A1F248E00574783 /* Firebase_User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_User.swift; sourceTree = "<group>"; };
+		8ABF56922A1F248E00574783 /* Firebase_User_Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_User_Review.swift; sourceTree = "<group>"; };
 		8AD0C0F329C03CE700A5D77D /* My_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = My_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD0C0F629C03CE700A5D77D /* My_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_ProjectApp.swift; sourceTree = "<group>"; };
 		8AD0C0F829C03CE700A5D77D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 				8A93F60629EE523200663E96 /* Makgeolli_Review.swift */,
 				8A5653742A0B47D400523C6A /* Firebase_Drink.swift */,
 				8A4461F92A17256A002F1472 /* Firebase_Review.swift */,
-				8ABF56922A1F248E00574783 /* Firebase_User.swift */,
+				8ABF56922A1F248E00574783 /* Firebase_User_Review.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -311,7 +311,7 @@
 				8AE9212C29DD40EB00C22025 /* Review_View.swift in Sources */,
 				8A36991829E3C5C00098CBE4 /* Drink.swift in Sources */,
 				8A9B587329DD1E2A009277EF /* Register_Drink.swift in Sources */,
-				8ABF56932A1F248E00574783 /* Firebase_User.swift in Sources */,
+				8ABF56932A1F248E00574783 /* Firebase_User_Review.swift in Sources */,
 				8A4461FA2A17256A002F1472 /* Firebase_Review.swift in Sources */,
 				8AB437FC2A04B9A600072D1C /* Spirits_Review_View.swift in Sources */,
 			);
