@@ -9,14 +9,14 @@ import SwiftUI
 
 struct Review_View: View {
     
-    var drink: drink_s
+    var drink: drink
     
 //    @Binding var makgeolli_review: Results<Makgeolli_Review>
 //    @Binding var spirits_review: Results<Spirits_Review>
     
     @State var show_sheet: Bool = false
     @State private var dismissed: Bool = false
-    @Binding var selected_type: drink_s.drink_type
+    @Binding var selected_type: drink.drink_type
     
     var body: some View {
         VStack {

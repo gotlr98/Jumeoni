@@ -23,7 +23,7 @@ struct Signin_Complete: View{
     @State var didAppear = false
     @State var appearCount = 0
     
-    var drink: [drink_s] = []
+    var drink: [drink] = []
     
     var body: some View{
         

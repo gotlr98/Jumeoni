@@ -9,7 +9,7 @@ import Foundation
 import FirebaseDatabase
 import FirebaseDatabaseSwift
 
-struct drink_s: Identifiable, Hashable, Decodable{
+struct drink: Identifiable, Hashable, Decodable{
     
     enum drink_type{
         case makgeolli, spirits
@@ -24,8 +24,8 @@ struct drink_s: Identifiable, Hashable, Decodable{
 
 class DrinkStore: ObservableObject {
     
-    @Published var drinks: [drink_s] = []
-    @Published var temp_drink: [drink_s] = []
+    @Published var drinks: [drink] = []
+    @Published var temp_drink: [drink] = []
     @Published var isListening: Bool = false
     
     let ref: DatabaseReference? = Database.database().reference() // (1)
@@ -51,7 +51,7 @@ class DrinkStore: ObservableObject {
                 }
                 do {
                     let drinkData = try JSONSerialization.data(withJSONObject: json)
-                    let drink = try self.decoder.decode(drink_s.self, from: drinkData)
+                    let drink = try self.decoder.decode(drink.self, from: drinkData)
                     self.drinks.append(drink)
 
                 } catch {
@@ -119,7 +119,7 @@ class DrinkStore: ObservableObject {
         ref?.removeAllObservers()
     }
     
-    func addNewDrink(drink: drink_s) {
+    func addNewDrink(drink: drink) {
         
         let key = ref?.child("drinks").childByAutoId().key
         
@@ -161,7 +161,7 @@ class DrinkStore: ObservableObject {
             for child in snapshot.children{
                 let autoIdSnap = child as! DataSnapshot
                 let childDict = autoIdSnap.value as! [String: Any]
-                self.temp_drink.append(drink_s(id: childDict["id"] as! String, name: childDict["name"] as! String, price: childDict["price"] as! Int64, drink_type: childDict["drink_type"] as! String, img_url: childDict["img_url"] as! String))
+                self.temp_drink.append(drink(id: childDict["id"] as! String, name: childDict["name"] as! String, price: childDict["price"] as! Int64, drink_type: childDict["drink_type"] as! String, img_url: childDict["img_url"] as! String))
             }
 //            return temp_drink
         })
@@ -183,14 +183,14 @@ class DrinkStore: ObservableObject {
             "https://shop-phinf.pstatic.net/20201224_42/1608799693244m4bcA_JPEG/100618_1.jpg?type=f296_296"
         ]
         
-        addNewDrink(drink: drink_s(id: UUID().uuidString, name: "대대포 블루 꿀 막걸리", price: 3490, drink_type: "makgeolli", img_url: drink_makgeolli_urls[0]))
-        addNewDrink(drink: drink_s(id: UUID().uuidString, name: "금쌀 선호 생 막걸리", price: 1900, drink_type: "makgeolli", img_url: drink_makgeolli_urls[1]))
-        addNewDrink(drink: drink_s(id: UUID().uuidString, name: "정고집 옛날 생 동동주", price: 2430, drink_type: "makgeolli", img_url: drink_makgeolli_urls[2]))
-        addNewDrink(drink: drink_s(id: UUID().uuidString, name: "사곡양조 공주 알밤 왕밤주", price: 1620, drink_type: "makgeolli", img_url: drink_makgeolli_urls[3]))
-        addNewDrink(drink: drink_s(id: UUID().uuidString, name: "한주양조 한주 35도", price: 3490, drink_type: "spirits", img_url: drink_spirits_urls[0]))
-        addNewDrink(drink: drink_s(id: UUID().uuidString, name: "바다한잔 동해소주", price: 3490, drink_type: "spirits", img_url: drink_spirits_urls[1]))
-        addNewDrink(drink: drink_s(id: UUID().uuidString, name: "예산사과와인 추사백 25도", price: 3490, drink_type: "spirits", img_url: drink_spirits_urls[2]))
-        addNewDrink(drink: drink_s(id: UUID().uuidString, name: "시트러스 미상 25도", price: 3490, drink_type: "spirits", img_url: drink_spirits_urls[3]))
+        addNewDrink(drink: drink(id: UUID().uuidString, name: "대대포 블루 꿀 막걸리", price: 3490, drink_type: "makgeolli", img_url: drink_makgeolli_urls[0]))
+        addNewDrink(drink: drink(id: UUID().uuidString, name: "금쌀 선호 생 막걸리", price: 1900, drink_type: "makgeolli", img_url: drink_makgeolli_urls[1]))
+        addNewDrink(drink: drink(id: UUID().uuidString, name: "정고집 옛날 생 동동주", price: 2430, drink_type: "makgeolli", img_url: drink_makgeolli_urls[2]))
+        addNewDrink(drink: drink(id: UUID().uuidString, name: "사곡양조 공주 알밤 왕밤주", price: 1620, drink_type: "makgeolli", img_url: drink_makgeolli_urls[3]))
+        addNewDrink(drink: drink(id: UUID().uuidString, name: "한주양조 한주 35도", price: 3490, drink_type: "spirits", img_url: drink_spirits_urls[0]))
+        addNewDrink(drink: drink(id: UUID().uuidString, name: "바다한잔 동해소주", price: 3490, drink_type: "spirits", img_url: drink_spirits_urls[1]))
+        addNewDrink(drink: drink(id: UUID().uuidString, name: "예산사과와인 추사백 25도", price: 3490, drink_type: "spirits", img_url: drink_spirits_urls[2]))
+        addNewDrink(drink: drink(id: UUID().uuidString, name: "시트러스 미상 25도", price: 3490, drink_type: "spirits", img_url: drink_spirits_urls[3]))
 
 
     }

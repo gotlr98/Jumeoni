@@ -15,7 +15,7 @@ struct Register_Drink: View {
     
     @EnvironmentObject var drinkStore: DrinkStore
     
-    @State var selected_type: drink_s.drink_type = drink_s.drink_type.makgeolli
+    @State var selected_type: drink.drink_type = drink.drink_type.makgeolli
     @State var alertStat: Bool = false
     @State var input_name: String = ""
     @State var input_price: String = ""
@@ -23,7 +23,7 @@ struct Register_Drink: View {
     @State var show_alert: Bool = false
     @State var is_url_valid: Bool = false
     @State var button_clicked: Bool = false
-    @Binding var drink: [drink_s]
+    @Binding var drinks: [drink]
     @Binding var show_sheet: Bool
     
 //    func register_drink(id: UUID, name: String, type: Drink.drink_type, price: Int64, img_url: String){
@@ -51,8 +51,8 @@ struct Register_Drink: View {
                 }
                 
                 Picker("종류", selection: $selected_type){
-                    Text("막걸리").tag(drink_s.drink_type.makgeolli)
-                    Text("증류주").tag(drink_s.drink_type.spirits)
+                    Text("막걸리").tag(drink.drink_type.makgeolli)
+                    Text("증류주").tag(drink.drink_type.spirits)
                 }
                 .pickerStyle(.segmented)
                 
@@ -115,11 +115,11 @@ struct Register_Drink: View {
 //                        register_drink(id: UUID(), name: input_name, type: selected_type, price: Int64(input_price)!, img_url: input_img_url)
                         
                         if selected_type == .makgeolli{
-                            drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: input_name, price: Int64(input_price)!, drink_type: "makgeolli", img_url: input_img_url))
+                            drinkStore.addNewDrink(drink: drink(id: UUID().uuidString, name: input_name, price: Int64(input_price)!, drink_type: "makgeolli", img_url: input_img_url))
                         }
                         
                         else if selected_type == .spirits{
-                            drinkStore.addNewDrink(drink: drink_s(id: UUID().uuidString, name: input_name, price: Int64(input_price)!, drink_type: "spirits", img_url: input_img_url))
+                            drinkStore.addNewDrink(drink: drink(id: UUID().uuidString, name: input_name, price: Int64(input_price)!, drink_type: "spirits", img_url: input_img_url))
                         }
                         
                         show_sheet.toggle()

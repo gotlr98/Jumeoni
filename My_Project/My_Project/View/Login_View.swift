@@ -18,9 +18,9 @@ struct Login_View: View {
     @EnvironmentObject var drinkStore: DrinkStore
     @EnvironmentObject var user_review: UserReviewStore
     
-    @State var drink: [drink_s] = []
-    @State var user: [user_s] = []
-    @State var review: [review_s] = []
+    @State var drink: [drink] = []
+    @State var user: [user] = []
+    @State var review: [makgeolli_review] = []
     
     var body: some View {
         

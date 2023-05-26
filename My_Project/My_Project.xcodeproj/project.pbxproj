@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8A2C72A529DC0182006B13AB /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C72A429DC0182006B13AB /* Review.swift */; };
 		8A36991829E3C5C00098CBE4 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36991729E3C5C00098CBE4 /* Drink.swift */; };
-		8A4461FA2A17256A002F1472 /* Firebase_Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4461F92A17256A002F1472 /* Firebase_Review.swift */; };
 		8A45E8A129F2849B00D5EEDF /* Store_WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */; };
 		8A56536D2A0A4EFC00523C6A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8A56536C2A0A4EFC00523C6A /* FirebaseDatabase */; };
 		8A56536F2A0A4EFC00523C6A /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8A56536E2A0A4EFC00523C6A /* FirebaseDatabaseSwift */; };
@@ -55,7 +54,6 @@
 /* Begin PBXFileReference section */
 		8A2C72A429DC0182006B13AB /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		8A36991729E3C5C00098CBE4 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
-		8A4461F92A17256A002F1472 /* Firebase_Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_Review.swift; sourceTree = "<group>"; };
 		8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store_WebView.swift; sourceTree = "<group>"; };
 		8A5653742A0B47D400523C6A /* Firebase_Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_Drink.swift; sourceTree = "<group>"; };
 		8A56537A2A0B58F600523C6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 				8A93F60829EE591200663E96 /* Spirits_Review.swift */,
 				8A93F60629EE523200663E96 /* Makgeolli_Review.swift */,
 				8A5653742A0B47D400523C6A /* Firebase_Drink.swift */,
-				8A4461F92A17256A002F1472 /* Firebase_Review.swift */,
 				8ABF56922A1F248E00574783 /* Firebase_User_Review.swift */,
 			);
 			path = DataBase;
@@ -312,7 +309,6 @@
 				8A36991829E3C5C00098CBE4 /* Drink.swift in Sources */,
 				8A9B587329DD1E2A009277EF /* Register_Drink.swift in Sources */,
 				8ABF56932A1F248E00574783 /* Firebase_User_Review.swift in Sources */,
-				8A4461FA2A17256A002F1472 /* Firebase_Review.swift in Sources */,
 				8AB437FC2A04B9A600072D1C /* Spirits_Review_View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -44,7 +44,7 @@ struct Spirits_Review_View: View {
     @State var rating = 1.0
     @State var comment = ""
     
-    var drink: drink_s
+    var drink: drink
     
     var body: some View{
         
@@ -124,6 +124,6 @@ struct Spirits_Review_View: View {
 
 struct Spirits_Review_View_Previews: PreviewProvider {
     static var previews: some View {
-        Spirits_Review_View(show_sheet: .constant(false), drink: drink_s(id: UUID().uuidString, name: "", price: 0, drink_type: "", img_url: ""))
+        Spirits_Review_View(show_sheet: .constant(false), drink: drink(id: UUID().uuidString, name: "", price: 0, drink_type: "", img_url: ""))
     }
 }

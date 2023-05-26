@@ -9,29 +9,34 @@ import Foundation
 import FirebaseDatabase
 import FirebaseDatabaseSwift
 
-struct user_s: Codable, Identifiable, Hashable{
+struct user: Codable, Identifiable, Hashable{
     
     var id: String
     var name: String
     var email: String
 }
 
-struct review_s: Codable, Identifiable, Hashable{
+struct makgeolli_review: Codable, Identifiable, Hashable{
     
     var id: String
     var user_id: String
     var user_name: String
     var drink_name: String
+    var sweet: Double
+    var bitter: Double
+    var sour: Double
+    var refreshing: Double
+    var thick: Double
     var comment: String
     var drink_type: String
-    var rating: Int8
+    var rating: Double
 
 }
 
 class UserReviewStore: ObservableObject {
     
-    @Published var users: [user_s] = []
-    @Published var reviews: [review_s] = []
+    @Published var users: [user] = []
+    @Published var makgeolli_reviews: [makgeolli_review] = []
     
     let ref: DatabaseReference? = Database.database().reference() // (1)
     
@@ -123,7 +128,7 @@ class UserReviewStore: ObservableObject {
 //        ref?.removeAllObservers()
 //    }
     
-    func addNewUser(user: user_s) {
+    func addNewUser(user: user) {
         self.ref?.child("users").child("\(user.id)").setValue([
             "id": user.id,
             "name": user.name,
@@ -134,22 +139,25 @@ class UserReviewStore: ObservableObject {
         
     }
     
-    func addNewReview(user: user_s, review: review_s) {
-        self.ref?.child("reviews").child("\(review.id)").setValue([
+    func addNewMakgeolliReview(user: user, review: makgeolli_review) {
+        self.ref?.child("makgeolli_reviews").child("\(review.id)").setValue([
             "id": review.id,
             "user_id": user.id,
-            "name": review.user_name,
-            "drink_type": review.drink_type,
+            "user_name": review.user_name,
             "drink_name": review.drink_name,
+            "sweet" : review.sweet,
+            "bitter": review.bitter,
+            "sour": review.sour,
+            "refreshing": review.refreshing,
+            "thick": review.thick,
             "comment": review.comment,
+            "drink_type": review.drink_type,
             "rating": review.rating
         ])
-        
-        self.reviews.append(review)
     }
     
     
-    func deleteUser(user: user_s) {
+    func deleteUser(user: user) {
         ref?.child("users/\(user.id)").removeValue()
         
         for (index, userItem) in users.enumerated() where user.id == userItem.id{
@@ -157,61 +165,63 @@ class UserReviewStore: ObservableObject {
         }
     }
     
-    func deleteReview(review: review_s) {
-        ref?.child("reviews/\(review.id)").removeValue()
-        
-        for (index, reviewItem) in reviews.enumerated() where review.id == reviewItem.id{
-            reviews.remove(at: index)
-        }
+    func deleteMakgeolliReview(review: makgeolli_review) {
+        ref?.child("makgeolli_reviews/\(review.id)").removeValue()
         
     }
     
-    func editReview(user: user_s, review: review_s) {
+    func editMakgeolliReview(user: user, review: makgeolli_review) {
         let updates: [String : Any] = [
             "id": review.id,
             "user_id": user.id,
-            "name": review.user_name,
-            "drink_type": review.drink_type,
+            "user_name": review.user_name,
             "drink_name": review.drink_name,
+            "sweet" : review.sweet,
+            "bitter": review.bitter,
+            "sour": review.sour,
+            "refreshing": review.refreshing,
+            "thick": review.thick,
             "comment": review.comment,
+            "drink_type": review.drink_type,
             "rating": review.rating
         ]
         
-        let childUpdates = ["reviews/\(review.id)": updates]
-        for (index, reviewItem) in reviews.enumerated() where reviewItem.id == review.id {
-            reviews[index] = review
-        }
+        let childUpdates = ["makgeolli_reviews/\(review.id)": updates]
+
         self.ref?.updateChildValues(childUpdates)
+        
+        getMakgeolliReviewFromDatabase()
 
     }
     
-    func getUserReview(user: user_s) -> [review_s]{
+    func getUserMakgeolliReview(user: user) -> [makgeolli_review]{
         
-        var temp_index: [review_s] = []
+        var temp_index: [makgeolli_review] = []
         
-        for item in reviews where item.user_id == user.id{
+        for item in makgeolli_reviews where item.user_id == user.id{
             temp_index.append(item)
         }
         
         return temp_index
     }
     
-    func getMakgeolliReview() -> [review_s]{
+    func getMakgeolliReviewFromDatabase(){
         
-        var temp_index: [review_s] = []
+        ref?.child("makgeolli_reviews").observeSingleEvent(of: .value, with: { snapshot in
+            for child in snapshot.children{
+                let autoIdSnap = child as! DataSnapshot
+                let childDict = autoIdSnap.value as! [String: Any]
+                self.makgeolli_reviews.append(makgeolli_review(id: childDict["id"] as! String, user_id: childDict["user_id"] as! String, user_name: childDict["user_name"] as! String, drink_name: childDict["drink_name"] as! String, sweet: childDict["sweet"] as! Double, bitter: childDict["bitter"] as! Double, sour: childDict["sour"] as! Double, refreshing: childDict["refreshing"] as! Double, thick: childDict["thick"] as! Double, comment: childDict["comment"] as! String, drink_type: childDict["drink_type"] as! String, rating: childDict["rating"] as! Double))
+            }
+        })
         
-        for item in reviews where item.drink_type == "makgeolli"{
-            temp_index.append(item)
-        }
-        
-        return temp_index
     }
     
-    func getSpiritsReview() -> [review_s]{
+    func getSpiritsReview() -> [makgeolli_review]{
         
-        var temp_index: [review_s] = []
+        var temp_index: [makgeolli_review] = []
         
-        for item in reviews where item.drink_type == "spirits"{
+        for item in makgeolli_reviews where item.drink_type == "spirits"{
             temp_index.append(item)
         }
         
