@@ -12,6 +12,7 @@ import Kingfisher
 struct Drink_List: View {
     
     @EnvironmentObject var drinkStore: DrinkStore
+    @EnvironmentObject var user_review: UserReviewStore
     
     @State var selected_type: drink.drink_type = .makgeolli
     @State var show_sheet: Bool = false
@@ -70,7 +71,7 @@ struct Drink_List: View {
 //                    NavigationLink(destination: Review_View(drink: selected_drink, makgeolli_review: $makgeolli_review, spirits_review: $spirits_review, selected_type: $selected_type), isActive: $cliked_button, label: {
 //                        EmptyView()
 //                    })
-                    NavigationLink(destination: Review_View(drink: selected_drink, selected_type: $selected_type), isActive: $cliked_button, label: {
+                    NavigationLink(destination: Review_View(drink: selected_drink, makgeolli_review: user_review.makgeolli_reviews, spirit_review: user_review.spirit_reviews, selected_type: $selected_type), isActive: $cliked_button, label: {
                         EmptyView()
                     })
                 }
