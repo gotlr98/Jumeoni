@@ -168,7 +168,7 @@ struct Drink_List: View {
                 Text("닫기")
             })
         
-            Register_Drink(drinks: $drinks, show_sheet: $show_sheet)
+            Register_Drink(selected_type: selected_type, drinks: $drinks, show_sheet: $show_sheet)
         }
         
 //        .navigationViewStyle(.stack)
