@@ -71,10 +71,7 @@ struct Review_View: View {
                 }
                 
             }
-            .onAppear{
-                self.makgeolli_review = review.temp_makgeolli_reviews
-                self.spirit_review = review.temp_spirit_reviews
-            }
+            .onAppear(perform: onLoad)
             .refreshable{
                 self.makgeolli_review = review.makgeolli_reviews
                 self.spirit_review = review.spirit_reviews
@@ -122,11 +119,20 @@ struct Review_View: View {
         }
 //        .toolbar(.hidden, for: .tabBar)
     }
+
     
     func onLoad(){
         if !didAppear{
             appearCount += 1
-            review.setBaseReview()
+            
+            if !review.isMakgeolliListening{
+                review.makgeolliListen()
+                review.isMakgeolliListening = true
+
+               
+            }
+            self.makgeolli_review = review.temp_makgeolli_reviews
+            self.spirit_review = review.temp_spirit_reviews
         }
         didAppear = true
     }

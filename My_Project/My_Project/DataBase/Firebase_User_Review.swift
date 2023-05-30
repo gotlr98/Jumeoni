@@ -51,10 +51,13 @@ struct spirit_review: Codable, Identifiable, Hashable{
 class UserReviewStore: ObservableObject {
     
     @Published var users: [user_s] = []
+    @Published var cur_user: user_s = user_s(id: "", name: "", email: "")
     @Published var makgeolli_reviews: [makgeolli_review] = []
     @Published var temp_makgeolli_reviews: [makgeolli_review] = []
     @Published var spirit_reviews: [spirit_review] = []
     @Published var temp_spirit_reviews: [spirit_review] = []
+    
+    @Published var isMakgeolliListening: Bool = false
     
     let ref: DatabaseReference? = Database.database().reference() // (1)
     
@@ -175,8 +178,8 @@ class UserReviewStore: ObservableObject {
     
     func setBaseUser(){
         
-        addNewUser(user: user_s(id: UUID().uuidString, name: "해식", email: "gotlr@naver.com"))
-        addNewUser(user: user_s(id: UUID().uuidString, name: "태희", email: "xogml@naver.com"))
+        addNewUser(user: user_s(id: UUID().uuidString, name: "해식", email: "gotlr@naver,com"))
+        addNewUser(user: user_s(id: UUID().uuidString, name: "태희", email: "xogml@naver,com"))
         
         getUserFromDatabase()
     }

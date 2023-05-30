@@ -34,6 +34,7 @@ struct MyCosmosView: UIViewRepresentable {
 struct Makgeolli_Review_View: View {
     
     @EnvironmentObject var kakao: Kakao_AuthVM
+    @EnvironmentObject var review: UserReviewStore
     @Binding var show_sheet: Bool
     @State var show_alert: Bool = false
     
@@ -115,6 +116,7 @@ struct Makgeolli_Review_View: View {
 //                    let makgeolli_review = Makgeolli_Review(name: kakao.user_name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment, objectID: ObjectId())
 //                    set_Makgeolli_Review(name: kakao.user_name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, rating: rating, comment: comment)
 //                    kakao.add_user_makgeolli_review(review: makgeolli_review)
+//                    review.addNewMakgeolliReview(user: review.cur_user, review: makgeolli_review(id: UUID().uuidString, user_id: review.cur_user.id, user_name: review.cur_user.name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, comment: comment, drink_type: "makgeolli", rating: rating))
                     show_sheet.toggle()
                 }
                 

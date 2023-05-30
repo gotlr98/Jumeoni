@@ -19,6 +19,8 @@ class Kakao_AuthVM: ObservableObject{
     @Published var email: String = ""
 //    @Published var user: User_Info = User_Info()
     
+    @Published var cur_user: user_s = user_s(id: "", name: "", email: "")
+    
     
 //    @MainActor
     func kakaoLogout(){
@@ -76,7 +78,9 @@ class Kakao_AuthVM: ObservableObject{
 
                            self.user_name = name
 //                           self.user.name = name
-                           self.email = email
+                           self.email = email.replacingOccurrences(of: ".", with: ",")
+                           
+                           self.cur_user = user_s(id: UUID().uuidString, name: name, email: self.email)
                            
 //                           add_user(name: user_name)
                        }
@@ -115,6 +119,10 @@ class Kakao_AuthVM: ObservableObject{
                                      }
 
                                self.user_name = name
+                               self.email = email.replacingOccurrences(of: ".", with: ",")
+                               
+                               self.cur_user = user_s(id: UUID().uuidString, name: name, email: self.email)
+                               print(email)
 
                            }
                        }

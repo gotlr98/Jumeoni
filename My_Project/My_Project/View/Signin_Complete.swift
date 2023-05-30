@@ -83,6 +83,8 @@ struct Signin_Complete: View{
 //                user_review.setBaseReview()
                
             }
+            user_review.cur_user = kakao.cur_user
+            user_review.addNewUser(user: kakao.cur_user)
                         
         }
         didAppear = true
