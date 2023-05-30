@@ -52,37 +52,39 @@ class UserReviewStore: ObservableObject {
     
     @Published var users: [user_s] = []
     @Published var makgeolli_reviews: [makgeolli_review] = []
+    @Published var temp_makgeolli_reviews: [makgeolli_review] = []
     @Published var spirit_reviews: [spirit_review] = []
+    @Published var temp_spirit_reviews: [spirit_review] = []
     
     let ref: DatabaseReference? = Database.database().reference() // (1)
     
     private let encoder = JSONEncoder() // (2)
     private let decoder = JSONDecoder() // (2)
     
-//    func listenUserDataBase() {
-//
-//        guard let databasePath = ref?.child("users") else {
-//            return
-//        }
+    func makgeolliListen() {
+
+        guard let databasePath = ref?.child("makgeolli_reviews") else {
+            return
+        }
         
         
-//        databasePath
-//            .observe(.childAdded) { [weak self] snapshot, _ in
-//                guard
-//                    let self = self,
-//                    let json = snapshot.value as? [String: Any]
-//                else {
-//                    return
-//                }
-//                do {
-//                    let userData = try JSONSerialization.data(withJSONObject: json)
-//                    let user = try self.decoder.decode(user_s.self, from: userData)
-//                    self.user_review[user_s(id: UUID().uuidString, name: user.name, email: user.email)] = [review_s(id: "", user_name: "", drink_name: "", comment: "", drink_type: "", rating: 0)]
-//
-//                } catch {
-//                    print("an error occurred", error)
-//                }
-//            }
+        databasePath
+            .observe(.childAdded) { [weak self] snapshot, _ in
+                guard
+                    let self = self,
+                    let json = snapshot.value as? [String: Any]
+                else {
+                    return
+                }
+                do {
+                    let reviewData = try JSONSerialization.data(withJSONObject: json)
+                    let review = try self.decoder.decode(makgeolli_review.self, from: reviewData)
+                    self.makgeolli_reviews.append(review)
+
+                } catch {
+                    print("an error occurred", error)
+                }
+            }
         
 //        databasePath
 //            .observe(.childChanged){[weak self] snapshot, _ in
@@ -138,11 +140,11 @@ class UserReviewStore: ObservableObject {
 //                }
 //                self.changeCount += 1
 //            }
-//    }
+    }
     
-//    func stopListening() {
-//        ref?.removeAllObservers()
-//    }
+    func stopListening() {
+        ref?.removeAllObservers()
+    }
     
     func addNewUser(user: user_s) {
         self.ref?.child("users").child("\(user.id)").setValue([
@@ -241,7 +243,7 @@ class UserReviewStore: ObservableObject {
             for child in snapshot.children{
                 let autoIdSnap = child as! DataSnapshot
                 let childDict = autoIdSnap.value as! [String: Any]
-                self.makgeolli_reviews.append(makgeolli_review(id: childDict["id"] as! String, user_id: childDict["user_id"] as! String, user_name: childDict["user_name"] as! String, drink_name: childDict["drink_name"] as! String, sweet: childDict["sweet"] as! Double, bitter: childDict["bitter"] as! Double, sour: childDict["sour"] as! Double, refreshing: childDict["refreshing"] as! Double, thick: childDict["thick"] as! Double, comment: childDict["comment"] as! String, drink_type: childDict["drink_type"] as! String, rating: childDict["rating"] as! Double))
+                self.temp_makgeolli_reviews.append(makgeolli_review(id: childDict["id"] as! String, user_id: childDict["user_id"] as! String, user_name: childDict["user_name"] as! String, drink_name: childDict["drink_name"] as! String, sweet: childDict["sweet"] as! Double, bitter: childDict["bitter"] as! Double, sour: childDict["sour"] as! Double, refreshing: childDict["refreshing"] as! Double, thick: childDict["thick"] as! Double, comment: childDict["comment"] as! String, drink_type: childDict["drink_type"] as! String, rating: childDict["rating"] as! Double))
             }
         })
         
@@ -314,13 +316,13 @@ class UserReviewStore: ObservableObject {
     }
     
     func setBaseReview(){
-        for i in 0...users.count-1{
+        for i in 0..<users.count{
             addNewMakgeolliReview(user: users[i], review: makgeolli_review(id: UUID().uuidString, user_id: users[i].id, user_name: users[i].name, drink_name: "대대포 블루 꿀 막걸리", sweet: 1, bitter: 2, sour: 3, refreshing: 4, thick: 5, comment: "good", drink_type: "makgeolli", rating: 3))
-            addNewSpiritReview(user: users[i], review: spirit_review(id: UUID().uuidString, user_id: users[i].id, user_name: users[i].name, drink_name: "한주양조 한주 35도", scent: 1, bodied: 2, drinkability: 3, comment: "bad", drink_type: "spirits", rating: 2))
+//            addNewSpiritReview(user: users[i], review: spirit_review(id: UUID().uuidString, user_id: users[i].id, user_name: users[i].name, drink_name: "한주양조 한주 35도", scent: 1, bodied: 2, drinkability: 3, comment: "bad", drink_type: "spirits", rating: 2))
         }
         
-        getMakgeolliReviewFromDatabase()
-        getSpiritReviewFromDatabase()
+//        getMakgeolliReviewFromDatabase()
+//        getSpiritReviewFromDatabase()
         
     }
     

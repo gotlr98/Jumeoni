@@ -18,9 +18,9 @@ struct Login_View: View {
     @EnvironmentObject var drinkStore: DrinkStore
     @EnvironmentObject var user_review: UserReviewStore
     
-    @State var drink: [drink] = []
     @State var user: [user_s] = []
-    @State var review: [makgeolli_review] = []
+    @State var makgeolli_review: [makgeolli_review] = []
+    @State var spirits_review: [spirit_review] = []
 
     
     var body: some View {
@@ -40,18 +40,21 @@ struct Login_View: View {
 
                     // Kakao Login Button
                     
-                    NavigationLink(destination: Signin_Complete(drink: self.drink), isActive: $kakaoAuthVM.isLoggedIn,
+                    NavigationLink(destination: Signin_Complete(), isActive: $kakaoAuthVM.isLoggedIn,
                                    label:{
                         Button(action: {
                             
                             
                             kakaoAuthVM.handleKakaoLogin()
                                                         
-                            self.drink = drinkStore.temp_drink
+//                            user_review.getUserFromDatabase()
+//                            user_review.getMakgeolliReviewFromDatabase()
+
+//                            self.drink = drinkStore.temp_drink
                             
-                            user_review.setBaseUser()
-                            
-                            
+
+//                            self.makgeolli_review = user_review.temp_makgeolli_reviews
+//                            self.spirits_review = user_review.spirit_reviews
                             
                             
                         }, label: {
@@ -79,7 +82,6 @@ struct Login_View: View {
             drinkStore.setDrink()
             drinkStore.stopListening()
             drinkStore.drinks = []
-
         }
 
         

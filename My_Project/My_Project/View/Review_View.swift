@@ -10,8 +10,8 @@ import SwiftUI
 struct Review_View: View {
     
     var drink: drink
-    var makgeolli_review: [makgeolli_review]
-    var spirit_review: [spirit_review]
+    @State var makgeolli_review: [makgeolli_review] = []
+    @State var spirit_review: [spirit_review] = []
     
     @EnvironmentObject var review: UserReviewStore
     @State var show_sheet: Bool = false
@@ -30,7 +30,7 @@ struct Review_View: View {
            
             List{
                 if selected_type == .makgeolli{
-                    ForEach(makgeolli_review, id: \.self){ review in
+                    ForEach(self.makgeolli_review, id: \.self){ review in
                         if drink.name == review.drink_name{
                             VStack(alignment: .leading){
                                 Text(review.user_name + "님: ")
@@ -51,7 +51,7 @@ struct Review_View: View {
                     }
                 }
                 else if selected_type == .spirits{
-                    ForEach(spirit_review, id: \.self){ reviews in
+                    ForEach(self.spirit_review, id: \.self){ reviews in
                         if drink.name == reviews.drink_name{
                             VStack(alignment: .leading){
                                 Text(reviews.user_name + "님: ")
@@ -71,9 +71,13 @@ struct Review_View: View {
                 }
                 
             }
+            .onAppear{
+                self.makgeolli_review = review.temp_makgeolli_reviews
+                self.spirit_review = review.temp_spirit_reviews
+            }
             .refreshable{
-                review.getMakgeolliReviewFromDatabase()
-                review.getSpiritReviewFromDatabase()
+                self.makgeolli_review = review.makgeolli_reviews
+                self.spirit_review = review.spirit_reviews
             }
             
             .listStyle(.sidebar)

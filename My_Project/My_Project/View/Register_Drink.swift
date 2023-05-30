@@ -15,7 +15,7 @@ struct Register_Drink: View {
     
     @EnvironmentObject var drinkStore: DrinkStore
     
-    @State var selected_type: drink.drink_type = drink.drink_type.makgeolli
+    @State var selected_type: drink.drink_type = .makgeolli
     @State var alertStat: Bool = false
     @State var input_name: String = ""
     @State var input_price: String = ""

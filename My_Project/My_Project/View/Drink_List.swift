@@ -28,31 +28,14 @@ struct Drink_List: View {
     
 //    @State var drinks = Signin_Complete().drink
     @State var drinks: [drink] = []
+//    @State var makgeolli_review: [makgeolli_review] = []
+//    @State var spirit_review: [spirit_review] = []
 
-    
-//    @State var spirits_review: Results<Spirits_Review> = get_All_Spirits_Review()
-//    @State var makgeolli_review: Results<Makgeolli_Review> = get_All_Makgeolli_Review()
+
     @State var selected_drink = drink(id: UUID().uuidString, name: "", price: 0, drink_type: "", img_url: "")
-    
-//    convenience init() {
-//        self.init()
-//
-//
-//    }
-
     
     var body: some View {
         
-//        let filter_drink = drinkStore.drinks.filter{ (element) -> Bool in
-//            if selected_type == .makgeolli{
-//                return element.drink_type == "makgeolli"
-//            }
-//            else if selected_type == .spirits{
-//                return element.drink_type == "spirits"
-//            }
-//
-//            return false
-//        }
         
         let filter_drink = drinks.filter{ (element) -> Bool in
             if selected_type == .makgeolli{
@@ -71,9 +54,12 @@ struct Drink_List: View {
 //                    NavigationLink(destination: Review_View(drink: selected_drink, makgeolli_review: $makgeolli_review, spirits_review: $spirits_review, selected_type: $selected_type), isActive: $cliked_button, label: {
 //                        EmptyView()
 //                    })
-                    NavigationLink(destination: Review_View(drink: selected_drink, makgeolli_review: user_review.makgeolli_reviews, spirit_review: user_review.spirit_reviews, selected_type: $selected_type), isActive: $cliked_button, label: {
+                    NavigationLink(destination: Review_View(drink: selected_drink, selected_type: $selected_type), isActive: $cliked_button, label: {
                         EmptyView()
                     })
+                    .onAppear{
+                        self.drinks = drinkStore.temp_drink
+                    }
                 }
                 .opacity(0.0)
                 .buttonStyle(PlainButtonStyle())

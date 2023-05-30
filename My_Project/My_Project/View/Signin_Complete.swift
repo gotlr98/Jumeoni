@@ -24,14 +24,13 @@ struct Signin_Complete: View{
     @State var didAppear = false
     @State var appearCount = 0
     
-    var drink: [drink] = []
     
     var body: some View{
         
         NavigationView{
             TabView(selection: $tabSelection){
 
-                Drink_List(selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden, drinks: self.drink)
+                Drink_List(selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden)
                     .tabItem{
                         Image(systemName: "wineglass.fill")
                     }
@@ -80,10 +79,11 @@ struct Signin_Complete: View{
             if !drinkStore.isListening{
                 drinkStore.listenToRealtimeDatabase()
                 drinkStore.isListening = true
+//                print(makgeolli_review)
+//                user_review.setBaseReview()
+               
             }
-            
-            print(user_review.makgeolli_reviews.count)
-            
+                        
         }
         didAppear = true
     }
