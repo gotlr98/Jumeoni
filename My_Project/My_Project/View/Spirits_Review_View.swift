@@ -34,6 +34,8 @@ struct Stars_View: UIViewRepresentable {
 struct Spirits_Review_View: View {
     
     @EnvironmentObject var kakao: Kakao_AuthVM
+    @EnvironmentObject var user_review: UserReviewStore
+
     @Binding var show_sheet: Bool
     @State var show_alert: Bool = false
     
@@ -98,9 +100,8 @@ struct Spirits_Review_View: View {
                     show_alert = true
                 }
                 else{
-//                    let spirits_review = Spirits_Review(name: kakao.user_name, drink_name: drink.name, scent: scent, bodied: bodied, drinkability: drinkability, rating: rating, comment: comment)
-//                    set_Spirits_Review(name: kakao.user_name, drink_name: drink.name, scent: scent, bodied: bodied, drinkability: drinkability, rating: rating, comment: comment)
-//                    kakao.add_user_spirits_review(review: spirits_review)
+                    
+                    user_review.addNewSpiritReview(user: user_review.cur_user, review: spirit_review(id: UUID().uuidString, user_id: user_review.cur_user.id, user_name: user_review.cur_user.name, drink_name: drink.name, scent: scent, bodied: bodied, drinkability: drinkability, comment: comment, drink_type: "spirits", rating: rating))
                     show_sheet.toggle()
                 }
                 

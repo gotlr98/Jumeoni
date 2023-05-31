@@ -67,7 +67,6 @@ struct User_View: View {
                 }, header: {
                     Text("증류주 리뷰")
                 })
-//                user_view.cur_user.id
             }
         }
     }
