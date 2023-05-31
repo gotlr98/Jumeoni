@@ -84,10 +84,15 @@ struct Login_View: View {
                 drinkStore.stopListening()
                 drinkStore.drinks = []
                 
+//                user_review.setBaseReview()
+//                user_review.setBaseUser()
+                
                 user_review.getMakgeolliReviewFromDatabase()
+                user_review.getSpiritReviewFromDatabase()
 //                await user_review.setBaseUser()
                 user_review.stopListening()
                 user_review.makgeolli_reviews = []
+                user_review.spirit_reviews = []
             }
             
         }

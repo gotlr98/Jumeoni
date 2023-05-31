@@ -85,6 +85,12 @@ struct Signin_Complete: View{
                 drinkStore.isListening = true
 //                print(makgeolli_review)
 //                user_review.setBaseReview()
+            if !user_review.isMakgeolliListening{
+                user_review.makgeolliListen()
+                user_review.spiritListen()
+                user_review.isMakgeolliListening = true
+                user_review.isSpiritListening = true
+            }
                
             }
         }

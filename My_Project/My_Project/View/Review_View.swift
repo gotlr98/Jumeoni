@@ -125,12 +125,7 @@ struct Review_View: View {
         if !didAppear{
             appearCount += 1
             
-            if !review.isMakgeolliListening{
-                review.makgeolliListen()
-                review.isMakgeolliListening = true
 
-               
-            }
             self.makgeolli_review = review.temp_makgeolli_reviews
             self.spirit_review = review.temp_spirit_reviews
         }

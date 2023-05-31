@@ -11,6 +11,8 @@ struct User_View: View {
     
     @EnvironmentObject var kakao: Kakao_AuthVM
     @EnvironmentObject var user_view: UserReviewStore
+    @State var makgeolli_review: [makgeolli_review] = []
+    @State var spirit_review: [spirit_review] = []
     
     var body: some View {
 //        Button(action: {
@@ -22,10 +24,8 @@ struct User_View: View {
         
         VStack{
             List{
-                let makgeolli_review = user_view.getUserMakgeolliReview(user: user_view.cur_user)
-                let spirit_review = user_view.getUserSpiritReview(user: user_view.cur_user)
                 Section(content: {
-                    ForEach(makgeolli_review, id: \.self){ review in
+                    ForEach(self.makgeolli_review, id: \.self){ review in
                         VStack(alignment: .leading){
                             Text(review.user_name + "님: ")
                             Text(review.drink_name + " review - ")
@@ -49,7 +49,7 @@ struct User_View: View {
                 })
                 
                 Section(content: {
-                    ForEach(spirit_review, id: \.self){ review in
+                    ForEach(self.spirit_review, id: \.self){ review in
                         VStack(alignment: .leading){
                             Text(review.user_name + "님: ")
                             Text(review.drink_name + " review - ")
@@ -67,6 +67,14 @@ struct User_View: View {
                 }, header: {
                     Text("증류주 리뷰")
                 })
+            }
+            .onAppear{
+                self.makgeolli_review = user_view.getUserMakgeolliReview(user: user_view.cur_user)
+                self.spirit_review = user_view.getUserSpiritReview(user: user_view.cur_user)
+            }
+            .refreshable{
+                self.makgeolli_review = user_view.getUserMakgeolliReview(user: user_view.cur_user)
+                self.spirit_review = user_view.getUserSpiritReview(user: user_view.cur_user)
             }
         }
     }
