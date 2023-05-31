@@ -13,6 +13,7 @@ struct Drink_List: View {
     
     @EnvironmentObject var drinkStore: DrinkStore
     @EnvironmentObject var user_review: UserReviewStore
+    @EnvironmentObject var kakao: Kakao_AuthVM
     
     @State var selected_type: drink.drink_type = .makgeolli
     @State var show_sheet: Bool = false
@@ -70,6 +71,7 @@ struct Drink_List: View {
                         Button(action: {
                             selected_drink = drink
                             self.cliked_button = true
+                            print(user_review.cur_user)
                             
                         }, label: {
                             VStack{

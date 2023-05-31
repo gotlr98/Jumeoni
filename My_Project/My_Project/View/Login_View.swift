@@ -79,14 +79,17 @@ struct Login_View: View {
         }
 //        .navigationViewStyle(.stack)
         .onAppear{
-            drinkStore.setDrink()
-            drinkStore.stopListening()
-            drinkStore.drinks = []
+            Task{
+                drinkStore.setDrink()
+                drinkStore.stopListening()
+                drinkStore.drinks = []
+                
+                user_review.getMakgeolliReviewFromDatabase()
+//                await user_review.setBaseUser()
+                user_review.stopListening()
+                user_review.makgeolli_reviews = []
+            }
             
-            user_review.getMakgeolliReviewFromDatabase()
-            user_review.setBaseUser()
-            user_review.stopListening()
-            user_review.makgeolli_reviews = []
         }
 
         

@@ -63,6 +63,10 @@ struct Signin_Complete: View{
         .onDisappear{
             didAppear = false
         }
+        .onChange(of: kakao.cur_user, perform: { new in
+            user_review.cur_user = new
+            user_review.addNewUser(user: new)
+        })
         
         .navigationTitle("안녕하세요 " + kakao.user_name + "님")
         .navigationBarTitleDisplayMode(.inline)
@@ -83,9 +87,6 @@ struct Signin_Complete: View{
 //                user_review.setBaseReview()
                
             }
-            user_review.cur_user = kakao.cur_user
-            user_review.addNewUser(user: kakao.cur_user)
-                        
         }
         didAppear = true
     }

@@ -12,12 +12,12 @@ import KakaoSDKUser
 import SwiftUI
 
 
+@MainActor
 class Kakao_AuthVM: ObservableObject{
     
     @Published var isLoggedIn : Bool = false
     @Published var user_name: String = ""
     @Published var email: String = ""
-//    @Published var user: User_Info = User_Info()
     
     @Published var cur_user: user_s = user_s(id: "", name: "", email: "")
     
@@ -81,8 +81,8 @@ class Kakao_AuthVM: ObservableObject{
                            self.email = email.replacingOccurrences(of: ".", with: ",")
                            
                            self.cur_user = user_s(id: UUID().uuidString, name: name, email: self.email)
+//                           userStore.addNewUser(user: user_s(id: UUID().uuidString, name: name, email: self.email))
                            
-//                           add_user(name: user_name)
                        }
                    }
                     
@@ -93,6 +93,7 @@ class Kakao_AuthVM: ObservableObject{
         
     }
     
+    @MainActor
     func handleLoginWithKakaoAccount() async -> Bool {
         
         await withCheckedContinuation{ continuation in
@@ -122,7 +123,7 @@ class Kakao_AuthVM: ObservableObject{
                                self.email = email.replacingOccurrences(of: ".", with: ",")
                                
                                self.cur_user = user_s(id: UUID().uuidString, name: name, email: self.email)
-                               print(email)
+
 
                            }
                        }

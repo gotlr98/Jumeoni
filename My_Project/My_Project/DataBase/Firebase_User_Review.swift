@@ -149,12 +149,12 @@ class UserReviewStore: ObservableObject {
         ref?.removeAllObservers()
     }
     
-    func addNewUser(user: user_s) {
-        self.ref?.child("users").child("\(user.id)").setValue([
-            "id": user.id,
-            "name": user.name,
-            "email": user.email,
-        ])
+    func addNewUser(user: user_s){
+            self.ref?.child("users").child("\(user.id)").setValue([
+                "id": user.id,
+                "name": user.name,
+                "email": user.email,
+            ])
         
     }
     
@@ -176,10 +176,10 @@ class UserReviewStore: ObservableObject {
         })
     }
     
-    func setBaseUser(){
+    func setBaseUser() async{
         
-        addNewUser(user: user_s(id: UUID().uuidString, name: "해식", email: "gotlr@naver,com"))
-        addNewUser(user: user_s(id: UUID().uuidString, name: "태희", email: "xogml@naver,com"))
+        await addNewUser(user: user_s(id: UUID().uuidString, name: "해식", email: "gotlr@naver,com"))
+        await addNewUser(user: user_s(id: UUID().uuidString, name: "태희", email: "xogml@naver,com"))
         
         getUserFromDatabase()
     }
