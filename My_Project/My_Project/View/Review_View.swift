@@ -72,6 +72,9 @@ struct Review_View: View {
                 
             }
             .onAppear(perform: onLoad)
+            .onDisappear{
+                didAppear = false
+            }
             .refreshable{
                 self.makgeolli_review = review.makgeolli_reviews
                 self.spirit_review = review.spirit_reviews
@@ -122,12 +125,15 @@ struct Review_View: View {
 
     
     func onLoad(){
-        if !didAppear{
+        if !didAppear && appearCount == 1{
             appearCount += 1
-            
 
             self.makgeolli_review = review.temp_makgeolli_reviews
             self.spirit_review = review.temp_spirit_reviews
+        }
+        else{
+            self.makgeolli_review = review.makgeolli_reviews
+            self.spirit_review = review.spirit_reviews
         }
         didAppear = true
     }

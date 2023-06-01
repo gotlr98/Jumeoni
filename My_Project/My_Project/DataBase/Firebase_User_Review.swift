@@ -91,60 +91,50 @@ class UserReviewStore: ObservableObject {
                 }
             }
         
-//        databasePath
-//            .observe(.childChanged){[weak self] snapshot, _ in
-//                guard
-//                    let self = self,
-//                    let json = snapshot.value as? [String: Any]
-//                else{
-//                    return
-//                }
-//                do{
-//                    let userData = try JSONSerialization.data(withJSONObject: json)
-//                    let user = try self.decoder.decode(user_s.self, from: userData)
-//
-//                    var index = 0
-//                    for userItem in self.user_review {
-//                        if (user.id == userItem.id){
-//                            break
-//                        }else{
-//                            index += 1
-//                        }
-//                    }
-//                    self.users[index] = user
-//                } catch{
-//                    print("an error occurred", error)
-//                }
-//            }
+        databasePath
+            .observe(.childChanged){[weak self] snapshot, _ in
+                guard
+                    let self = self,
+                    let json = snapshot.value as? [String: Any]
+                else{
+                    return
+                }
+                do{
+                    let reviewData = try JSONSerialization.data(withJSONObject: json)
+                    let review = try self.decoder.decode(makgeolli_review.self, from: reviewData)
+
+                    var index = 0
+                    for reviewItem in self.makgeolli_reviews {
+                        if (review.id == reviewItem.id){
+                            break
+                        }else{
+                            index += 1
+                        }
+                    }
+                    self.makgeolli_reviews[index] = review
+                } catch{
+                    print("an error occurred", error)
+                }
+            }
         
-//        databasePath
-//            .observe(.childRemoved){[weak self] snapshot in
-//                guard
-//                    let self = self,
-//                    let json = snapshot.value as? [String: Any]
-//                else{
-//                    return
-//                }
-//                do{
-//                    let userData = try JSONSerialization.data(withJSONObject: json)
-//                    let user = try self.decoder.decode(user_s.self, from: userData)
-//                    for (index, userItem) in self.users.enumerated() where user.id == userItem.id {
-//                        self.users.remove(at: index)
-//                    }
-//                } catch{
-//                    print("an error occurred", error)
-//                }
-//            }
-        
-//        databasePath
-//            .observe(.value){[weak self] snapshot in
-//                guard
-//                    let self = self
-//                else {
-//                    return
-//                }
-//                self.changeCount += 1
-//            }
+        databasePath
+            .observe(.childRemoved){[weak self] snapshot in
+                guard
+                    let self = self,
+                    let json = snapshot.value as? [String: Any]
+                else{
+                    return
+                }
+                do{
+                    let reviewData = try JSONSerialization.data(withJSONObject: json)
+                    let review = try self.decoder.decode(makgeolli_review.self, from: reviewData)
+                    for (index, reviewItem) in self.makgeolli_reviews.enumerated() where review.id == reviewItem.id {
+                        self.makgeolli_reviews.remove(at: index)
+                    }
+                } catch{
+                    print("an error occurred", error)
+                }
+            }
     }
     
     func spiritListen() {
@@ -172,60 +162,51 @@ class UserReviewStore: ObservableObject {
                 }
             }
         
-//        databasePath
-//            .observe(.childChanged){[weak self] snapshot, _ in
-//                guard
-//                    let self = self,
-//                    let json = snapshot.value as? [String: Any]
-//                else{
-//                    return
-//                }
-//                do{
-//                    let userData = try JSONSerialization.data(withJSONObject: json)
-//                    let user = try self.decoder.decode(user_s.self, from: userData)
-//
-//                    var index = 0
-//                    for userItem in self.user_review {
-//                        if (user.id == userItem.id){
-//                            break
-//                        }else{
-//                            index += 1
-//                        }
-//                    }
-//                    self.users[index] = user
-//                } catch{
-//                    print("an error occurred", error)
-//                }
-//            }
+        databasePath
+            .observe(.childChanged){[weak self] snapshot, _ in
+                guard
+                    let self = self,
+                    let json = snapshot.value as? [String: Any]
+                else{
+                    return
+                }
+                do{
+                    let reviewData = try JSONSerialization.data(withJSONObject: json)
+                    let review = try self.decoder.decode(spirit_review.self, from: reviewData)
+
+                    var index = 0
+                    for reviewItem in self.spirit_reviews {
+                        if (review.id == reviewItem.id){
+                            break
+                        }else{
+                            index += 1
+                        }
+                    }
+                    self.spirit_reviews[index] = review
+                } catch{
+                    print("an error occurred", error)
+                }
+            }
         
-//        databasePath
-//            .observe(.childRemoved){[weak self] snapshot in
-//                guard
-//                    let self = self,
-//                    let json = snapshot.value as? [String: Any]
-//                else{
-//                    return
-//                }
-//                do{
-//                    let userData = try JSONSerialization.data(withJSONObject: json)
-//                    let user = try self.decoder.decode(user_s.self, from: userData)
-//                    for (index, userItem) in self.users.enumerated() where user.id == userItem.id {
-//                        self.users.remove(at: index)
-//                    }
-//                } catch{
-//                    print("an error occurred", error)
-//                }
-//            }
-        
-//        databasePath
-//            .observe(.value){[weak self] snapshot in
-//                guard
-//                    let self = self
-//                else {
-//                    return
-//                }
-//                self.changeCount += 1
-//            }
+        databasePath
+            .observe(.childRemoved){[weak self] snapshot in
+                guard
+                    let self = self,
+                    let json = snapshot.value as? [String: Any]
+                else{
+                    return
+                }
+                do{
+                    let reviewData = try JSONSerialization.data(withJSONObject: json)
+                    let review = try self.decoder.decode(spirit_review.self, from: reviewData)
+                    for (index, reviewItem) in self.spirit_reviews.enumerated() where review.id == reviewItem.id {
+                        self.spirit_reviews.remove(at: index)
+                    }
+                } catch{
+                    print("an error occurred", error)
+                }
+            }
+
     }
     
     func stopListening() {

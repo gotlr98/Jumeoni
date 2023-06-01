@@ -71,7 +71,6 @@ struct Drink_List: View {
                         Button(action: {
                             selected_drink = drink
                             self.cliked_button = true
-                            print(user_review.cur_user)
                             
                         }, label: {
                             VStack{

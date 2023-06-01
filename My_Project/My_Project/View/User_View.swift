@@ -44,6 +44,13 @@ struct User_View: View {
 
                         }
                     }
+                    .onDelete(perform: { row in
+                        for index in row{
+                            user_view.deleteMakgeolliReview(review: self.makgeolli_review[index])
+                            self.makgeolli_review.remove(at: index)
+                        }
+//
+                    })
                 }, header: {
                     Text("막걸리 리뷰")
                 })
@@ -64,6 +71,13 @@ struct User_View: View {
                             Text("코멘트 : " + review.comment)
                         }
                     }
+                    .onDelete(perform: { row in
+                        for index in row{
+                            user_view.deleteSpiritReview(review: self.spirit_review[index])
+                            self.spirit_review.remove(at: index)
+                        }
+//
+                    })
                 }, header: {
                     Text("증류주 리뷰")
                 })
