@@ -22,7 +22,7 @@ struct User_View: View {
                     Section(content: {
                         ForEach(self.makgeolli_review, id: \.self){ review in
                             VStack(alignment: .leading){
-                                Text(review.user_name + "님: ")
+                                Text(review.user_name + "나의 리뷰: ")
                                 Text(review.drink_name + " review - ")
 
                                 HStack{
