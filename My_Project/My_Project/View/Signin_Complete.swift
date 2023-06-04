@@ -68,7 +68,7 @@ struct Signin_Complete: View{
             user_review.addNewUser(user: new)
         })
         
-        .navigationTitle(if tabselection == .tab1 ? "안녕하세요 " + kakao.user_name + "님" : "나의 후기")
+        .navigationTitle(tabSelection == .tab1 ? "안녕하세요 " + kakao.user_name + "님" : "나의 후기")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
     
