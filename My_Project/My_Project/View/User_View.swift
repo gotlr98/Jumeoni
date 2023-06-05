@@ -13,6 +13,7 @@ struct User_View: View {
     @EnvironmentObject var user_view: UserReviewStore
     @State var makgeolli_review: [makgeolli_review] = []
     @State var spirit_review: [spirit_review] = []
+    @State var isClikced: Bool = false
     
     var body: some View {
         
@@ -21,37 +22,44 @@ struct User_View: View {
                 List{
                     Section(content: {
                         ForEach(self.makgeolli_review, id: \.self){ review in
-                            VStack(alignment: .leading){
-                                Text(review.user_name + "나의 리뷰: ")
-                                Text(review.drink_name + " review - ")
+                            
+//                            NavigationLink(destination: , isActive: ) {
+                                VStack(alignment: .leading){
+                                    Text("나의 리뷰: ")
+                                    Text(review.drink_name + " review - ")
 
-                                HStack{
-                                    Text("단맛 : " + String(review.sweet))
-                                    Text("신맛 : " + String(review.sour))
-                                    Text("쓴맛 : " + String(review.bitter))
-                                    Text("청량감 : " + String(review.refreshing))
-                                    Text("걸쭉함 : " + String(review.thick))
+                                    HStack{
+                                        Text("단맛 : " + String(review.sweet))
+                                        Text("신맛 : " + String(review.sour))
+                                        Text("쓴맛 : " + String(review.bitter))
+                                        Text("청량감 : " + String(review.refreshing))
+                                        Text("걸쭉함 : " + String(review.thick))
+
+                                    }
+                                    Text("총점 : " + String(review.rating))
+                                    Text("코멘트 : " + review.comment)
 
                                 }
-                                Text("총점 : " + String(review.rating))
-                                Text("코멘트 : " + review.comment)
-
-
-                            }
-                            .onTapGesture{}.onLongPressGesture(minimumDuration: 0.2){
-                                print("press")
-                            }
+                                .onTapGesture{}
+                                .onLongPressGesture(minimumDuration: 0.5, perform: {
+                                    
+                            })
+//                            }
                         }
+                        
                         .onDelete(perform: { row in
                             for index in row{
                                 user_view.deleteMakgeolliReview(review: self.makgeolli_review[index])
                                 self.makgeolli_review.remove(at: index)
                             }
-    //
                         })
+
                     }, header: {
                         Text("막걸리 리뷰")
                     })
+                    
+
+
                     
                     Section(content: {
                         ForEach(self.spirit_review, id: \.self){ review in
@@ -80,6 +88,9 @@ struct User_View: View {
                         Text("증류주 리뷰")
                     })
                 }
+
+                
+                
                 .onAppear{
                     self.makgeolli_review = user_view.getUserMakgeolliReview(user: user_view.cur_user)
                     self.spirit_review = user_view.getUserSpiritReview(user: user_view.cur_user)
