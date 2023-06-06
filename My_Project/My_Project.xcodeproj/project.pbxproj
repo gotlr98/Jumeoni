@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A0607C32A2DCB3100AFAC72 /* Edit_Review_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0607C22A2DCB3100AFAC72 /* Edit_Review_View.swift */; };
+		8A0607C32A2DCB3100AFAC72 /* Edit_Makgeolli_Review_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0607C22A2DCB3100AFAC72 /* Edit_Makgeolli_Review_View.swift */; };
+		8A0607C52A2EEBE700AFAC72 /* Edit_Spirits_Review_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0607C42A2EEBE700AFAC72 /* Edit_Spirits_Review_View.swift */; };
 		8A2C72A529DC0182006B13AB /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C72A429DC0182006B13AB /* Review.swift */; };
 		8A36991829E3C5C00098CBE4 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36991729E3C5C00098CBE4 /* Drink.swift */; };
 		8A45E8A129F2849B00D5EEDF /* Store_WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */; };
@@ -53,7 +54,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8A0607C22A2DCB3100AFAC72 /* Edit_Review_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edit_Review_View.swift; sourceTree = "<group>"; };
+		8A0607C22A2DCB3100AFAC72 /* Edit_Makgeolli_Review_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edit_Makgeolli_Review_View.swift; sourceTree = "<group>"; };
+		8A0607C42A2EEBE700AFAC72 /* Edit_Spirits_Review_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edit_Spirits_Review_View.swift; sourceTree = "<group>"; };
 		8A2C72A429DC0182006B13AB /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		8A36991729E3C5C00098CBE4 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store_WebView.swift; sourceTree = "<group>"; };
@@ -138,7 +140,8 @@
 				8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */,
 				8A6327AD29F77ED3007B1BFD /* User_View.swift */,
 				8AB437FB2A04B9A600072D1C /* Spirits_Review_View.swift */,
-				8A0607C22A2DCB3100AFAC72 /* Edit_Review_View.swift */,
+				8A0607C22A2DCB3100AFAC72 /* Edit_Makgeolli_Review_View.swift */,
+				8A0607C42A2EEBE700AFAC72 /* Edit_Spirits_Review_View.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -300,7 +303,7 @@
 				8AD0C11029C03F8700A5D77D /* AppDelegate.swift in Sources */,
 				8AE6764929D53ADF0083C278 /* User_Info.swift in Sources */,
 				8AE6764D29D549D50083C278 /* Login_View.swift in Sources */,
-				8A0607C32A2DCB3100AFAC72 /* Edit_Review_View.swift in Sources */,
+				8A0607C32A2DCB3100AFAC72 /* Edit_Makgeolli_Review_View.swift in Sources */,
 				8A93F60729EE523200663E96 /* Makgeolli_Review.swift in Sources */,
 				8A45E8A129F2849B00D5EEDF /* Store_WebView.swift in Sources */,
 				8A2C72A529DC0182006B13AB /* Review.swift in Sources */,
@@ -312,6 +315,7 @@
 				8AE9212C29DD40EB00C22025 /* Review_View.swift in Sources */,
 				8A36991829E3C5C00098CBE4 /* Drink.swift in Sources */,
 				8A9B587329DD1E2A009277EF /* Register_Drink.swift in Sources */,
+				8A0607C52A2EEBE700AFAC72 /* Edit_Spirits_Review_View.swift in Sources */,
 				8ABF56932A1F248E00574783 /* Firebase_User_Review.swift in Sources */,
 				8AB437FC2A04B9A600072D1C /* Spirits_Review_View.swift in Sources */,
 			);
