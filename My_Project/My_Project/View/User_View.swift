@@ -34,7 +34,6 @@ struct User_View: View {
                         ForEach(self.makgeolli_reviews, id: \.self){ review in
 
                                 VStack(alignment: .leading){
-                                    Text("나의 리뷰: ")
                                     Text(review.drink_name + " review - ")
 
                                     HStack{
@@ -49,12 +48,19 @@ struct User_View: View {
                                     Text("코멘트 : " + review.comment)
 
                                 }
-                                .onTapGesture{}
-                                .onLongPressGesture(minimumDuration: 0.5, perform: {
-                                    self.isClikced = true
-                                    self.selected_review_type = "makgeolli"
-                                    self.selected_makgeolli_review = review
-                            })
+                                .contextMenu(menuItems: {
+                                    Button(action: {
+                                        self.isClikced = true
+                                        self.selected_review_type = "makgeolli"
+                                        self.selected_makgeolli_review = review
+                                    }, label: {
+                                        Text("수정하기")
+                                    })
+                                })
+//                                .onTapGesture{}
+//                                .onLongPressGesture(minimumDuration: 0.5, perform: {
+//
+//                            })
                         }
                         
                         .onDelete(perform: { row in
