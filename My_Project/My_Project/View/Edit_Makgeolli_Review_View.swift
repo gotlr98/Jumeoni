@@ -10,6 +10,7 @@ import SwiftUI
 struct Edit_Makgeolli_Review_View: View {
     
     @EnvironmentObject var user_review: UserReviewStore
+    @Environment(\.presentationMode) var presentation
     
     @State var review: makgeolli_review
     
@@ -91,8 +92,8 @@ struct Edit_Makgeolli_Review_View: View {
                 show_alert = true
             }
             else{
-                user_review.addNewMakgeolliReview(user: user_review.cur_user, review: makgeolli_review(id: UUID().uuidString, user_id: user_review.cur_user.id, user_name: user_review.cur_user.name, drink_name: review.drink_name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, comment: comment, drink_type: "makgeolli", rating: rating))
-//                show_sheet.toggle()
+                user_review.editMakgeolliReview(user: user_review.cur_user, review: makgeolli_review(id: review.id, user_id: user_review.cur_user.id, user_name: user_review.cur_user.name, drink_name: review.drink_name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, comment: comment, drink_type: "makgeolli", rating: rating))
+                presentation.wrappedValue.dismiss()
             }
             
         }, label: {
@@ -100,7 +101,7 @@ struct Edit_Makgeolli_Review_View: View {
                 .frame(width: 120, height: 50)
                 .foregroundColor(Color.secondary)
                 .overlay{
-                    Text("리뷰 등록하기")
+                    Text("수정하기")
                         .fontWeight(.bold)
                         .foregroundColor(Color.black)
                 }
@@ -117,6 +118,7 @@ struct Edit_Makgeolli_Review_View: View {
             self.rating = review.rating
             self.comment = review.comment
         }
+//        .toolbar(.hidden, for: .tabBar)
         
     }
 }

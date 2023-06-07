@@ -26,6 +26,7 @@ struct User_View: View {
                     NavigationLink(destination: selected_review_type == "makgeolli" ? AnyView(Edit_Makgeolli_Review_View(review: selected_makgeolli_review)) : AnyView(Edit_Spirits_Review_View(review: selected_spirit_review)), isActive: $isClikced, label: {
                         EmptyView()
                     })
+
                     .opacity(0.0)
                     .buttonStyle(PlainButtonStyle())
                 }
