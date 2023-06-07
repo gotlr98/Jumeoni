@@ -26,29 +26,21 @@ struct Register_Drink: View {
     @Binding var drinks: [drink]
     @Binding var show_sheet: Bool
     
-//    func register_drink(id: UUID, name: String, type: Drink.drink_type, price: Int64, img_url: String){
-//
-////            drink.append(Drink(id: UUID(), name: name, type: type, price: Int64(price), img_url: img_url))
-//            switch type {
-//            case .makgeolli:
-//                set_drink(name: name, price: Int64(price), drink_type: "makgeolli", img_url: img_url)
-//            case .spirits:
-//                set_drink(name: name, price: Int64(price), drink_type: "spirits", img_url: img_url)
-//            }
-//            self.is_url_valid = true
-//
-//    }
+
     
     var body: some View {
         
         GeometryReader{ geo in
-            VStack(alignment: .center){
-                
+            
+            VStack{
                 if button_clicked{
                     KFImage(URL(string: input_img_url))
                         .resizable()
                         .frame(width: 80, height: 80)
+                        .position(x: geo.size.width / 2, y: geo.size.height / 5)
                 }
+            }
+            VStack(alignment: .center){
                 
                 Picker("종류", selection: $selected_type){
                     Text("막걸리").tag(drink.drink_type.makgeolli)
@@ -79,13 +71,11 @@ struct Register_Drink: View {
                 .background(Color(uiColor: .secondarySystemBackground))
                 .textInputAutocapitalization(.never)
                 .onChange(of: input_img_url){ newValue in
-                    if input_img_url != newValue{
-                        button_clicked = false
-                    }
+                    button_clicked = false
                 }
                 
             }
-            .position(x: geo.size.width / 2, y: geo.size.height / 3)
+            .position(x: geo.size.width / 2, y: geo.size.height / 2)
             
             
             HStack{
@@ -112,7 +102,6 @@ struct Register_Drink: View {
                         show_alert = true
                     }
                     else{
-//                        register_drink(id: UUID(), name: input_name, type: selected_type, price: Int64(input_price)!, img_url: input_img_url)
                         
                         if selected_type == .makgeolli{
                             drinkStore.addNewDrink(drink: drink(id: UUID().uuidString, name: input_name, price: Int64(input_price)!, drink_type: "makgeolli", img_url: input_img_url))
@@ -141,7 +130,7 @@ struct Register_Drink: View {
                 }
                 
             }
-            .position(x: geo.size.width / 2, y: geo.size.height / 1.6)
+            .position(x: geo.size.width / 2, y: geo.size.height / 1.2)
             
 
         }
