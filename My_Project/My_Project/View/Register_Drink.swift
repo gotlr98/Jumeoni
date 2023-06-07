@@ -23,6 +23,7 @@ struct Register_Drink: View {
     @State var show_alert: Bool = false
     @State var is_url_valid: Bool = false
     @State var button_clicked: Bool = false
+    @State var isError: Bool = false
     @Binding var drinks: [drink]
     @Binding var show_sheet: Bool
     
@@ -33,11 +34,21 @@ struct Register_Drink: View {
         GeometryReader{ geo in
             
             VStack{
-                if button_clicked{
+                if button_clicked || input_img_url.isEmpty{
+                    
                     KFImage(URL(string: input_img_url))
+                        .onFailure{ e in
+                            isError = true
+                        }
+                        .onSuccess{ s in
+                            isError = false
+                        }
                         .resizable()
                         .frame(width: 80, height: 80)
                         .position(x: geo.size.width / 2, y: geo.size.height / 5)
+                        .alert("URL주소 확인해주세요.", isPresented: $isError){
+                            Button("OK", role: .cancel){}
+                        }
                 }
             }
             VStack(alignment: .center){
