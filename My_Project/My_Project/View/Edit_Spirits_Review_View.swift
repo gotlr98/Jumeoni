@@ -82,7 +82,7 @@ struct Edit_Spirits_Review_View: View {
                     .frame(width: 120, height: 50)
                     .foregroundColor(Color.secondary)
                     .overlay{
-                        Text("리뷰 등록하기")
+                        Text("수정하기")
                             .fontWeight(.bold)
                             .foregroundColor(Color.black)
                     }
