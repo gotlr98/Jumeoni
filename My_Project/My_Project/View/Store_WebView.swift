@@ -6,62 +6,54 @@
 //
 
 import SwiftUI
-import WebKit
+import WebView
+import Combine
 
-struct Store_WebView: UIViewRepresentable {
+struct Store_WebView: View {
+   
+    @Binding var isToolBarItemHidden: Bool
+    @State var webviewStore = WebViewStore()
     
-    let request: URLRequest
-    var webview: WKWebView?
+    let url: String
     
-    init(web: WKWebView?, req: URLRequest) {
-            self.webview = WKWebView()
-            self.request = req
+    
+    var body: some View {
+        NavigationView{
+            WebView(webView: webviewStore.webView)
+                .navigationTitle("술사기")
+                .navigationBarItems(trailing: HStack{
+                    Button(action: goBack){
+                        Image(systemName: "chevron.left")
+                            .imageScale(.large)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32, height: 32)
+                    }
+                    .disabled(!webviewStore.canGoBack)
+                    Button(action: goForward){
+                        Image(systemName: "chevron.right")
+                            .imageScale(.large)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32, height: 32)
+                    }.disabled(!webviewStore.canGoForward)
+                })
+        }.onAppear{
+            self.webviewStore.webView.load(URLRequest(url: URL(string: url)!))
         }
-    
-    class Coordinator: NSObject, WKUIDelegate {
-            var parent: Store_WebView
-
-            init(_ parent: Store_WebView) {
-                self.parent = parent
-            }
-
-            // Delegate methods go here
-
-            func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
-                // alert functionality goes here
-            }
-        }
-    
-    func makeCoordinator() -> Coordinator {
-            Coordinator(self)
-        }
-
-    func makeUIView(context: Context) -> WKWebView  {
-        return webview!
     }
-
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        uiView.uiDelegate = context.coordinator
-        uiView.load(request)
+    func goBack() {
+        webviewStore.webView.goBack()
+      }
+      
+    func goForward() {
+        webviewStore.webView.goForward()
     }
-
-    func goBack(){
-        webview?.goBack()
-    }
-
-    func goForward(){
-        webview?.goForward()
-    }
-
-    func reload(){
-        webview?.reload()
-    }
-    
     
 }
 
-struct Store_WebView_Previews: PreviewProvider {
-    static var previews: some View {
-        Store_WebView(web: nil, req: URLRequest(url: URL(string:"https://www.google.com")!))
-    }
-}
+
+
+//struct Store_WebView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Store_WebView()
+//    }
+//}

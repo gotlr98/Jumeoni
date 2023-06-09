@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8A0607C32A2DCB3100AFAC72 /* Edit_Makgeolli_Review_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0607C22A2DCB3100AFAC72 /* Edit_Makgeolli_Review_View.swift */; };
 		8A0607C52A2EEBE700AFAC72 /* Edit_Spirits_Review_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0607C42A2EEBE700AFAC72 /* Edit_Spirits_Review_View.swift */; };
+		8A216FCC2A32E19400C46589 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = 8A216FCB2A32E19400C46589 /* WebView */; };
 		8A2C72A529DC0182006B13AB /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C72A429DC0182006B13AB /* Review.swift */; };
 		8A36991829E3C5C00098CBE4 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36991729E3C5C00098CBE4 /* Drink.swift */; };
 		8A45E8A129F2849B00D5EEDF /* Store_WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */; };
@@ -92,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A216FCC2A32E19400C46589 /* WebView in Frameworks */,
 				8A56536F2A0A4EFC00523C6A /* FirebaseDatabaseSwift in Frameworks */,
 				8A5653732A0A4EFC00523C6A /* FirebaseFirestoreSwift in Frameworks */,
 				8A93F61129EE6C4400663E96 /* Cosmos in Frameworks */,
@@ -230,6 +232,7 @@
 				8A56536E2A0A4EFC00523C6A /* FirebaseDatabaseSwift */,
 				8A5653702A0A4EFC00523C6A /* FirebaseFirestore */,
 				8A5653722A0A4EFC00523C6A /* FirebaseFirestoreSwift */,
+				8A216FCB2A32E19400C46589 /* WebView */,
 			);
 			productName = My_Project;
 			productReference = 8AD0C0F329C03CE700A5D77D /* My_Project.app */;
@@ -264,6 +267,7 @@
 				8AFE5E2129E66A1200937903 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				8A93F60F29EE6C4400663E96 /* XCRemoteSwiftPackageReference "Cosmos" */,
 				8A56536B2A0A4EFB00523C6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8A216FCA2A32E19400C46589 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
 			);
 			productRefGroup = 8AD0C0F429C03CE700A5D77D /* Products */;
 			projectDirPath = "";
@@ -526,6 +530,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8A216FCA2A32E19400C46589 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kylehickinson/SwiftUI-WebView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
 		8A56536B2A0A4EFB00523C6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -561,6 +573,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8A216FCB2A32E19400C46589 /* WebView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A216FCA2A32E19400C46589 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */;
+			productName = WebView;
+		};
 		8A56536C2A0A4EFC00523C6A /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8A56536B2A0A4EFB00523C6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

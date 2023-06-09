@@ -96,7 +96,8 @@ struct Review_View: View {
 
             NavigationLink(destination: {
                 
-                Shop(isToolBarItemHidden: $dismissed, webview: Store_WebView(web: nil, req: URLRequest(url: URL(string: "https://msearch.shopping.naver.com/search/all?query=\(drink.name)&frm=NVSHSRC&vertical=home".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!)))
+                
+                Store_WebView(isToolBarItemHidden: $dismissed, url:  "https://smartstore.naver.com/wooridoga/search?q=\(drink.name)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
 
             }, label: {
                 Text("사러가기")

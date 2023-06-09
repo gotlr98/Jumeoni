@@ -27,12 +27,7 @@ struct Drink_List: View {
         GridItem(.flexible())
     ]
     
-//    @State var drinks = Signin_Complete().drink
     @State var drinks: [drink] = []
-//    @State var makgeolli_review: [makgeolli_review] = []
-//    @State var spirit_review: [spirit_review] = []
-
-
     @State var selected_drink = drink(id: UUID().uuidString, name: "", price: 0, drink_type: "", img_url: "")
     
     var body: some View {
@@ -52,9 +47,7 @@ struct Drink_List: View {
         GeometryReader{ geo in
             ScrollView{
                 ZStack {
-//                    NavigationLink(destination: Review_View(drink: selected_drink, makgeolli_review: $makgeolli_review, spirits_review: $spirits_review, selected_type: $selected_type), isActive: $cliked_button, label: {
-//                        EmptyView()
-//                    })
+
                     NavigationLink(destination: Review_View(drink: selected_drink, selected_type: $selected_type), isActive: $cliked_button, label: {
                         EmptyView()
                     })
