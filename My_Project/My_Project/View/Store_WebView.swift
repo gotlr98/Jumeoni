@@ -42,10 +42,12 @@ struct Store_WebView: View {
     }
     func goBack() {
         webviewStore.webView.goBack()
+        webviewStore.webView.allowsBackForwardNavigationGestures
       }
       
     func goForward() {
         webviewStore.webView.goForward()
+        
     }
     
 }
