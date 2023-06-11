@@ -73,7 +73,6 @@ struct Edit_Spirits_Review_View: View {
                     show_alert = true
                 }
                 else{
-                    
                     user_review.editSpiritReview(user: user_review.cur_user, review: spirit_review(id: review.id, user_id: user_review.cur_user.id, user_name: user_review.cur_user.name, drink_name: review.drink_name, scent: scent, bodied: bodied, drinkability: drinkability, comment: comment, drink_type: "spirits", rating: rating))
                 }
                 

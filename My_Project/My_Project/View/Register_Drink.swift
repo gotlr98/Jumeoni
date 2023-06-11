@@ -147,9 +147,3 @@ struct Register_Drink: View {
         }
     }
 }
-//
-//struct Register_Drink_Previews: PreviewProvider {
-//    static var previews: some View {
-////        Register_Drink(drink: $drink)
-//    }
-//}

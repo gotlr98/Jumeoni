@@ -93,7 +93,6 @@ struct Edit_Makgeolli_Review_View: View {
             }
             else{
                 user_review.editMakgeolliReview(user: user_review.cur_user, review: makgeolli_review(id: review.id, user_id: user_review.cur_user.id, user_name: user_review.cur_user.name, drink_name: review.drink_name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, comment: comment, drink_type: "makgeolli", rating: rating))
-//                presentation.wrappedValue.dismiss()
                 show_sheet.toggle()
             }
             
