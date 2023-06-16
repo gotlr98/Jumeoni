@@ -27,8 +27,6 @@ struct Store_WebView: View {
     @State var confirmHandler: (Bool) -> Void = {_ in }
     
     
-    
-    
     var body: some View {
         
         let webView = MyWebView(webView: WKWebView(), request: URLRequest(url: URL(string: url)!), showAlert: self.$showAlert, alertMessage: self.$alertMessage, confirmHandler: self.$confirmHandler)

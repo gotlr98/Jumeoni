@@ -34,7 +34,7 @@ struct Register_Drink: View {
         GeometryReader{ geo in
             
             VStack{
-                if button_clicked || input_img_url.isEmpty{
+                if button_clicked && !input_img_url.isEmpty{
                     
                     KFImage(URL(string: input_img_url))
                         .onFailure{ e in
@@ -45,11 +45,15 @@ struct Register_Drink: View {
                         }
                         .resizable()
                         .frame(width: 80, height: 80)
-                        .position(x: geo.size.width / 2, y: geo.size.height / 5)
+                        .position(x: geo.size.width / 2, y: geo.size.height / 8)
                         .alert("URL주소 확인해주세요.", isPresented: $isError){
-                            Button("OK", role: .cancel){}
+                            Button("OK", role: .cancel){
+                                isError = false
+                                button_clicked = false
+                            }
                         }
                 }
+                
             }
             VStack(alignment: .center){
                 
@@ -86,13 +90,14 @@ struct Register_Drink: View {
                 }
                 
             }
-            .position(x: geo.size.width / 2, y: geo.size.height / 2)
+            .position(x: geo.size.width / 2, y: geo.size.height / 3)
             
             
             HStack{
                 Button(action: {
                     if input_img_url.isEmpty{
                         show_alert = true
+                        button_clicked = true
                     }
                     else{
                         button_clicked = true
@@ -141,7 +146,7 @@ struct Register_Drink: View {
                 }
                 
             }
-            .position(x: geo.size.width / 2, y: geo.size.height / 1.2)
+            .position(x: geo.size.width / 2, y: geo.size.height / 1.4)
             
 
         }
