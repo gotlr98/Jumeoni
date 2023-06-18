@@ -46,15 +46,7 @@ struct Login_View: View {
                             
                             
                             kakaoAuthVM.handleKakaoLogin()
-                                                        
-//                            user_review.getUserFromDatabase()
-//                            user_review.getMakgeolliReviewFromDatabase()
 
-//                            self.drink = drinkStore.temp_drink
-                            
-
-//                            self.makgeolli_review = user_review.temp_makgeolli_reviews
-//                            self.spirits_review = user_review.spirit_reviews
                             
                             
                         }, label: {
@@ -77,19 +69,15 @@ struct Login_View: View {
             }
             .background(Color.indigo)
         }
-//        .navigationViewStyle(.stack)
         .onAppear{
             Task{
                 drinkStore.setDrink()
                 drinkStore.stopListening()
                 drinkStore.drinks = []
                 
-//                user_review.setBaseReview()
-//                user_review.setBaseUser()
                 
                 user_review.getMakgeolliReviewFromDatabase()
                 user_review.getSpiritReviewFromDatabase()
-//                await user_review.setBaseUser()
                 user_review.stopListening()
                 user_review.makgeolli_reviews = []
                 user_review.spirit_reviews = []
