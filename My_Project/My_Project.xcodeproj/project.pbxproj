@@ -64,6 +64,7 @@
 		8A36991729E3C5C00098CBE4 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		8A45E8A029F2849B00D5EEDF /* Store_WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store_WebView.swift; sourceTree = "<group>"; };
 		8A5653742A0B47D400523C6A /* Firebase_Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase_Drink.swift; sourceTree = "<group>"; };
+		8A613E152AAAC0B6009BFD1E /* My_Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = My_Project.entitlements; sourceTree = "<group>"; };
 		8A6327AD29F77ED3007B1BFD /* User_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User_View.swift; sourceTree = "<group>"; };
 		8A93F60629EE523200663E96 /* Makgeolli_Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Makgeolli_Review.swift; sourceTree = "<group>"; };
 		8A93F60829EE591200663E96 /* Spirits_Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spirits_Review.swift; sourceTree = "<group>"; };
@@ -171,6 +172,7 @@
 		8AD0C0F529C03CE700A5D77D /* My_Project */ = {
 			isa = PBXGroup;
 			children = (
+				8A613E152AAAC0B6009BFD1E /* My_Project.entitlements */,
 				8A36991629E3C55B0098CBE4 /* View */,
 				8A36991529E3C0790098CBE4 /* DataBase */,
 				8ADFF99729DBD553003CEE45 /* Assets.xcassets */,
@@ -455,6 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 1";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = My_Project/My_Project.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"My_Project/Preview Content\"";
@@ -486,6 +489,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 1";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = My_Project/My_Project.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"My_Project/Preview Content\"";
