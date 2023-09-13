@@ -11,7 +11,7 @@ import FirebaseDatabaseSwift
 
 struct user_s: Codable, Identifiable, Hashable{
     
-    let id: Int64
+    let id: String
     var name: String
     var email: String
 }
@@ -19,7 +19,7 @@ struct user_s: Codable, Identifiable, Hashable{
 struct makgeolli_review: Codable, Identifiable, Hashable{
     
     let id: String
-    var user_id: Int64
+    var user_id: String
     var user_name: String
     var drink_name: String
     var sweet: Double
@@ -36,7 +36,7 @@ struct makgeolli_review: Codable, Identifiable, Hashable{
 struct spirit_review: Codable, Identifiable, Hashable{
     
     let id: String
-    var user_id: Int64
+    var user_id: String
     var user_name: String
     var drink_name: String
     var scent: Double
@@ -51,8 +51,8 @@ struct spirit_review: Codable, Identifiable, Hashable{
 class UserReviewStore: ObservableObject {
     
     @Published var users: [user_s] = []
-    @Published var cur_user: user_s = user_s(id: 0, name: "", email: "")
-    @Published var base_user: user_s = user_s(id: 0, name: "베이스", email: "base@naver,com")
+    @Published var cur_user: user_s = user_s(id: "", name: "", email: "")
+    @Published var base_user: user_s = user_s(id: "", name: "베이스", email: "base@naver,com")
     @Published var makgeolli_reviews: [makgeolli_review] = []
     @Published var temp_makgeolli_reviews: [makgeolli_review] = []
     @Published var spirit_reviews: [spirit_review] = []
@@ -235,18 +235,18 @@ class UserReviewStore: ObservableObject {
             for child in snapshot.children{
                 let autoIdSnap = child as! DataSnapshot
                 let childDict = autoIdSnap.value as! [String: Any]
-                self.users.append(user_s(id: childDict["id"] as! Int64, name: childDict["name"] as! String, email: childDict["email"] as! String))
+                self.users.append(user_s(id: childDict["id"] as! String, name: childDict["name"] as! String, email: childDict["email"] as! String))
             }
         })
     }
     
-    func setBaseUser(){
-        
-        addNewUser(user: user_s(id: 124, name: "해식", email: "gotlr@naver,com"))
-        addNewUser(user: user_s(id: 2565, name: "태희", email: "xogml@naver,com"))
-        
-        getUserFromDatabase()
-    }
+//    func setBaseUser(){
+//
+//        addNewUser(user: user_s(id: 124, name: "해식", email: "gotlr@naver,com"))
+//        addNewUser(user: user_s(id: 2565, name: "태희", email: "xogml@naver,com"))
+//
+//        getUserFromDatabase()
+//    }
     
     func addNewMakgeolliReview(user: user_s, review: makgeolli_review) {
         self.ref?.child("makgeolli_reviews").child("\(review.id)").setValue([
@@ -310,7 +310,7 @@ class UserReviewStore: ObservableObject {
             for child in snapshot.children{
                 let autoIdSnap = child as! DataSnapshot
                 let childDict = autoIdSnap.value as! [String: Any]
-                self.temp_makgeolli_reviews.append(makgeolli_review(id: childDict["id"] as! String, user_id: childDict["user_id"] as! Int64, user_name: childDict["user_name"] as! String, drink_name: childDict["drink_name"] as! String, sweet: childDict["sweet"] as! Double, bitter: childDict["bitter"] as! Double, sour: childDict["sour"] as! Double, refreshing: childDict["refreshing"] as! Double, thick: childDict["thick"] as! Double, comment: childDict["comment"] as! String, drink_type: childDict["drink_type"] as! String, rating: childDict["rating"] as! Double))
+                self.temp_makgeolli_reviews.append(makgeolli_review(id: childDict["id"] as! String, user_id: childDict["user_id"] as! String, user_name: childDict["user_name"] as! String, drink_name: childDict["drink_name"] as! String, sweet: childDict["sweet"] as! Double, bitter: childDict["bitter"] as! Double, sour: childDict["sour"] as! Double, refreshing: childDict["refreshing"] as! Double, thick: childDict["thick"] as! Double, comment: childDict["comment"] as! String, drink_type: childDict["drink_type"] as! String, rating: childDict["rating"] as! Double))
             }
         })
         
@@ -376,22 +376,22 @@ class UserReviewStore: ObservableObject {
             for child in snapshot.children{
                 let autoIdSnap = child as! DataSnapshot
                 let childDict = autoIdSnap.value as! [String: Any]
-                self.temp_spirit_reviews.append(spirit_review(id: childDict["id"] as! String, user_id: childDict["user_id"] as! Int64, user_name: childDict["user_name"] as! String, drink_name: childDict["drink_name"] as! String, scent: childDict["scent"] as! Double, bodied: childDict["bodied"] as! Double, drinkability: childDict["drinkability"] as! Double, comment: childDict["comment"] as! String, drink_type: childDict["drink_type"] as! String, rating: childDict["rating"] as! Double))
+                self.temp_spirit_reviews.append(spirit_review(id: childDict["id"] as! String, user_id: childDict["user_id"] as! String, user_name: childDict["user_name"] as! String, drink_name: childDict["drink_name"] as! String, scent: childDict["scent"] as! Double, bodied: childDict["bodied"] as! Double, drinkability: childDict["drinkability"] as! Double, comment: childDict["comment"] as! String, drink_type: childDict["drink_type"] as! String, rating: childDict["rating"] as! Double))
             }
         })
         
     }
     
-    func setBaseReview(){
-        for i in 0..<3{
-            addNewMakgeolliReview(user: base_user, review: makgeolli_review(id: UUID().uuidString, user_id: base_user.id, user_name: base_user.name, drink_name: "대대포 블루 꿀 막걸리", sweet: 1, bitter: 2, sour: 3, refreshing: 4, thick: 5, comment: "good", drink_type: "makgeolli", rating: 3))
-//            addNewSpiritReview(user: users[i], review: spirit_review(id: UUID().uuidString, user_id: users[i].id, user_name: users[i].name, drink_name: "한주양조 한주 35도", scent: 1, bodied: 2, drinkability: 3, comment: "bad", drink_type: "spirits", rating: 2))
-        }
-        
-//        getMakgeolliReviewFromDatabase()
-//        getSpiritReviewFromDatabase()
-        
-    }
+//    func setBaseReview(){
+//        for i in 0..<3{
+//            addNewMakgeolliReview(user: base_user, review: makgeolli_review(id: UUID().uuidString, user_id: base_user.id, user_name: base_user.name, drink_name: "대대포 블루 꿀 막걸리", sweet: 1, bitter: 2, sour: 3, refreshing: 4, thick: 5, comment: "good", drink_type: "makgeolli", rating: 3))
+////            addNewSpiritReview(user: users[i], review: spirit_review(id: UUID().uuidString, user_id: users[i].id, user_name: users[i].name, drink_name: "한주양조 한주 35도", scent: 1, bodied: 2, drinkability: 3, comment: "bad", drink_type: "spirits", rating: 2))
+//        }
+//        
+////        getMakgeolliReviewFromDatabase()
+////        getSpiritReviewFromDatabase()
+//
+//    }
     
     
 }

@@ -19,7 +19,7 @@ class Kakao_AuthVM: ObservableObject{
     @Published var user_name: String = ""
     @Published var email: String = ""
     
-    @Published var cur_user: user_s = user_s(id: 0, name: "", email: "")
+    @Published var cur_user: user_s = user_s(id: "", name: "", email: "")
     
     
 //    @MainActor
@@ -81,7 +81,7 @@ class Kakao_AuthVM: ObservableObject{
 //                           self.user.name = name
                            self.email = email.replacingOccurrences(of: ".", with: ",")
                            
-                           self.cur_user = user_s(id: id, name: name, email: self.email)
+                           self.cur_user = user_s(id: String(id), name: name, email: self.email)
 //                           userStore.addNewUser(user: user_s(id: UUID().uuidString, name: name, email: self.email))
                            
                        }
@@ -123,7 +123,7 @@ class Kakao_AuthVM: ObservableObject{
                                self.user_name = name
                                self.email = email.replacingOccurrences(of: ".", with: ",")
                                
-                               self.cur_user = user_s(id: id, name: name, email: self.email)
+                               self.cur_user = user_s(id: String(id), name: name, email: self.email)
 
 
                            }

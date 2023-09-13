@@ -12,9 +12,9 @@ struct User_View: View {
     @EnvironmentObject var kakao: Kakao_AuthVM
     @EnvironmentObject var user_view: UserReviewStore
     @State var makgeolli_reviews: [makgeolli_review] = []
-    @State var selected_makgeolli_review: makgeolli_review = makgeolli_review(id: "", user_id: 0, user_name: "", drink_name: "", sweet: 1.0, bitter: 1.0, sour: 1.0, refreshing: 1.0, thick: 1.0, comment: "", drink_type: "", rating: 1.0)
+    @State var selected_makgeolli_review: makgeolli_review = makgeolli_review(id: "", user_id: "", user_name: "", drink_name: "", sweet: 1.0, bitter: 1.0, sour: 1.0, refreshing: 1.0, thick: 1.0, comment: "", drink_type: "", rating: 1.0)
     @State var spirit_reviews: [spirit_review] = []
-    @State var selected_spirit_review: spirit_review = spirit_review(id: "", user_id: 0, user_name: "", drink_name: "", scent: 1.0, bodied: 1.0, drinkability: 1.0, comment: "", drink_type: "", rating: 1.0)
+    @State var selected_spirit_review: spirit_review = spirit_review(id: "", user_id: "", user_name: "", drink_name: "", scent: 1.0, bodied: 1.0, drinkability: 1.0, comment: "", drink_type: "", rating: 1.0)
     @State var isClicked: Bool = false
     @State var selected_review_type: String = ""
     
