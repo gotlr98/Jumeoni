@@ -133,6 +133,18 @@ struct User_View: View {
                 }
                 
             }
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing, content:{
+                    
+                    Button(action: {
+//                        self.show_sheet.toggle()
+                    }, label: {
+                        Image(systemName: "plus.circle")
+                            .font(.system(size: 20))
+                            .foregroundColor(Color.gray)
+                    })
+                })
+            }
         }
     }
 }

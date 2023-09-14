@@ -51,16 +51,22 @@ struct Review_View: View {
                     }
                     .contextMenu(menuItems: {
                         Button(action: {
-                            isClicked.toggle()
+                            self.isClicked = true
                         }, label: {
                             Text("신고하기")
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(Color.red)
                         })
-                        .actionSheet(isPresented: $isClicked){
-                            ActionSheet(title: Text("신고하기"),
-                                        message: Text("신고하시겠습니까?"),
-                                        buttons: [.default(Text("취소")),
-                                                  .destructive(Text("신고하기"))])
-                        }
+//                        .confirmationDialog("타이틀", isPresented: $isClicked) {
+//                            Button("신고하기", role: .destructive) {}
+//                            Button("취소", role: .cancel) {}
+//                          }
+//                        .actionSheet(isPresented: $isClicked){
+//                            ActionSheet(title: Text("신고하기"),
+//                                        message: Text("신고하시겠습니까?"),
+//                                        buttons: [.default(Text("취소")),
+//                                                  .destructive(Text("신고하기"))])
+//                        }
                     })
                 }
                 else if selected_type == .spirits{
@@ -83,18 +89,13 @@ struct Review_View: View {
                     }
                     .contextMenu(menuItems: {
                         Button(action: {
-                            isClicked.toggle()
+                            isClicked = true
                         }, label: {
                             Text("신고하기")
-                                .foregroundColor(Color.red)
                                 .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(Color.red)
                         })
-                        .actionSheet(isPresented: $isClicked){
-                            ActionSheet(title: Text("신고하기"),
-                                        message: Text("신고하시겠습니까?"),
-                                        buttons: [.default(Text("취소")),
-                                                  .destructive(Text("신고하기"))])
-                        }
+
                     })
                 }
                 
@@ -149,7 +150,17 @@ struct Review_View: View {
             }
             
         }
-//        .toolbar(.hidden, for: .tabBar)
+        .sheet(isPresented: $isClicked){
+            Button(role: .cancel, action: {
+                isClicked = false
+            }, label: {
+                Text("닫기")
+            })
+            
+            reportView(isClicked: $isClicked)
+                .presentationDetents([.fraction(0.6)])
+        }
+
     }
 
     

@@ -39,20 +39,12 @@ struct Signin_Complete: View{
                         self.isToolBarItemHidden = true
                     }
                 
-//                Shop(url: "", isToolBarItemHidden: $isToolBarItemHidden)
-//                    .tabItem{
-//                        Image(systemName: "cart.fill")
-//                    }
-//                    .tag(Tabs.tab2)
-//                    .onAppear {
-//                        self.isToolBarItemHidden = false
-//                    }
                 
                 User_View()
                     .tabItem{
                         Image(systemName: "person.circle")
                     }
-                    .tag(Tabs.tab3)
+                    .tag(Tabs.tab2)
                     .onAppear{
                         self.isToolBarItemHidden = false
                     }

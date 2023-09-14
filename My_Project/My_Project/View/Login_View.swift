@@ -108,7 +108,7 @@ struct Login_View: View {
                     .signInWithAppleButtonStyle(
                         colorScheme == .dark ? .white : .black
                     )
-                    .frame(height: 50)
+                    .frame(width: 300, height: 50)
                     .cornerRadius(8)
                     .position(x: geo.size.width / 2, y: geo.size.height / 1.3)
 //                    .background(Color.white)
