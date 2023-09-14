@@ -20,6 +20,7 @@ struct Review_View: View {
     
     @State var didAppear = false
     @State var appearCount = 0
+    @State var isClicked = false
     
     
     
@@ -27,14 +28,13 @@ struct Review_View: View {
         VStack {
             
             Text(drink.name + "리뷰")
-           
+            
             List{
                 if selected_type == .makgeolli{
                     ForEach(self.makgeolli_review, id: \.self){ review in
                         if drink.name == review.drink_name{
                             VStack(alignment: .leading){
                                 Text(review.user_name + "님: ")
-
                                 HStack{
                                     Text("단맛 : " + String(review.sweet))
                                     Text("신맛 : " + String(review.sour))
@@ -49,6 +49,19 @@ struct Review_View: View {
                             }
                         }
                     }
+                    .contextMenu(menuItems: {
+                        Button(action: {
+                            isClicked.toggle()
+                        }, label: {
+                            Text("신고하기")
+                        })
+                        .actionSheet(isPresented: $isClicked){
+                            ActionSheet(title: Text("신고하기"),
+                                        message: Text("신고하시겠습니까?"),
+                                        buttons: [.default(Text("취소")),
+                                                  .destructive(Text("신고하기"))])
+                        }
+                    })
                 }
                 else if selected_type == .spirits{
                     ForEach(self.spirit_review, id: \.self){ reviews in
@@ -68,6 +81,21 @@ struct Review_View: View {
                             }
                         }
                     }
+                    .contextMenu(menuItems: {
+                        Button(action: {
+                            isClicked.toggle()
+                        }, label: {
+                            Text("신고하기")
+                                .foregroundColor(Color.red)
+                                .font(.system(size: 20, weight: .bold))
+                        })
+                        .actionSheet(isPresented: $isClicked){
+                            ActionSheet(title: Text("신고하기"),
+                                        message: Text("신고하시겠습니까?"),
+                                        buttons: [.default(Text("취소")),
+                                                  .destructive(Text("신고하기"))])
+                        }
+                    })
                 }
                 
             }
