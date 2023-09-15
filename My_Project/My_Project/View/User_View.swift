@@ -18,6 +18,8 @@ struct User_View: View {
     @State var isClicked: Bool = false
     @State var selected_review_type: String = ""
     
+    @State var showingAlert = false
+    
     var body: some View {
         
         NavigationView{
@@ -136,13 +138,22 @@ struct User_View: View {
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing, content:{
                     
-                    Button(action: {
-//                        self.show_sheet.toggle()
+                    Menu(content: {
+                        Button(action: {
+                            self.showingAlert = true
+                        }, label: {
+                            Text("탈퇴하기")
+                        })
                     }, label: {
-                        Image(systemName: "plus.circle")
-                            .font(.system(size: 20))
-                            .foregroundColor(Color.gray)
+                        Image(systemName: "person.fill.badge.minus")
                     })
+                    .alert(isPresented: $showingAlert) {
+                                Alert(title: Text("탈퇴했습니다."), message: nil,
+                                      dismissButton: .default(Text("확인")){
+                                    kakao.isLoggedIn = false
+                                    user_view.deleteUser(user: kakao.cur_user)
+                                })
+                    }
                 })
             }
         }

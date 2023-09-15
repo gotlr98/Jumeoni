@@ -54,11 +54,10 @@ struct Login_View: View {
                         }, label: {
                             Rectangle()
                                 .foregroundColor(Color.gray)
-                                .frame(width: 170, height: 68)
+                                .frame(width: 300, height: 50)
                                 .cornerRadius(15)
                                 .overlay{
                                     Text("Kakao Login")
-                                        .font(.system(size: 23))
                                         .foregroundColor(Color.white)
                                         .fontWeight(.black)
                                 }
