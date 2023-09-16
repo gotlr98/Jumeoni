@@ -111,6 +111,22 @@ struct Login_View: View {
                     .cornerRadius(8)
                     .position(x: geo.size.width / 2, y: geo.size.height / 1.3)
 //                    .background(Color.white)
+                    
+                    Button(action: {
+                        kakaoAuthVM.isLoggedIn = true
+                        kakaoAuthVM.user_name = "Guest"
+                    }, label: {
+                        Rectangle()
+                            .foregroundColor(Color.gray)
+                            .frame(width: 300, height: 50)
+                            .cornerRadius(15)
+                            .overlay{
+                                Text("Guest Login")
+                                    .foregroundColor(Color.white)
+                                    .fontWeight(.black)
+                            }
+                    })
+                    .position(x: geo.size.width / 2, y: geo.size.height / 1.1)
                         
 
                 }
