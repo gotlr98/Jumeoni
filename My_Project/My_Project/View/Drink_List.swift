@@ -47,7 +47,7 @@ struct Drink_List: View {
         GeometryReader{ geo in
             ScrollView{
                 ZStack {
-
+                    
                     NavigationLink(destination: Review_View(drink: selected_drink, selected_type: $selected_type), isActive: $cliked_button, label: {
                         EmptyView()
                     })
@@ -87,16 +87,17 @@ struct Drink_List: View {
                         
                         }
                         .padding()
-                        .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.blue, lineWidth: 4)
-                            )
+//                        .overlay(
+//                                RoundedRectangle(cornerRadius: 16)
+//                                    .stroke(Color.blue, lineWidth: 4)
+//                            )
 
                 })
 
                 .padding()
 
             }
+//            .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.white]), startPoint: .bottom, endPoint: .top))
             .refreshable {
                 self.drinks = drinkStore.drinks
             }
