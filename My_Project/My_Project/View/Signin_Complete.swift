@@ -25,30 +25,39 @@ struct Signin_Complete: View{
     @State var appearCount = 0
     
     
+    
     var body: some View{
         
         NavigationView{
             TabView(selection: $tabSelection){
-
-                Drink_List(selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden)
-                    .tabItem{
-                        Image(systemName: "wineglass.fill")
-                    }
-                    .tag(Tabs.tab1)
-                    .onAppear {
-                        self.isToolBarItemHidden = true
-                    }
                 
-                
-                User_View()
-                    .tabItem{
-                        Image(systemName: "person.circle")
-                    }
-                    .tag(Tabs.tab2)
-                    .onAppear{
-                        self.isToolBarItemHidden = false
-                    }
+                Group{
+                    Drink_List(selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden)
+                        .tabItem{
+                            Label("술리뷰", systemImage: "wineglass.fill")
+//                            Image(systemName: "wineglass.fill")
+                        }
+                        .tag(Tabs.tab1)
+                        .onAppear {
+                            self.isToolBarItemHidden = true
+                        }
+                    
+                    
+                    User_View()
+                        .tabItem{
+                            Label("마이페이지", systemImage: "person.circle")
+//                            Image(systemName: "person.circle")
+                        }
+                        .tag(Tabs.tab2)
+                        .onAppear{
+                            self.isToolBarItemHidden = false
+                        }
+                }
+                .toolbarBackground(Color.teal, for: .tabBar)
+                .toolbarBackground(.visible, for: .tabBar)
+                .toolbarColorScheme(.dark, for: .tabBar)
             }
+            
         }
         
         .onAppear(perform: onLoad)
@@ -69,6 +78,7 @@ struct Signin_Complete: View{
     }
     
     func onLoad(){
+        UITabBar.appearance().barTintColor = .blue
         if !didAppear{
             appearCount += 1
             

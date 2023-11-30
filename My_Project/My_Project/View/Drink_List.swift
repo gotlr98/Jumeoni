@@ -30,6 +30,7 @@ struct Drink_List: View {
     @State var drinks: [drink] = []
     @State var selected_drink = drink(id: UUID().uuidString, name: "", price: 0, drink_type: "", img_url: "")
     
+    
     var body: some View {
         
         
@@ -66,23 +67,31 @@ struct Drink_List: View {
                             self.cliked_button = true
                             
                         }, label: {
-                            VStack{
-                                KFImage(URL(string: drink.img_url))
-                                    .placeholder{
-                                        Color.gray
-                                    }
-                                    .onFailure{ e in
-                                        print("failure \(e)")
-                                    }
-                                    .resizable()
-                                    .frame(width: 100, height: 100)
-                                    .onAppear()
-
-                                Text(drink.name)
-                                .foregroundColor(Color.black)
-                                .font(.system(size: 15))
+                            ZStack(alignment: .center){
+                                RoundedRectangle(cornerRadius: 30)
+                                    .foregroundColor(Color.white)
+                                    .shadow(color: Color.black.opacity(0.5), radius: 1, x: -0.2, y: 1)
+                                
+                                VStack{
+                                    KFImage(URL(string: drink.img_url))
+                                        .placeholder{
+                                            Color.gray
+                                        }
+                                        .onFailure{ e in
+                                            print("failure \(e)")
+                                        }
+                                        .resizable()
+                                        .frame(width: 90, height: 90)
+                                        .onAppear()
+                                    
+                                    Text(drink.name)
+                                        .foregroundColor(Color.black)
+                                        .font(.system(size: 15))
+                                }
                             }
-
+                            .frame(width: (UIScreen.main.bounds.width / 2) - 80,
+                                height: ((UIScreen.main.bounds.width / 2) - 80) * 1.5,
+                                alignment: .center)
                         })
                         
                         }
@@ -97,7 +106,7 @@ struct Drink_List: View {
                 .padding()
 
             }
-//            .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.white]), startPoint: .bottom, endPoint: .top))
+            .background(LinearGradient(gradient: Gradient(colors: [Color.orange, Color.white]), startPoint: .center, endPoint: .bottomTrailing).opacity(0.3))
             .refreshable {
                 self.drinks = drinkStore.drinks
             }
