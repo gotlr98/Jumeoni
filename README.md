@@ -1,4 +1,4 @@
-## iOS_App_Develop
+## Jumeoni
 
 This app is for people who enjoy drinking
 You can register your drink and leave a review of it
