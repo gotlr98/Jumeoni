@@ -5,4 +5,5 @@ You can register your drink and leave a review of it
 Also buy drink what you want to drink
 
 
-<img width="387" alt="image" src="https://user-images.githubusercontent.com/71820857/233356608-28a0c152-0989-4993-bb35-d209bb601d1c.png">
+<img width="387" alt="image" src="https://github.com/gotlr98/Jumeoni/assets/71820857/7ae544a4-82d5-44fb-b890-e28a2e99113b">
+
