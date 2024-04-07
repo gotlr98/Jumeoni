@@ -67,7 +67,7 @@ class UserReviewStore: ObservableObject {
     private let decoder = JSONDecoder() // (2)
     
     func makgeolliListen() {
-
+        
         guard let databasePath = ref?.child("makgeolli_reviews") else {
             return
         }
@@ -85,7 +85,7 @@ class UserReviewStore: ObservableObject {
                     let reviewData = try JSONSerialization.data(withJSONObject: json)
                     let review = try self.decoder.decode(makgeolli_review.self, from: reviewData)
                     self.makgeolli_reviews.append(review)
-
+                    
                 } catch {
                     print("an error occurred", error)
                 }
@@ -102,7 +102,7 @@ class UserReviewStore: ObservableObject {
                 do{
                     let reviewData = try JSONSerialization.data(withJSONObject: json)
                     let review = try self.decoder.decode(makgeolli_review.self, from: reviewData)
-
+                    
                     var index = 0
                     for reviewItem in self.makgeolli_reviews {
                         if (review.id == reviewItem.id){
@@ -138,7 +138,7 @@ class UserReviewStore: ObservableObject {
     }
     
     func spiritListen() {
-
+        
         guard let databasePath = ref?.child("spirit_reviews") else {
             return
         }
@@ -155,7 +155,7 @@ class UserReviewStore: ObservableObject {
                     let reviewData = try JSONSerialization.data(withJSONObject: json)
                     let review = try self.decoder.decode(spirit_review.self, from: reviewData)
                     self.spirit_reviews.append(review)
-
+                    
                 } catch {
                     print("an error occurred", error)
                 }
@@ -172,7 +172,7 @@ class UserReviewStore: ObservableObject {
                 do{
                     let reviewData = try JSONSerialization.data(withJSONObject: json)
                     let review = try self.decoder.decode(spirit_review.self, from: reviewData)
-
+                    
                     var index = 0
                     for reviewItem in self.spirit_reviews {
                         if (review.id == reviewItem.id){
@@ -205,7 +205,7 @@ class UserReviewStore: ObservableObject {
                     print("an error occurred", error)
                 }
             }
-
+        
     }
     
     func stopListening() {
@@ -213,11 +213,11 @@ class UserReviewStore: ObservableObject {
     }
     
     func addNewUser(user: user_s){
-            self.ref?.child("users").child("\(user.id)").setValue([
-                "id": user.id,
-                "name": user.name,
-                "email": user.email,
-            ])
+        self.ref?.child("users").child("\(user.id)").setValue([
+            "id": user.id,
+            "name": user.name,
+            "email": user.email,
+        ])
     }
     
     func deleteUser(user: user_s) {
@@ -273,10 +273,10 @@ class UserReviewStore: ObservableObject {
         ]
         
         let childUpdates = ["makgeolli_reviews/\(review.id)": updates]
-
+        
         self.ref?.updateChildValues(childUpdates)
         
-
+        
     }
     
     func deleteMakgeolliReview(review: makgeolli_review) {
@@ -337,10 +337,10 @@ class UserReviewStore: ObservableObject {
         ]
         
         let childUpdates = ["spirit_reviews/\(review.id)": updates]
-
+        
         self.ref?.updateChildValues(childUpdates)
         
-
+        
     }
     
     func deleteSpiritReview(review: spirit_review) {
@@ -369,3 +369,4 @@ class UserReviewStore: ObservableObject {
         })
         
     }
+}
