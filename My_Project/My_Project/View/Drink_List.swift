@@ -26,14 +26,10 @@ struct Drink_List: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    
     @State var drinks: [drink] = []
     @State var selected_drink = drink(id: UUID().uuidString, name: "", price: 0, drink_type: "", img_url: "")
     
-    
     var body: some View {
-        
-        
         let filter_drink = drinks.filter{ (element) -> Bool in
             if selected_type == .makgeolli{
                 return element.drink_type == "makgeolli"
@@ -48,7 +44,6 @@ struct Drink_List: View {
         GeometryReader{ geo in
             ScrollView{
                 ZStack {
-                    
                     NavigationLink(destination: Review_View(drink: selected_drink, selected_type: $selected_type), isActive: $cliked_button, label: {
                         EmptyView()
                     })
@@ -60,8 +55,9 @@ struct Drink_List: View {
                 .buttonStyle(PlainButtonStyle())
                 
                 LazyVGrid(columns: columns, alignment: .center, spacing: 10, content:{
-                
                     ForEach(filter_drink, id: \.id) { drink in
+                        
+                        // Button 클릭되면 NavigationLink 동작
                         Button(action: {
                             selected_drink = drink
                             self.cliked_button = true
@@ -93,32 +89,20 @@ struct Drink_List: View {
                                 height: ((UIScreen.main.bounds.width / 2) - 80) * 1.5,
                                 alignment: .center)
                         })
-                        
-                        }
-                        .padding()
-//                        .overlay(
-//                                RoundedRectangle(cornerRadius: 16)
-//                                    .stroke(Color.blue, lineWidth: 4)
-//                            )
-
+                    }
+                    .padding()
                 })
-
                 .padding()
-
             }
             .background(LinearGradient(gradient: Gradient(colors: [Color.orange, Color.white]), startPoint: .center, endPoint: .bottomTrailing).opacity(0.3))
             .refreshable {
                 self.drinks = drinkStore.drinks
             }
-            
         }
-
-        
         .toolbar{
             if isToolBarItemHidden{
                 ToolbarItem(placement: .navigationBarLeading, content: {
                     Menu("Menu"){
-                        
                         Button(action: {
                             self.selected_type = .makgeolli
                         }, label: {
@@ -133,8 +117,6 @@ struct Drink_List: View {
                                 .foregroundColor(.black)
                         })
                     }
-                    
-                    
                 })
                 ToolbarItem(placement: .navigationBarTrailing, content:{
                     
@@ -147,30 +129,14 @@ struct Drink_List: View {
                     })
                 })
             }
-            
-
         }
-        
         .fullScreenCover(isPresented: $show_sheet){
             Button(role: .cancel, action: {
                 show_sheet = false
             }, label: {
                 Text("닫기")
             })
-        
             Register_Drink(selected_type: selected_type, drinks: $drinks, show_sheet: $show_sheet)
         }
-        
-//        .navigationViewStyle(.stack)
     }
-    
-
 }
-
-
-
-//struct Drink_Info_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Drink_List(selected_type: .makgeolli)
-//    }
-//}

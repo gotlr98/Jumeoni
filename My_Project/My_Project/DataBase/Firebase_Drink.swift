@@ -138,23 +138,7 @@ class DrinkStore: ObservableObject {
     func deleteDrink(key: String) {
         ref?.child("drinks/\(key)").removeValue()
     }
-    
-//    func editDrink(drink: drink_s) {
-//        let updates: [String : Any] = [
-//            "id": drink.id,
-//            "drink_type": drink.drink_type,
-//            "price": drink.price,
-//            "img_url": drink.img_url
-//        ]
-//        
-//        let childUpdates = ["drinks/\(self.drink_number)": updates]
-//        for (index, drinkItem) in drinks.enumerated() where drinkItem.id == drink.id {
-//            drinks[index] = drink
-//        }
-//        self.ref?.updateChildValues(childUpdates)
-//        
-//    }
-//
+
     func setDrink(){
         
         ref?.child("drinks").observeSingleEvent(of: .value, with: { snapshot in
@@ -163,10 +147,10 @@ class DrinkStore: ObservableObject {
                 let childDict = autoIdSnap.value as! [String: Any]
                 self.temp_drink.append(drink(id: childDict["id"] as! String, name: childDict["name"] as! String, price: childDict["price"] as! Int64, drink_type: childDict["drink_type"] as! String, img_url: childDict["img_url"] as! String))
             }
-//            return temp_drink
         })
     }
     
+    // 프로그램 초기에 데이터베이스 설정
     func set_base_drink(){
         
         var drink_makgeolli_urls = [

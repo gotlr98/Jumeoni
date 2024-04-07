@@ -113,11 +113,9 @@ struct Makgeolli_Review_View: View {
                     show_alert = true
                 }
                 else{
-//                    
                     review.addNewMakgeolliReview(user: review.cur_user, review: makgeolli_review(id: UUID().uuidString, user_id: review.cur_user.id, user_name: review.cur_user.name, drink_name: drink.name, sweet: sweet, bitter: bitter, sour: sour, refreshing: refreshing, thick: thick, comment: comment, drink_type: "makgeolli", rating: rating))
                     show_sheet.toggle()
                 }
-                
             }, label: {
                 Rectangle()
                     .frame(width: 120, height: 50)

@@ -16,6 +16,8 @@ struct My_ProjectApp: App {
     
     
     var body: some Scene {
+        
+        // 많은 뷰에서 사용하는 객체들 EnvironmentObject 주입
         WindowGroup {
             Login_View()
                 .environmentObject(Kakao_AuthVM())

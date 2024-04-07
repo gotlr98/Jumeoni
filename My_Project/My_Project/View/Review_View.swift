@@ -22,13 +22,9 @@ struct Review_View: View {
     @State var appearCount = 0
     @State var isClicked = false
     
-    
-    
     var body: some View {
         VStack {
-            
             Text(drink.name + "리뷰")
-            
             List{
                 if selected_type == .makgeolli{
                     ForEach(self.makgeolli_review, id: \.self){ review in
@@ -57,16 +53,6 @@ struct Review_View: View {
                                 .font(.system(size: 20, weight: .bold))
                                 .foregroundColor(Color.red)
                         })
-//                        .confirmationDialog("타이틀", isPresented: $isClicked) {
-//                            Button("신고하기", role: .destructive) {}
-//                            Button("취소", role: .cancel) {}
-//                          }
-//                        .actionSheet(isPresented: $isClicked){
-//                            ActionSheet(title: Text("신고하기"),
-//                                        message: Text("신고하시겠습니까?"),
-//                                        buttons: [.default(Text("취소")),
-//                                                  .destructive(Text("신고하기"))])
-//                        }
                     })
                 }
                 else if selected_type == .spirits{
@@ -95,10 +81,8 @@ struct Review_View: View {
                                 .font(.system(size: 20, weight: .bold))
                                 .foregroundColor(Color.red)
                         })
-
                     })
                 }
-                
             }
             .onAppear(perform: onLoad)
             .onDisappear{
@@ -124,18 +108,12 @@ struct Review_View: View {
             }
 
             NavigationLink(destination: {
-                
-                
                 Store_WebView(isToolBarItemHidden: $dismissed, url:  "https://smartstore.naver.com/wooridoga/search?q=\(drink.name)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
-
             }, label: {
                 Text("사러가기")
-
             })
-
         }
         .fullScreenCover(isPresented: $show_sheet){
-            
             Button(role: .cancel, action: {
                 show_sheet = false
             }, label: {
@@ -148,7 +126,6 @@ struct Review_View: View {
             else if selected_type == .spirits{
                 Spirits_Review_View(show_sheet: $show_sheet, drink: drink)
             }
-            
         }
         .sheet(isPresented: $isClicked){
             Button(role: .cancel, action: {
@@ -157,13 +134,14 @@ struct Review_View: View {
                 Text("닫기")
             })
             
+            // 커뮤니티가 있는 앱은 신고화면이 있어야함
             reportView(isClicked: $isClicked)
                 .presentationDetents([.fraction(0.6)])
         }
 
     }
-
     
+    // Firebase RealTime Database 에서 한번만 리뷰 가져오기
     func onLoad(){
         if !didAppear && appearCount == 1{
             appearCount += 1
@@ -178,9 +156,3 @@ struct Review_View: View {
         didAppear = true
     }
 }
-//
-//struct Review_View_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Review_View(drink: Drink(id: UUID(), name: "", type: .makgeolli, price: 1, img_url: ""))
-//    }
-//}

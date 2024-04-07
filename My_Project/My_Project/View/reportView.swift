@@ -30,8 +30,6 @@ struct reportView: View {
                     show_alert = true
                     isClicked = false
                 }
-                
-                
             }, label: {
                 Rectangle()
                     .frame(width: 100, height: 50)

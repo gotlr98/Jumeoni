@@ -11,7 +11,6 @@ import KakaoSDKAuth
 import KakaoSDKUser
 import SwiftUI
 
-
 @MainActor
 class Kakao_AuthVM: ObservableObject{
     
@@ -22,7 +21,6 @@ class Kakao_AuthVM: ObservableObject{
     @Published var cur_user: user_s = user_s(id: "", name: "", email: "")
     
     
-//    @MainActor
     func kakaoLogout(){
         Task{
             if await handlekakaoLogout() {
@@ -122,55 +120,26 @@ class Kakao_AuthVM: ObservableObject{
 
                                self.user_name = name
                                self.email = email.replacingOccurrences(of: ".", with: ",")
-                               
                                self.cur_user = user_s(id: String(id), name: name, email: self.email)
-
-
                            }
                        }
                     }
                 }
-            
         }
-        
-        
-        
     }
     
-//    @MainActor
     func handleKakaoLogin(){
         
         Task{
+            
             // 카카오톡 실행 가능 여부 확인 - 설치 되어있을 때
             if (UserApi.isKakaoTalkLoginAvailable()) {
                                 
                 // 카카오 앱을 통해 로그인
                 isLoggedIn = await handleLoginWithKakaoTalkApp()
-                
-                
-                
             }
             else { // 설치 안되어 있을 때
                 isLoggedIn = await handleLoginWithKakaoAccount()
             }
-            
-
         }
-
     }
-    
-//    func add_user_makgeolli_review(review: Makgeolli_Review){
-//
-//        user.makgeolli_reviews.append(review)
-//
-//        self.objectWillChange.send()
-//    }
-//
-//    func add_user_spirits_review(review: Spirits_Review){
-//
-//        user.spirits_reviews.append(review)
-//
-//        self.objectWillChange.send()
-//    }
-
-}

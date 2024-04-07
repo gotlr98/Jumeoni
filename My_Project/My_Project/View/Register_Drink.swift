@@ -30,9 +30,7 @@ struct Register_Drink: View {
 
     
     var body: some View {
-        
         GeometryReader{ geo in
-            
             VStack{
                 if button_clicked && !input_img_url.isEmpty{
                     
@@ -55,6 +53,7 @@ struct Register_Drink: View {
                 }
                 
             }
+            
             VStack(alignment: .center){
                 
                 Picker("종류", selection: $selected_type){
@@ -129,8 +128,6 @@ struct Register_Drink: View {
                         
                         show_sheet.toggle()
                     }
-                    
- 
                 }, label: {
                     Rectangle()
                         .frame(width: 80, height: 50)

@@ -17,17 +17,14 @@ struct User_View: View {
     @State var selected_spirit_review: spirit_review = spirit_review(id: "", user_id: "", user_name: "", drink_name: "", scent: 1.0, bodied: 1.0, drinkability: 1.0, comment: "", drink_type: "", rating: 1.0)
     @State var isClicked: Bool = false
     @State var selected_review_type: String = ""
-    
     @State var showingAlert = false
     
     var body: some View {
-        
         NavigationView{
             VStack{
                 List{
                     Section(content: {
                         ForEach(self.makgeolli_reviews, id: \.self){ review in
-                            
                             VStack(alignment: .leading){
                                 Text(review.drink_name + " review - ")
                                 
@@ -37,8 +34,8 @@ struct User_View: View {
                                     Text("쓴맛 : " + String(review.bitter))
                                     Text("청량감 : " + String(review.refreshing))
                                     Text("걸쭉함 : " + String(review.thick))
-                                    
                                 }
+                                
                                 Text("총점 : " + String(review.rating))
                                 Text("코멘트 : " + review.comment)
                                 
@@ -54,20 +51,17 @@ struct User_View: View {
                                     Text("수정하기")
                                 })
                             })
-                            
                         }
-                        
+        
                         .onDelete(perform: { row in
                             for index in row{
                                 user_view.deleteMakgeolliReview(review: self.makgeolli_reviews[index])
                                 self.makgeolli_reviews.remove(at: index)
                             }
                         })
-                        
                     }, header: {
                         Text("막걸리 리뷰")
                     })
-                    
                     
                     Section(content: {
                         ForEach(self.spirit_reviews, id: \.self){ review in
@@ -101,13 +95,13 @@ struct User_View: View {
                                 user_view.deleteSpiritReview(review: self.spirit_reviews[index])
                                 self.spirit_reviews.remove(at: index)
                             }
-                            //
                         })
                     }, header: {
                         Text("증류주 리뷰")
                     })
                 }
                 
+                // Appear 시 현재 User에 리뷰를 갖고오기
                 .onAppear{
                     self.makgeolli_reviews = user_view.getUserMakgeolliReview(user: user_view.cur_user)
                     self.spirit_reviews = user_view.getUserSpiritReview(user: user_view.cur_user)
@@ -126,18 +120,15 @@ struct User_View: View {
                 if self.selected_review_type == "makgeolli"{
                     Edit_Makgeolli_Review_View(review: selected_makgeolli_review, show_sheet: $isClicked)
                 }
-                
                 else if self.selected_review_type == "spirit"{
                     Edit_Spirits_Review_View(review: selected_spirit_review)
                 }
                 else{
                     ContentView()
                 }
-                
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing, content:{
-                    
                     Menu(content: {
                         Button(action: {
                             self.showingAlert = true

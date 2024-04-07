@@ -24,29 +24,22 @@ struct Signin_Complete: View{
     @State var didAppear = false
     @State var appearCount = 0
     
-    
-    
     var body: some View{
-        
         NavigationView{
             TabView(selection: $tabSelection){
-                
                 Group{
                     Drink_List(selected_type: .makgeolli, isToolBarItemHidden: $isToolBarItemHidden)
                         .tabItem{
                             Label("술리뷰", systemImage: "wineglass.fill")
-//                            Image(systemName: "wineglass.fill")
                         }
                         .tag(Tabs.tab1)
                         .onAppear {
                             self.isToolBarItemHidden = true
                         }
                     
-                    
                     User_View()
                         .tabItem{
                             Label("마이페이지", systemImage: "person.circle")
-//                            Image(systemName: "person.circle")
                         }
                         .tag(Tabs.tab2)
                         .onAppear{
@@ -72,28 +65,24 @@ struct Signin_Complete: View{
         .navigationTitle(tabSelection == .tab1 ? "안녕하세요 " + kakao.user_name + "님" : "나의 후기")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-    
         .navigationViewStyle(.stack)
-
     }
     
     func onLoad(){
         UITabBar.appearance().barTintColor = .blue
+        
+        // Firebase Realtime Database Load안된경우 다시한번 읽어오기 & 중복 방지
         if !didAppear{
             appearCount += 1
-            
             if !drinkStore.isListening{
                 drinkStore.listenToRealtimeDatabase()
                 drinkStore.isListening = true
-//                print(makgeolli_review)
-//                user_review.setBaseReview()
             if !user_review.isMakgeolliListening{
                 user_review.makgeolliListen()
                 user_review.spiritListen()
                 user_review.isMakgeolliListening = true
                 user_review.isSpiritListening = true
-            }
-               
+                }
             }
         }
         didAppear = true

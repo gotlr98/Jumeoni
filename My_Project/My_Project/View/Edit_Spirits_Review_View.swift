@@ -89,6 +89,8 @@ struct Edit_Spirits_Review_View: View {
             .alert("한줄평 입력해주세요", isPresented: $show_alert){
                 Button("OK", role: .cancel){}
             }
+            
+            // 기존에 작성했던 리뷰 가져오기
             .onAppear{
                 self.bodied = review.bodied
                 self.drinkability = review.drinkability
@@ -99,9 +101,3 @@ struct Edit_Spirits_Review_View: View {
         }
     }
 }
-
-//struct Edit_Spirits_Review_View_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Edit_Spirits_Review_View()
-//    }
-//}

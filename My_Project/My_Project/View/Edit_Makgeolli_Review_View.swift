@@ -25,7 +25,6 @@ struct Edit_Makgeolli_Review_View: View {
     @Binding var show_sheet: Bool
     @State var show_alert: Bool = false
     
-
     var body: some View {
         
         VStack{
@@ -85,7 +84,6 @@ struct Edit_Makgeolli_Review_View: View {
             }
         }
         
-        
         Button(action: {
             
             if comment.isEmpty{
@@ -109,6 +107,8 @@ struct Edit_Makgeolli_Review_View: View {
         .alert("한줄평 입력해주세요", isPresented: $show_alert){
             Button("OK", role: .cancel){}
         }
+        
+        // 기존에 작성했던 리뷰 가져오기
         .onAppear{
             self.sweet = review.sweet
             self.bitter = review.bitter
@@ -118,13 +118,5 @@ struct Edit_Makgeolli_Review_View: View {
             self.rating = review.rating
             self.comment = review.comment
         }
-//        .toolbar(.hidden, for: .tabBar)
-        
     }
 }
-
-//struct Edit_Makgeolli_Review_View_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Edit_Makgeolli_Review_View()
-//    }
-//}

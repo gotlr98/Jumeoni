@@ -143,7 +143,6 @@ class UserReviewStore: ObservableObject {
             return
         }
         
-        
         databasePath
             .observe(.childAdded) { [weak self] snapshot, _ in
                 guard
@@ -219,7 +218,6 @@ class UserReviewStore: ObservableObject {
                 "name": user.name,
                 "email": user.email,
             ])
-        
     }
     
     func deleteUser(user: user_s) {
@@ -228,7 +226,7 @@ class UserReviewStore: ObservableObject {
         for (index, userItem) in users.enumerated() where user.id == userItem.id{
             users.remove(at: index)
         }
-}
+    }
     
     func getUserFromDatabase(){
         ref?.child("users").observeSingleEvent(of: .value, with: { snapshot in
@@ -239,14 +237,6 @@ class UserReviewStore: ObservableObject {
             }
         })
     }
-    
-//    func setBaseUser(){
-//
-//        addNewUser(user: user_s(id: 124, name: "해식", email: "gotlr@naver,com"))
-//        addNewUser(user: user_s(id: 2565, name: "태희", email: "xogml@naver,com"))
-//
-//        getUserFromDatabase()
-//    }
     
     func addNewMakgeolliReview(user: user_s, review: makgeolli_review) {
         self.ref?.child("makgeolli_reviews").child("\(review.id)").setValue([
@@ -355,8 +345,6 @@ class UserReviewStore: ObservableObject {
     
     func deleteSpiritReview(review: spirit_review) {
         ref?.child("spirit_reviews/\(review.id)").removeValue()
-        
-        
     }
     
     func getUserSpiritReview(user: user_s) -> [spirit_review]{
@@ -381,17 +369,3 @@ class UserReviewStore: ObservableObject {
         })
         
     }
-    
-//    func setBaseReview(){
-//        for i in 0..<3{
-//            addNewMakgeolliReview(user: base_user, review: makgeolli_review(id: UUID().uuidString, user_id: base_user.id, user_name: base_user.name, drink_name: "대대포 블루 꿀 막걸리", sweet: 1, bitter: 2, sour: 3, refreshing: 4, thick: 5, comment: "good", drink_type: "makgeolli", rating: 3))
-////            addNewSpiritReview(user: users[i], review: spirit_review(id: UUID().uuidString, user_id: users[i].id, user_name: users[i].name, drink_name: "한주양조 한주 35도", scent: 1, bodied: 2, drinkability: 3, comment: "bad", drink_type: "spirits", rating: 2))
-//        }
-//        
-////        getMakgeolliReviewFromDatabase()
-////        getSpiritReviewFromDatabase()
-//
-//    }
-    
-    
-}
